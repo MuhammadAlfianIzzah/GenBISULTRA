@@ -1,4 +1,33 @@
 <x-m-layout-v2>
+    @push("script")
+    <script>
+        $(document).ready(function() {
+            $("#news-slider").owlCarousel({
+                items: 3
+                , itemsDesktop: [1199, 3]
+                , itemsDesktopSmall: [980, 2]
+                , itemsMobile: [600, 1]
+                , navigation: true
+                , navigationText: ["", ""]
+                , pagination: true
+                , autoPlay: true
+            });
+        });
+        $(document).ready(function() {
+            $("#devisi-seeder").owlCarousel({
+                items: 3
+                , itemsDesktop: [1199, 3]
+                , itemsDesktopSmall: [980, 2]
+                , itemsMobile: [600, 1]
+                , navigation: true
+                , navigationText: ["", ""]
+                , pagination: true
+                , autoPlay: true
+            });
+        });
+
+    </script>
+    @endpush
     <style>
         .post-slide {
             background: #fff;

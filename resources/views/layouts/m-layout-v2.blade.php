@@ -73,11 +73,12 @@
 
 
     <script src="{{ asset('js/jquery.js') }}"></script>
-    @stack("script")
+
 
     <script src="{{ asset('js/owlcarousel/owl.carousel.min.js') }}"></script>
 
     <script src="{{ asset('js/animation.js') }}"></script>
+    @stack("script")
 
 </body>
 </html>

@@ -38,30 +38,6 @@ $('.testimoni-carousel').owlCarousel({
 		}
 	}
 })
-$(document).ready(function () {
-	$("#news-slider").owlCarousel({
-		items: 3,
-		itemsDesktop: [1199, 3],
-		itemsDesktopSmall: [980, 2],
-		itemsMobile: [600, 1],
-		navigation: true,
-		navigationText: ["", ""],
-		pagination: true,
-		autoPlay: true
-	});
-});
-$(document).ready(function () {
-	$("#devisi-seeder").owlCarousel({
-		items: 3,
-		itemsDesktop: [1199, 3],
-		itemsDesktopSmall: [980, 2],
-		itemsMobile: [600, 1],
-		navigation: true,
-		navigationText: ["", ""],
-		pagination: true,
-		autoPlay: true
-	});
-});
 $('.blog-carousel').owlCarousel({
 	margin: 10,
 	nav: true,
