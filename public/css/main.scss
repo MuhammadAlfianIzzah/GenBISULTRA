@@ -1,0 +1,635 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+::-webkit-scrollbar-button {
+    width: 10px; //for horizontal scrollbar
+    height: 10px; //for vertical scrollbar
+}
+
+::-webkit-scrollbar-thumb {
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
+    background-color: #775ada;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    font-size: 14px;
+}
+
+.p-login {
+    margin-top: 60px;
+    box-sizing: border-box;
+    border: 5px solid rgb(233, 226, 226);
+}
+
+.blockquote {
+    border-left: 4px solid red;
+    padding-left: 1rem;
+}
+
+// .navbar {
+//     font-family: 'Rubik', sans-serif;
+
+//     .nav-link {
+//         font-weight: 500;
+//         letter-spacing: 2px;
+//     }
+// }
+// .navbar {
+//     .navbar-nav {
+//         .nav-item {
+//             &:nth-child(1) {
+//                 @media (min-width: 992px) {
+//                     margin-left: 40px;
+//                 }
+
+//             }
+
+//             &.active {
+//                 position: relative;
+
+//                 &::after {
+//                     content: "";
+//                     position: absolute;
+//                     width: 80%;
+//                     left: 50%;
+//                     bottom: 0;
+//                     transform: translateX(-50%);
+//                     height: 3px;
+//                     filter: opacity(.6);
+//                     background-color: #2d6cdf;
+//                 }
+//             }
+//         }
+//     }
+// }
+// new
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+$color-blue: #0A4678;
+$color-black: #323846;
+$color-white: #F6F8FD;
+$color-blue-secondary: #4a84b4;
+$color-red: #B51818;
+
+body {
+    background-color: $color-white;
+}
+
+
+// navbar
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    .nav-logo {
+        border-radius: 50%;
+    }
+
+    .nav-brand {
+        font-size: 18pt;
+        font-weight: 600;
+        color: $color-white;
+    }
+
+    .nav-brand.active {
+        color: $color-blue;
+    }
+
+    ul {
+        li {
+            margin-left: 16px;
+
+            .top-nav {
+                font-size: 12pt;
+                font-weight: 500;
+                color: $color-white !important;
+
+                &:hover {
+                    color: $color-blue !important;
+                }
+            }
+
+            .top-nav.active {
+                color: $color-blue-secondary !important;
+
+                &:hover {
+                    color: $color-blue !important;
+                }
+            }
+        }
+    }
+}
+
+.mt-r {
+    margin-top: 60px;
+}
+
+.img-size-responsif {
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+
+    .s-layer {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        filter: opacity(.6);
+        background-color: #364f6b;
+    }
+}
+
+input::placeholder {
+    color: rgb(202, 202, 202) !important;
+}
+
+.text-scaledown {
+    font-size: .8rem;
+    color: rgb(124, 122, 122);
+    font-style: italic;
+}
+
+.bg-lapis {
+    position: relative;
+    border: 2px dashed salmon;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(6px);
+
+    &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        top: 0;
+        z-index: -1;
+        left: 0;
+        background-color: #2d767f;
+        height: 100%;
+        filter: opacity(.2);
+
+    }
+}
+
+.z-99 {
+    z-index: 999;
+}
+
+.navbar.dark {
+    background-color: $color-white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+
+    .nav-brand {
+        color: $color-blue;
+    }
+
+    .top-nav {
+        color: $color-blue-secondary !important;
+
+        &:hover {
+            color: $color-blue !important;
+        }
+    }
+}
+
+// heroes
+.heroes-parent {
+    // background-image: url(/images/sikola-dilao.png);
+    background-size: cover;
+    height: 100%;
+    margin-top: -71px;
+    padding: 0;
+
+    .heroes {
+        margin-top: 70px;
+        padding-top: 175px;
+        padding-bottom: 175px;
+
+        .row {
+            height: 100%;
+
+            h1 {
+                position: relative;
+                font-size: 5vw;
+                font-weight: 800;
+                color: $color-white;
+                z-index: 99;
+            }
+        }
+    }
+}
+
+.heroes-parent::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    position: absolute;
+    bottom: 0;
+}
+
+@media screen and (max-width: 750px) {
+    .heroes-parent {
+        .heroes {
+            .row {
+                h1 {
+                    text-align: center;
+                    font-size: 10vmin;
+                }
+            }
+        }
+    }
+}
+
+// devisi
+.devisi {
+    background-color: $color-blue;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    h2 {
+        font-size: 4vw;
+        font-weight: 800;
+        padding-bottom: 50px;
+        color: $color-white;
+    }
+
+    .card {
+        border-radius: 25px;
+        padding: 32px;
+        background-color: $color-blue-secondary;
+        box-shadow: 2 2px 4px rgba(0, 0, 0, .5);
+
+
+        .card-body {
+            min-height: 310px;
+
+            .logo-devisi {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                background-color: $color-white;
+                border-radius: 25px;
+                margin-bottom: 16px;
+            }
+
+            .card-title {
+                font-size: 16pt;
+                font-weight: 600;
+                color: $color-white;
+            }
+
+            p {
+                color: $color-white;
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .devisi {
+        h2 {
+            font-size: 7vmin;
+        }
+    }
+}
+
+// testimoni
+.testimoni {
+    .row-testimoni {
+        padding-top: 50px;
+        padding-bottom: 50px+40px;
+        height: 100%;
+
+        h2 {
+            font-size: 4vw;
+            font-weight: 800;
+            color: $color-blue;
+        }
+
+        .testimoni-anggota {
+            height: 450px;
+            padding: 36px;
+
+            .quotes-logo {
+                text-align: center;
+            }
+
+            .card {
+                border-radius: 25px;
+                padding: 32px;
+                background-color: $color-white;
+
+                .card-body {
+                    min-height: 300px;
+
+                    .img-profile-container {
+                        position: relative;
+                        width: 100px;
+                        height: 100px;
+                        background-color: $color-white;
+                        border-radius: 25px;
+                        margin-bottom: 16px;
+                        margin: auto;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .card-title {
+                        font-size: 16pt;
+                        font-weight: 600;
+                    }
+
+                    .quotes-logo {
+                        width: 55px;
+                        justify-content: center;
+                        margin: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .testimoni {
+        .row-testimoni {
+            padding-top: 30px;
+            padding-bottom: 50px+70px;
+        }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .testimoni {
+        .row-testimoni {
+            padding-top: 40px;
+            padding-bottom: 40px+70px;
+
+            h2 {
+                font-size: 7vmin;
+            }
+        }
+    }
+}
+
+.card {
+    position: relative;
+
+    .hightlight {
+        padding: .6rem;
+        background-color: rgba(silver, .6);
+        display: flex;
+        position: absolute;
+        color: white;
+        top: 0;
+    }
+}
+
+// blog
+.blog {
+    background-color: $color-blue;
+    padding-top: 50px;
+    padding-bottom: 60px;
+
+    h2 {
+        font-size: 4vw;
+        font-weight: 800;
+        padding: 5%;
+        padding-top: 0;
+        color: $color-white;
+    }
+
+    .card {
+        border-radius: 25px;
+        background-color: $color-blue-secondary;
+
+        .card-body {
+            .img-container {
+                position: relative;
+
+                .img-blog {
+                    border-radius: 25px;
+                    width: 100%;
+                }
+            }
+
+            .img-container::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+                position: absolute;
+                bottom: 0;
+                border-radius: 25px;
+            }
+
+            .card-title {
+                font-size: 14pt;
+                font-weight: 600;
+                margin-top: 16px;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                color: $color-white;
+            }
+
+            .date {
+                margin-bottom: 0;
+                color: $color-white;
+            }
+
+            a {
+                color: $color-white;
+                text-decoration: none;
+
+                &:hover {
+                    color: $color-blue;
+                    text-decoration: underline;
+                }
+            }
+
+        }
+
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .blog {
+        h2 {
+            font-size: 7vmin;
+        }
+    }
+}
+
+//tagar
+.tagar {
+    // background-image: url(/images/sikola-dilao.png);
+    background-size: cover;
+    height: 100%;
+
+    .container {
+        padding-top: 180px;
+        padding-bottom: 180px;
+        height: 100%;
+
+        h2 {
+            font-size: 5vw;
+            font-weight: 800;
+            color: $color-white;
+        }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .tagar {
+        .container {
+            h2 {
+                font-size: 6vmin;
+            }
+        }
+    }
+}
+
+// footer
+footer {
+    background-color: $color-blue;
+
+    h3 {
+        font-size: 18pt;
+        font-weight: 600;
+        color: $color-white;
+        padding: 5%;
+        padding-left: 0;
+    }
+
+    p {
+        color: $color-blue-secondary;
+    }
+
+    .sosmed {
+        margin-top: 30px;
+
+        a {
+            padding: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            background-color: $color-red;
+            border-radius: 50%;
+            margin-right: 16px;
+
+            i {
+                color: $color-white;
+            }
+
+            &:hover {
+                background-color: $color-blue-secondary;
+            }
+        }
+    }
+
+    .btn-send {
+        background-color: $color-red;
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-blue-secondary;
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+
+        li {
+            padding-left: 0;
+
+            a {
+                font-size: 12pt;
+                font-weight: 500;
+                color: $color-blue-secondary !important;
+                text-decoration: none;
+
+                &:hover {
+                    color: $color-white !important;
+                }
+            }
+        }
+    }
+
+    hr {
+        color: $color-white;
+        margin: 0;
+    }
+
+    .copyrigth {
+        padding-top: 45px;
+        padding-bottom: 45px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    footer {
+        .row {
+            padding-top: 0 !important;
+
+            .col-12 {
+                margin-top: 50px;
+            }
+        }
+    }
+}
+
+.blog-post.content {
+    p:nth-child(2):first-letter {
+        float: left;
+        line-height: 35px;
+        font-size: 55px;
+        font-family: Montserrat;
+        color: black;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 5px;
+        padding-left: 5px;
+        margin-right: 5px;
+        margin-bottom: -5px;
+    }
+}
+
+.card-profile {
+    position: relative;
+
+    .btn-group {
+        gap: 3px;
+
+        position: absolute;
+        right: 0;
+    }
+}

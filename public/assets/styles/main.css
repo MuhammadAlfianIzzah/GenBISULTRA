@@ -1,0 +1,413 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #F6F8FD;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.navbar .nav-logo {
+  border-radius: 50%;
+}
+
+.navbar .nav-brand {
+  font-size: 18pt;
+  font-weight: 600;
+  color: #F6F8FD;
+}
+
+.navbar .nav-brand.active {
+  color: #0A4678;
+}
+
+.navbar ul li {
+  margin-left: 16px;
+}
+
+.navbar ul li .top-nav {
+  font-size: 12pt;
+  font-weight: 500;
+  color: #F6F8FD !important;
+}
+
+.navbar ul li .top-nav:hover {
+  color: #0A4678 !important;
+}
+
+.navbar ul li .top-nav.active {
+  color: #4a84b4 !important;
+}
+
+.navbar ul li .top-nav.active:hover {
+  color: #0A4678 !important;
+}
+
+.navbar.active {
+  background-color: #F6F8FD;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.heroes-parent {
+  background-image: url(/images/sikola-dilao.png);
+  background-size: cover;
+  height: 100%;
+  margin-top: -71px;
+  padding: 0;
+}
+
+.heroes-parent .heroes {
+  margin-top: 70px;
+  padding-top: 175px;
+  padding-bottom: 175px;
+}
+
+.heroes-parent .heroes .row {
+  height: 100%;
+}
+
+.heroes-parent .heroes .row h1 {
+  position: relative;
+  font-size: 5vw;
+  font-weight: 800;
+  color: #F6F8FD;
+  z-index: 99;
+}
+
+.heroes-parent::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  position: absolute;
+  bottom: 0;
+}
+
+@media screen and (max-width: 750px) {
+  .heroes-parent .heroes .row h1 {
+    text-align: center;
+    font-size: 10vmin;
+  }
+}
+
+.devisi {
+  background-color: #0A4678;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.devisi h2 {
+  font-size: 4vw;
+  font-weight: 800;
+  padding-bottom: 50px;
+  color: #F6F8FD;
+}
+
+.devisi .card {
+  border-radius: 25px;
+  padding: 32px;
+  background-color: #4a84b4;
+  -webkit-box-shadow: 2 2px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 2 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.devisi .card .card-body {
+  min-height: 310px;
+}
+
+.devisi .card .card-body .logo-devisi {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: #F6F8FD;
+  border-radius: 25px;
+  margin-bottom: 16px;
+}
+
+.devisi .card .card-body .card-title {
+  font-size: 16pt;
+  font-weight: 600;
+  color: #F6F8FD;
+}
+
+.devisi .card .card-body p {
+  color: #F6F8FD;
+}
+
+@media screen and (max-width: 750px) {
+  .devisi h2 {
+    font-size: 7vmin;
+  }
+}
+
+.testimoni .row-testimoni {
+  padding-top: 50px;
+  padding-bottom: 90px;
+  height: 100%;
+}
+
+.testimoni .row-testimoni h2 {
+  font-size: 4vw;
+  font-weight: 800;
+  color: #0A4678;
+}
+
+.testimoni .row-testimoni .testimoni-anggota {
+  height: 450px;
+  padding: 36px;
+}
+
+.testimoni .row-testimoni .testimoni-anggota .quotes-logo {
+  text-align: center;
+}
+
+.testimoni .row-testimoni .testimoni-anggota .card {
+  border-radius: 25px;
+  padding: 32px;
+  background-color: #F6F8FD;
+}
+
+.testimoni .row-testimoni .testimoni-anggota .card .card-body {
+  min-height: 300px;
+}
+
+.testimoni .row-testimoni .testimoni-anggota .card .card-body .img-profile-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: #F6F8FD;
+  border-radius: 25px;
+  margin-bottom: 16px;
+  margin: auto;
+}
+
+.testimoni .row-testimoni .testimoni-anggota .card .card-body .img-profile-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.testimoni .row-testimoni .testimoni-anggota .card .card-body .card-title {
+  font-size: 16pt;
+  font-weight: 600;
+}
+
+.testimoni .row-testimoni .testimoni-anggota .card .card-body .quotes-logo {
+  width: 55px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+}
+
+@media screen and (max-width: 990px) {
+  .testimoni .row-testimoni {
+    padding-top: 30px;
+    padding-bottom: 120px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .testimoni .row-testimoni {
+    padding-top: 40px;
+    padding-bottom: 110px;
+  }
+  .testimoni .row-testimoni h2 {
+    font-size: 7vmin;
+  }
+}
+
+.blog {
+  background-color: #0A4678;
+  padding-top: 50px;
+  padding-bottom: 60px;
+}
+
+.blog h2 {
+  font-size: 4vw;
+  font-weight: 800;
+  padding: 5%;
+  padding-top: 0;
+  color: #F6F8FD;
+}
+
+.blog .card {
+  border-radius: 25px;
+  background-color: #4a84b4;
+}
+
+.blog .card .card-body .img-container {
+  position: relative;
+}
+
+.blog .card .card-body .img-container .img-blog {
+  border-radius: 25px;
+  width: 100%;
+}
+
+.blog .card .card-body .img-container::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+  position: absolute;
+  bottom: 0;
+  border-radius: 25px;
+}
+
+.blog .card .card-body .card-title {
+  font-size: 14pt;
+  font-weight: 600;
+  margin-top: 16px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  color: #F6F8FD;
+}
+
+.blog .card .card-body .date {
+  margin-bottom: 0;
+  color: #F6F8FD;
+}
+
+.blog .card .card-body a {
+  color: #F6F8FD;
+  text-decoration: none;
+}
+
+.blog .card .card-body a:hover {
+  color: #0A4678;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 750px) {
+  .blog h2 {
+    font-size: 7vmin;
+  }
+}
+
+.tagar {
+  background-image: url(/images/sikola-dilao.png);
+  background-size: cover;
+  height: 100%;
+}
+
+.tagar .container {
+  padding-top: 180px;
+  padding-bottom: 180px;
+  height: 100%;
+}
+
+.tagar .container h2 {
+  font-size: 5vw;
+  font-weight: 800;
+  color: #F6F8FD;
+}
+
+@media screen and (max-width: 750px) {
+  .tagar .container h2 {
+    font-size: 6vmin;
+  }
+}
+
+footer {
+  background-color: #0A4678;
+}
+
+footer h3 {
+  font-size: 18pt;
+  font-weight: 600;
+  color: #F6F8FD;
+  padding: 5%;
+  padding-left: 0;
+}
+
+footer p {
+  color: #4a84b4;
+}
+
+footer .sosmed {
+  margin-top: 30px;
+}
+
+footer .sosmed a {
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #B51818;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+footer .sosmed a i {
+  color: #F6F8FD;
+}
+
+footer .sosmed a:hover {
+  background-color: #4a84b4;
+}
+
+footer .btn-send {
+  background-color: #B51818;
+  color: #F6F8FD;
+}
+
+footer .btn-send:hover {
+  background-color: #4a84b4;
+}
+
+footer ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+footer ul li {
+  padding-left: 0;
+}
+
+footer ul li a {
+  font-size: 12pt;
+  font-weight: 500;
+  color: #4a84b4 !important;
+  text-decoration: none;
+}
+
+footer ul li a:hover {
+  color: #F6F8FD !important;
+}
+
+footer hr {
+  color: #F6F8FD;
+  margin: 0;
+}
+
+footer .copyrigth {
+  padding-top: 45px;
+  padding-bottom: 45px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 750px) {
+  footer .row {
+    padding-top: 0 !important;
+  }
+  footer .row .col-12 {
+    margin-top: 50px;
+  }
+}
+/*# sourceMappingURL=main.css.map */
