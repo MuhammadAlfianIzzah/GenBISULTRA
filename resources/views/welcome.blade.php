@@ -152,6 +152,7 @@
         }
 
     </style>
+    @push("script")
     <script>
         $(document).ready(function() {
             $('.owl-carousel').owlCarousel({
@@ -175,6 +176,8 @@
         });
 
     </script>
+
+    @endpush
     <!-- heroes -->
     <div class="container-fluid heroes-parent" style="background-image: url({{asset("img/welcome/sikola-dilao.jpg")}}">
 

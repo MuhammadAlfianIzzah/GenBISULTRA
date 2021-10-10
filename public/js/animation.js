@@ -40,26 +40,26 @@ $('.testimoni-carousel').owlCarousel({
 	}
 })
 
-$(document).ready(function () {
-	$('.owl-carousel').owlCarousel({
-		// items: 2,
-		responsive: {
-			0: {
-				items: 1,
-				nav: true
-			},
-			600: {
-				items: 2,
-				nav: false
-			},
-			1000: {
-				items: 3,
-				nav: true,
-				loop: false
-			}
-		}
-	});
-});
+// $(document).ready(function () {
+// 	$('.owl-carousel').owlCarousel({
+// 		// items: 2,
+// 		responsive: {
+// 			0: {
+// 				items: 1,
+// 				nav: true
+// 			},
+// 			600: {
+// 				items: 2,
+// 				nav: false
+// 			},
+// 			1000: {
+// 				items: 3,
+// 				nav: true,
+// 				loop: false
+// 			}
+// 		}
+// 	});
+// });
 
 $('.blog-carousel').owlCarousel({
 	margin: 10,
