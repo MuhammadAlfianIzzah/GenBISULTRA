@@ -1,6 +1,6 @@
 <x-m-layout-v2>
     <!-- heroes -->
-    <div class="container-fluid heroes-parent" style="background-image: url({{asset("img/welcome/sikola-dilao.png")}}">
+    <div class="container-fluid heroes-parent" style="background-image: url({{asset("img/welcome/sikola-dilao.jpg")}}">
 
 
         <div class="container heroes">
@@ -138,7 +138,7 @@
         </div>
     </div>
     <!-- tagar -->
-    <div class="container-fluid tagar" style="background-image: url({{asset("img/welcome/sikola-dilao.png")}})">
+    <div class="container-fluid tagar" style="background-image: url({{asset("img/welcome/sikola-dilao.jpg")}})">
         <div class="container">
             <h2>#ENERGIUNTUKNEGERI <br> #SOSOITO</h2>
         </div>
