@@ -44,9 +44,6 @@
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                          <li><a class="dropdown-item" href="{{ route('tentang-kami') }}">Tentang Kami</a></li>
                          <li><a class="dropdown-item" href="#">Karya Kami</a></li>
-                         <li><a class="dropdown-item" href="{{ route('users-search',"alfianizzah") }}">Users</a></li>
-
-
                      </ul>
                  </li>
 
