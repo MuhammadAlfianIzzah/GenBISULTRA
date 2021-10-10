@@ -17,6 +17,7 @@ use App\Models\Posts;
 use App\Models\Profile;
 use App\Models\TypeActivity;
 use App\Models\User;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Stevebauman\Location\Facades\Location;
@@ -74,7 +75,9 @@ Route::get("/kegiatan/detail/{activities:slug}", function (Activity $activities)
 Route::get("/galery", [GalleryController::class, "show"])->name("galery-genbi");
 
 // Route::get("/post/user", [PostsController::class, "show"])->name("post-user");
-
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+});
 Route::get("/author", function () {
     return view("page.author");
 })->name("author");
