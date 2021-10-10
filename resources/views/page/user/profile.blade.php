@@ -26,10 +26,10 @@
             <div class="row">
                 <div class="col-12 col-sm-7 col-md-12 col-lg-8">
                     <div class="card card-profile">
-                        <img class="card-img-top" style="max-height: 200px;object-fit: cover" src="{{ asset("storage") ."/".$profile->hero}}" alt="Bologna">
+                        <img class="card-img-top" style="max-height: 200px;object-fit: cover" src="{{ secure_asset("storage") ."/".$profile->hero}}" alt="Bologna">
 
                         <div class="card-body text-center">
-                            <img class="avatar" src="{{ asset("storage") ."/".$profile->foto_profile}}" alt="Bologna">
+                            <img class="avatar" src="{{ secure_asset("storage") ."/".$profile->foto_profile}}" alt="Bologna">
 
 
                             <h4 class="card-title">{{$profile->nama}}</h4>
@@ -65,7 +65,7 @@
                     <hr>
                     @forelse ($posts as $post)
                     <div class="card mb-2 border-0" style="border-top: 4px solid rgb(145, 145, 250) !important">
-                        <img style="max-height: 120px;object-fit: cover" src="{{ asset("storage/$post->thumbnail") }}" class="card-img-top" alt="...">
+                        <img style="max-height: 120px;object-fit: cover" src="{{ secure_asset("storage/$post->thumbnail") }}" class="card-img-top" alt="...">
 
                         <?php 
                         $filter =preg_replace("/<img[^>]+>/", "", $post->content);
@@ -130,7 +130,7 @@
                         <div class="mb-3">
                             <label for="foto_profile" class="form-label">Foto Profile</label>
                             <input name="foto_profile" class="form-control input-show" type="file" id="foto_profile">
-                            {{-- <img style="width: 100px" src="{{ asset("storage/$profile->foto_profile")}}" class="rounded d-block mt-2 img-thumbnail" alt="..."> --}}
+                            {{-- <img style="width: 100px" src="{{ secure_asset("storage/$profile->foto_profile")}}" class="rounded d-block mt-2 img-thumbnail" alt="..."> --}}
                             @error('foto_profile')
                             <div class="text-danger text-small">{{$message}}</div>
                             @enderror
