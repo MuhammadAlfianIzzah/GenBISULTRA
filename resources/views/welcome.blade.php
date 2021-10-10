@@ -299,7 +299,8 @@
                                     <a href="#">Lorem ipsum dolor sit amet.</a>
                                 </h3>
                                 <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                                <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+                                <span class="post-date"><i class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</span>
+
                                 <a href="{{ route('detail-brain', [$post->title]) }}" class="read-more">read more</a>
 
                             </div>
