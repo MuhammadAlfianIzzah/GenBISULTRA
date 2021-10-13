@@ -28,54 +28,120 @@
 <body>
     @include('components.main.narbar-v2')
     {{$slot}}
-    <footer>
-        <div class="container">
-            <div class="row pt-5 pb-5">
-                <div class="col-12 col-md-4">
-                    <h3>Tentang Kami</h3>
+    {{-- <footer>
 
-                    <p><i class="fa fa-map-marker"></i> Jl. Perintis Kemerdekaan No.KM.10, Tamalanrea Indah, Kec. Tamalanrea, Kota Makassar, Sulawesi Selatan 90245</p>
-                    <p><i class="fa fa-envelope"></i> genbi.sultra@gmail.com</p>
-                    <div class="sosmed">
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-youtube"></i></i></a>
-                        <a href="#"><i class="fa fa-spotify"></i></a>
-                    </div>
+        <div class="row">
+            <h3 class="text-center py-4 px-2">Tentang Kami</h3>
+
+            <div class="col-12 col-md-4 border">
+                <p class="py-2">
+                    <i class="fa fa-map-marker"></i>
+                    Alamat: Jl. Haluoleo, Mokoau, Kec. Kambu, Kota Kendari, Sulawesi Tenggara 93231
+                </p>
+                <p>
+                    <i class="fa fa-envelope"></i>
+                    genbi.sultra@gmail.com
+                </p>
+            </div>
+            <div class="col-md-4">
+                <div class="sosmed">
+                    <a href="#" style="width: 200px !important;height: 200px !important;background-color: red;border-radius: 50%">a</a>
+                    <a href="#"><i class="fab fa-spotify"></i></a>
                 </div>
-
-                <div class="col-12 col-md-4">
-                    <h3>Kontak</h3>
-                    <a class="text-light btn btn-dark mb-2" href="{{ route('author'  ) }}" style="text-decoration: none">Author/Pembuat Website</a>
-                    <a class="text-light btn btn-dark" href="{{ route('author'  ) }}" style="text-decoration: none">Open Donasi/saweria</a>
-                </div>
-
-                {{-- <div class="col-12 col-md-4">
-                    <h3>Hubungi Kami</h3>
-
-                    <form action="" method="post">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Nama" aria-label="Nama">
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control me-3" placeholder="Email" aria-label="Email">
-                            <input type="text" class="form-control" placeholder="Telepon" aria-label="Telepon">
-                        </div>
-                        <div class="input-group mb-3">
-                            <textarea class="form-control" placeholder="Pesan" aria-label="With textarea"></textarea>
-                        </div>
-
-                        <div class="btn btn-sm btn-send">Kirim Pesan</div>
-                    </form>
-                </div> --}}
             </div>
 
-            <hr />
+            <div class="col-12 col-md-4">
+                <h3 class="py-2">Kontak</h3>
+                <a class="text-light btn btn-dark mb-2" href="{{ route('author'  ) }}" style="text-decoration: none">Author/Pembuat Website</a>
+    <a class="text-light btn btn-dark" href="{{ route('author'  ) }}" style="text-decoration: none">Open Donasi/saweria</a>
+    </div>
+    </div>
 
-            <p class="copyrigth">© 2021 GenBI SulTra. All rights reserved.</p>
+    <p class="copyrigth">© 2021 GenBI SulTra. All rights reserved.</p>
+
+    </footer> --}}
+    <footer class="text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
         </div>
-    </footer>
-    <script src="{{ asset('js/bootstrap/bootstrap.js') }}"></script>
+        <!-- Grid container -->
+        <hr>
 
+        <div class="container">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-md-0">
+                    <h3 class="text-uppercase">Tentang Kami</h3>
+                    <p>
+                        <i class="fa fa-map-marker"></i>
+                        Alamat: Jl. Haluoleo, Mokoau, Kec. Kambu, Kota Kendari, Sulawesi Tenggara 93231
+                    </p>
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-md-0">
+                    <h3 class="text-uppercase">Kontak</h3>
+                    <p>
+                        <i class="fa fa-envelope"></i>
+                        genbi.sultra@gmail.com
+                    </p>
+                    <p class="badge bg-primary">
+
+                        <i class="fas fa-user-secret"></i>
+                        Author Website
+                    </p>
+
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-md-0">
+                    <h3 class="text-uppercase">Support Kami</h3>
+                    <p class="badge bg-success">
+                        <i class="fas fa-hands-helping"></i>
+                        Saweria
+                    </p>
+
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 GenBI SulTra. All rights reserved.
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <script src="{{ asset('js/jquery.js') }}"></script>
 

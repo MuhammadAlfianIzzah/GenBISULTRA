@@ -16,11 +16,11 @@
 
     <div class="mb-4 bg-light rounded-3">
         <div class="mt-r img-size-responsif" style="background-image: url({{asset("img/header.jpg")}});background-attachment: fixed;">
-            <div class="p-5 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
+            <div class="p-5 px-0 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
                 <div class="container py-5 d-flex flex-column align-items-center bg-lapis">
                     <h1 class="display-5 fw-normal"><i class="fas fa-brain"></i> My brain </h1>
-                    <p class="col-md-8 mt-2 fs-6 text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo officia repudiandae quibusdam cum vel consequatur, sed magnam maiores suscipit tempore blanditiis provident! Aspernatur, sit!</p>
-                    <h4 class="text-white">Kategory :</h4>
+                    <p class="col-md-8 mt-2 fs-6 text-center">My Brain adalah halaman yang berisikan artikel mengenai Buku tahunan GenBI dan berikan Teori seputar kritik atau penelitian</p>
+                    {{-- <h4 class="text-white">Kategory :</h4> --}}
                     <div class="d-flex gap-2 mt-2">
                         <a href="{{ route('my-brain',["category"=>"buku tahunan"]) }}" class="btn btn-primary btn-lg fs-6 shadow-sm">
                             <i class="fas fa-book-reader"></i> Buku Tahunan GenBI</a>

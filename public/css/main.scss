@@ -519,108 +519,22 @@ input::placeholder {
 footer {
     background-color: $color-blue;
 
-    h3 {
-        font-size: 18pt;
-        font-weight: 600;
-        color: $color-white;
-        padding: 5%;
-        padding-left: 0;
-    }
-
-    p {
-        color: $color-blue-secondary;
-    }
-
-    .sosmed {
-        margin-top: 30px;
-
-        a {
-            padding: 10px;
-            padding-left: 15px;
-            padding-right: 15px;
-            background-color: $color-red;
-            border-radius: 50%;
-            margin-right: 16px;
-
-            i {
-                color: $color-white;
-            }
-
-            &:hover {
-                background-color: $color-blue-secondary;
-            }
-        }
-    }
-
-    .btn-send {
-        background-color: $color-red;
-        color: $color-white;
-
-        &:hover {
-            background-color: $color-blue-secondary;
-        }
-    }
-
-    ul {
-        list-style: none;
-        padding-left: 0;
-        margin-bottom: 0;
-
-        li {
-            padding-left: 0;
-
-            a {
-                font-size: 12pt;
-                font-weight: 500;
-                color: $color-blue-secondary !important;
-                text-decoration: none;
-
-                &:hover {
-                    color: $color-white !important;
-                }
-            }
-        }
-    }
-
-    hr {
-        color: $color-white;
-        margin: 0;
-    }
-
-    .copyrigth {
-        padding-top: 45px;
-        padding-bottom: 45px;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-}
-
-@media screen and (max-width: 750px) {
-    footer {
-        .row {
-            padding-top: 0 !important;
-
-            .col-12 {
-                margin-top: 50px;
-            }
-        }
-    }
 }
 
 .blog-post.content {
     p:nth-child(2):first-letter {
-        float: left;
-        line-height: 35px;
-        font-size: 55px;
-        font-family: Montserrat;
-        color: black;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        padding-right: 5px;
-        padding-left: 5px;
-        margin-right: 5px;
-        margin-bottom: -5px;
-    }
+     float: left;
+     line-height: 35px;
+     font-size: 55px;
+     font-family: Montserrat;
+     color: black;
+     padding-top: 5px;
+     padding-bottom: 5px;
+     padding-right: 5px;
+     padding-left: 5px;
+     margin-right: 5px;
+     margin-bottom: -5px;
+ }
 }
 
 .card-profile {

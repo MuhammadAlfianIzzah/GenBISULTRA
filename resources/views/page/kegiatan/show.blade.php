@@ -50,23 +50,43 @@
         {{-- {{dd($posts[0]->hero)}} --}}
         <div class="mt-r img-size-responsif">
 
-            <div class="p-5 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
+            <div class="p-5 px-0 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
                 <div class="container py-5 d-flex flex-column align-items-center bg-lapis">
                     <h1 class="display-5 fw-bold">Kegiatan GenBI</h1>
-                    <p class="col-md-8 h6 text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo officia repudiandae quibusdam cum vel consequatur, sed magnam maiores suscipit tempore blanditiis provident! Aspernatur, sit!</p>
-                    <h4 class="text-dark">Filter Post</h4>
+                    <p class="col-md-8 text-center">Yuk lihat lihat apa apa saja kegiatan GenBI yang telah dilakukan, anda juga dapat menfilter kegiatan berdasarkan departemen GenBI</p>
+                    {{-- <h4 class="text-dark">Filter Post</h4> --}}
                     <div class="d-flex gap-2 mt-2">
-                        @foreach ($kategory as $kt)
-                        <a href="{{ route('show-kegiatan', ['category'=>$kt->id]) }}" class="btn btn-primary btn-lg fs-6 shadow-sm">{{$kt->nama}}</a>
-                        @endforeach
+
                         @foreach ($devisi as $dv)
-                        <a href="{{ route('show-kegiatan', ['devisi'=>$dv->id]) }}" class="btn btn-primary btn-lg fs-6 shadow-sm">{{$dv->nama}}</a>
+                        <a href="{{ route('show-kegiatan', ["devisi"=>$dv->id]) }}" class="btn btn-primary {{Request::get("category") == $dv->id? "active":""}}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$dv->nama}}">
+                            @switch($dv->nama)
+                            @case("Kesehatan")
+                            <i class="fas fa-heartbeat"></i>
+                            @break
+                            @case("Kominfo")
+                            <i class="fas fa-user-secret"></i>
+                            @break
+                            @case("Lingkungan Hidup")
+                            <i class="fas fa-tree"></i>
+                            @break
+                            @case("Pendidikan")
+                            <i class="fas fa-book-reader"></i>
+                            @break
+                            @case("Kewirausahaan")
+                            <i class="fas fa-hand-holding-usd"></i>
+                            @break
+                            @default
+                            <i class="fas fa-smile-wink"></i>
+                            @endswitch
+                        </a>
+
                         @endforeach
 
                     </div>
 
                 </div>
             </div>
+
             <div class="s-layer"></div>
 
         </div>
@@ -82,7 +102,7 @@
                         @endforeach
                     </select>
                     <select name="devisi" class="shadow-sm border border-primary small px-3" style="outline: none">
-                        <option selected disabled>Devisi: </option>
+                        <option selected disabled>Departemen: </option>
                         @foreach ($devisi as $dv)
                         <option value="{{$dv->id}}">{{$dv->nama}}</option>
                         @endforeach
@@ -141,5 +161,18 @@
         </div>
 
     </main>
+    @push('script')
+
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            this.addEventListener('hide.bs.tooltip', function() {
+                new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+
+    </script>
+    @endpush
 
 </x-m-layout-v2>

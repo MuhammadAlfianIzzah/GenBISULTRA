@@ -3,11 +3,16 @@
         <div style="margin-top: 90px">
             <h1 class="text-info">Info Beasiswa Buat kamu</h1>
             <hr>
+            <div class="container mt-1 d-flex justify-content-center">
+                <img class="img-fluid" src="{{ asset('img/beaBI2.jpeg') }}" alt="Beasiswa Bank indonesia">
+            </div>
+
+
             <div class="container d-flex justify-content-center">
                 <img class="img-fluid" src="{{ asset('img/beaBI.jpeg') }}" alt="Beasiswa Bank indonesia">
             </div>
 
-            <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam ullam fuga deserunt inventore, soluta pariatur harum libero eius at, facilis debitis labore explicabo nobis unde doloremque laudantium ex neque consequatur. Id fugiat repellendus minima, quaerat doloremque hic dolore sed in doloribus adipisci eius corporis incidunt ipsum ipsam magni consectetur, distinctio qui, illum animi dolorem odio. Cum tempore quidem adipisci fugiat consequuntur dolorum labore? Unde, voluptates minus, qui esse ullam, ipsa accusamus saepe impedit quisquam nam eius corrupti rerum ex. Cumque, ipsa culpa ducimus, totam quas eaque inventore doloremque dolor atque nostrum rerum et amet saepe. Autem commodi temporibus distinctio vitae.</p>
+            <p class="mt-2">Yuk teman2 daftar</p>
         </div>
     </div>
 

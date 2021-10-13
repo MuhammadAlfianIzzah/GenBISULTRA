@@ -313,8 +313,6 @@
                 <div class="col-md-12">
                     <div id="news-slider" class="owl-carousel">
                         @foreach ($posts as $post )
-
-
                         <div class="post-slide">
                             <div class="post-img">
                                 <img style="max-height: 200px;object-fit: cover" src="{{ asset("storage/$post->thumbnail") }}" alt="">

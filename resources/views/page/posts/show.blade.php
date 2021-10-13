@@ -50,15 +50,37 @@
         {{-- {{dd($posts[0]->hero)}} --}}
         <div class="mt-r img-size-responsif">
 
-            <div class="p-5 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
-                <div class="container py-5 d-flex flex-column align-items-center bg-lapis">
+            <div class="p-5 px-0 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
+                <div class="container py-5 d-flex border flex-column align-items-center bg-lapis">
                     <h1 class="display-5 fw-bold"><i class="fas fa-newspaper"></i> Post blog</h1>
 
-                    <p class="col-md-8 text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo officia repudiandae quibusdam cum vel consequatur, sed magnam maiores suscipit tempore blanditiis provident! Aspernatur, sit!</p>
-                    <h4 class="text-dark">Kategory post</h4>
-                    <div class="d-flex gap-2 mt-2">
+                    <p class="col-md-8 text-center">Jika anda tertarik dengan membaca anda berada dihalaman yang tepat, dihalaman ini kami nyajikan beberapa konten menarik mulai informasi/berita , teknologi, berita harian dan juga cerita kisah para anggota GenBIers </p>
+                    <div class="col-12 justify-content-center row row-cols-5 gap-2">
+
+
                         @foreach ($kategory as $kt )
-                        <a href="{{ route('show-posts', ["category"=>$kt->id]) }}" class="btn btn-primary btn-lg fs-6 shadow-sm">{{$kt->name}}</a>
+                        <a href="{{ route('show-posts', ["category"=>$kt->id]) }}" class="btn btn-primary {{Request::get("category") == $kt->id? "active":""}}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$kt->name}}">
+
+
+                            @switch($kt->name)
+                            @case("Informasi")
+                            <i class="fas fa-info"></i>
+                            @break
+                            @case("Teknologi")
+                            <i class="fas fa-robot"></i>
+                            @break
+                            @case("Berita harian")
+                            <i class="fas fa-book-open"></i>
+                            @break
+                            @case("Ceritaku")
+                            <i class="fas fa-running"></i>
+
+                            @break
+                            @default
+                            <i class="fas fa-feather-alt"></i>
+
+                            @endswitch
+                        </a>
 
                         @endforeach
 
@@ -86,7 +108,8 @@
                     </form>
                 </div>
 
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2  row-cols-lg-3 g-3">
+
                     @forelse ($posts as $post)
                     <div class="col">
                         <div class="card shadow-sm">
@@ -109,8 +132,6 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="{{ route('detail-posts',["$post->slug"]) }}" type="button" class="btn btn-sm btn-outline-secondary">Continue reading</a>
-
-
                                     </div>
                                     <small class="text-muted">{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</small>
 
@@ -136,5 +157,17 @@
         </div>
 
     </main>
+    @push('script')
 
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            this.addEventListener('hide.bs.tooltip', function() {
+                new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+
+    </script>
+    @endpush
 </x-m-layout-v2>
