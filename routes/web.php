@@ -43,7 +43,7 @@ Route::get('/', function () {
 
 
 Route::get("/kegiatan", function () {
-    $posts = Activity::filter(request(["search", "category", "devisi"]))->get();
+    $posts = Activity::filter(request(["search", "category", "devisi"]))->latest();
     $kategory = TypeActivity::get();
     $devisi = Devisi::get();
     return view("page.kegiatan.show", compact("posts", "kategory", "devisi"));
