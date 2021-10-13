@@ -320,12 +320,19 @@
                             </div>
                             <div class="post-content">
                                 <h3 class="post-title">
-                                    <a href="#">Lorem ipsum dolor sit amet.</a>
-                                </h3>
-                                <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                                <span class="post-date"><i class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</span>
+                                    <a href="{{ route('detail-brain', [$post->slug]) }}">{{$post->title}}</a>
 
-                                <a href="{{ route('detail-brain', [$post->slug]) }}" class="read-more">read more</a>
+                                </h3>
+                                <?php 
+                        $filter =preg_replace("/<img[^>]+>/", "", $post->body);
+                            $filterh1= strip_tags($filter);
+                         ?>
+
+                                <p class="post-description" {!! Str::limit($filterh1,150,'...')!!}</p>
+
+                                    <span class="post-date"><i class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</span>
+
+                                    <a href="{{ route('detail-brain', [$post->slug]) }}" class="read-more">read more</a>
 
                             </div>
                         </div>
