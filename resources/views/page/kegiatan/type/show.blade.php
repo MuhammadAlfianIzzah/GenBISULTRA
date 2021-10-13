@@ -34,8 +34,10 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nama Kegiatan</th>
-                        <th scope="col">Created At</th>
-                        <th scope="col">Update At</th>
+                        <th scope="col" class="table-responsif">Created At</th>
+
+                        <th scope="col" class="table-responsif">Update At</th>
+
                         <th scope="col">Action</th>
 
                     </tr>
@@ -45,18 +47,21 @@
                     <tr>
                         <th scope="row">1</th>
                         <td>{{$type->nama}}</td>
-                        <td>{{$type->created_at}}</td>
-                        <td>{{$type->updated_at}}</td>
+                        <td class="table-responsif">{{$type->created_at}}</td>
+
+                        <td class="table-responsif">{{$type->updated_at}}</td>
+
                         <td>
                             <div class="d-flex gap-2">
-                                <a class="btn btn-info" href="{{ route('edit-jenis-kegiatan', [$type->nama]) }}">Edit</a>
+                                <a class="btn btn-info" href="{{ route('edit-jenis-kegiatan', [$type->nama]) }}"><i class="fas fa-edit"></i></a>
+
                                 <form action="{{ route('delete-jenis-activity',"$type->id") }}" style="display: inline;" method="POST">
                                     @method("delete")
                                     @csrf
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{$type->id}}">
+                                        <i class="fas fa-trash-alt"></i>
 
-                                        Delete
                                     </button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="delete{{$type->id}}" tabindex="-1" aria-labelledby="delete{{$type->id}}Label" aria-hidden="true">

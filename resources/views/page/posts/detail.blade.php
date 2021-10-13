@@ -2,15 +2,38 @@
 
     <div class="mt-r img-size-responsif">
 
-        <div class="p-5 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
+        <div class="p-5 px-0 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
             <div class="container py-5 d-flex flex-column align-items-center bg-lapis">
                 <div class="h2 fw-bold text-success shadow-sm"><i class="fas fa-newspaper"></i> {{$post->title}}</div>
 
-                <div class=" h5 text-dark">Kategory post</div>
+                {{-- <div class=" h5 text-dark">Kategory post</div> --}}
                 <div class="d-flex gap-2 mt-2">
                     @foreach ($kategory as $kt )
-                    <a href="{{ route('show-posts', ["category"=>$kt->id]) }}" class="btn btn-primary btn-lg fs-6 shadow-sm">{{$kt->name}}</a>
+                    <a href="{{ route('show-posts', ["category"=>$kt->id]) }}" class="btn btn-primary {{Request::get("category") == $kt->id? "active":""}}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$kt->name}}">
+
+
+                        @switch($kt->name)
+                        @case("Informasi")
+                        <i class="fas fa-info"></i>
+                        @break
+                        @case("Teknologi")
+                        <i class="fas fa-robot"></i>
+                        @break
+                        @case("Berita harian")
+                        <i class="fas fa-book-open"></i>
+                        @break
+                        @case("Ceritaku")
+                        <i class="fas fa-running"></i>
+
+                        @break
+                        @default
+                        <i class="fas fa-feather-alt"></i>
+
+                        @endswitch
+                    </a>
+
                     @endforeach
+
 
                 </div>
             </div>

@@ -31,11 +31,15 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Judul</th>
-                        <th scope="col">kategori</th>
-                        <th scope="col">Devisi</th>
+                        <th scope="col" class="table-responsif">kategori</th>
 
-                        <th scope="col">Penulis</th>
-                        <th scope="col">Thumbnail</th>
+                        <th scope="col" class="table-responsif">Devisi</th>
+
+
+                        <th scope="col" class="table-responsif">Penulis</th>
+
+                        <th scope="col" class="table-responsif">Thumbnail</th>
+
                         @if (!Auth::check() || Auth::user()->hasRole("user"))
 
                         <th>
@@ -61,11 +65,16 @@
                     <tr>
                         <th scope="row">{{$i}}</th>
                         <td><a target="_blank" href="/kegiatan/{{$post->slug}}">{{$post->nama}}</a></td>
-                        <td>{{$post->typeKegiatan->nama}}</td>
-                        <td>{{$post->devisi->nama}}</td>
+                        <td class="table-responsif">{{$post->typeKegiatan->nama}}</td>
 
-                        <td>{{$post->user->name}}</td>
-                        <td>
+
+                        <td class="table-responsif">{{$post->devisi->nama}}</td>
+
+
+                        <td class="table-responsif">{{$post->user->name}}</td>
+
+                        <td class="table-responsif">
+
                             <img style="width: 100px" src="{{ asset("storage/$post->thumbnail") }}" alt="{{$post->slug}}" class="img-thumbnail">
                         </td>
                         @if (!Auth::check() || Auth::user()->hasRole("user"))
@@ -91,8 +100,9 @@
                         @endrole
                         <td>
                             <div class="d-flex gap-1">
-                                <a href="{{ route('edit-kegiatan',"$post->slug") }}" class="btn btn-primary">Edit</a>
-
+                                <a href="{{ route('edit-kegiatan',"$post->slug") }}" class="btn btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
                                 <form action="{{ route('delete-kegiatan',"$post->slug") }}" style="display: inline;" method="POST">
 
 
@@ -100,7 +110,7 @@
                                     @method("delete")
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{$post->slug}}">
-                                        Delete
+                                        <i class="fas fa-trash-alt"></i>
                                     </button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="delete{{$post->slug}}" tabindex="-1" aria-labelledby="delete{{$post->slug}}Label" aria-hidden="true">

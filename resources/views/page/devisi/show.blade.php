@@ -34,9 +34,12 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nama Kegiatan</th>
-                        <th scope="col">Deskripsi</th>
-                        <th scope="col">Created At</th>
-                        <th scope="col">Update At</th>
+                        <th scope="col" class="table-responsif">Deskripsi</th>
+
+                        <th scope="col" class="table-responsif">Created At</th>
+
+                        <th scope="col" class="table-responsif">Update At</th>
+
                         <th scope="col">Action</th>
 
                     </tr>
@@ -46,21 +49,26 @@
                     <tr>
                         <th scope="row">1</th>
                         <td>{{$dv->nama}}</td>
-                        <td>{{$dv->deskripsi}}</td>
+                        <td class="table-responsif">{{$dv->deskripsi}}</td>
 
-                        <td>{{$dv->created_at}}</td>
-                        <td>{{$dv->updated_at}}</td>
+
+                        <td class="table-responsif">{{$dv->created_at}}</td>
+
+                        <td class="table-responsif">{{$dv->updated_at}}</td>
 
                         <td>
                             <div class="d-flex gap-1">
-                                <a href="{{ route('edit-devisi',"$dv->nama") }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('edit-devisi',"$dv->nama") }}" class="btn btn-primary">
+                                    <i class="fas fa-edit"></i>
+
+                                </a>
                                 <form action="{{ route('delete-devisi',"$dv->nama") }}" style="display: inline;" method="POST">
 
                                     @csrf
                                     @method("delete")
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{$dv->nama}}">
-                                        Delete
+                                        <i class="fas fa-trash-alt"></i>
                                     </button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="delete{{$dv->nama}}" tabindex="-1" aria-labelledby="delete{{$dv->nama}}Label" aria-hidden="true">

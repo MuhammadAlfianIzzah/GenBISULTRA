@@ -32,28 +32,25 @@
                             <img class="avatar" src="{{ secure_asset("storage") ."/".$profile->foto_profile}}" alt="Bologna">
 
 
-                            <h4 class="card-title">{{$profile->nama}}</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">
+                            <div class="card-title h4">{{$profile->nama}}</div>
+                            <div class="h6 card-subtitle mb-2 text-muted">
                                 {{$profile->user->email}}
-                            </h6>
-                            <div class="card-text h4 text-primary px-3 py-2">
+                            </div>
+                            <div class="card-text h5 text-primary px-3 py-2">
                                 "{{$profile->headline}}"
                             </div>
                             <div class="card-text">
                                 <div class="container text-left">
                                     {!!$profile->biodata!!}
-
                                 </div>
                             </div>
                             {{-- <a href="#" class="btn btn-info">Follow</a>
                             <a href="#" class="btn btn-outline-info">Message</a> --}}
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editProfile">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editProfile">
                                 Edit
                             </button>
-
-
                             <button class="btn btn-primary">Share</button>
 
                         </div>
@@ -78,11 +75,8 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href="{{ route('detail-posts',["$post->slug"]) }}" type="button" class="btn btn-sm btn-outline-secondary">Continue reading</a>
-
-
                                 </div>
                                 <small class="text-muted">{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</small>
-
                             </div>
 
                         </div>

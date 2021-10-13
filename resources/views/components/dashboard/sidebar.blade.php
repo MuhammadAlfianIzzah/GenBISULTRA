@@ -76,7 +76,7 @@
          </a>
          <div id="user-manage" class="collapse {{request()->segment(1)== "manage"? "show active":""}}" aria-labelledby="headingUtilities" data-parent="#accordionSidebar" style="">
              <div class="bg-white collapse-inner rounded">
-                 <h6 class="collapse-header mt-n3">Manage users:</h6>
+                 <h6 class="collapse-header">Manage users:</h6>
                  <a class="collapse-item {{request()->is("my-post")? "active":""}}" href="{{ route('my-post') }}">Role</a>
                  <a class="collapse-item {{request()->is("manage/users")? "active":""}}" href="{{ route('manage-user') }}"> <i class="fas fa-user-tag"></i> Set Role users</a>
              </div>
@@ -97,7 +97,7 @@
          <div id="my-brain" class="collapse {{request()->segment(1)== "my-brain"? "show":""}}" aria-labelledby="headingUtilities" data-parent="#accordionSidebar" style="">
 
              <div class="bg-white collapse-inner rounded">
-                 <h6 class="collapse-header mt-n3">Manage my brain:</h6>
+                 <h6 class="collapse-header">Manage my brain:</h6>
                  {{-- <a class="collapse-item {{request()->is("write-brain")? "active":""}}" href="{{ route('write-brain') }}">Create my brain</a> --}}
                  <a class="collapse-item {{request()->route()->getName() ==="my-post" ? "active":""}}" href="{{ route('my-post') }}">My post</a>
 
@@ -122,7 +122,7 @@
          <div id="kegiatan" class="collapse {{request()->segment(1)== "kegiatan" && request()->segment(2)=="manage"? "show":""}}" aria-labelledby="headingUtilities" data-parent="#accordionSidebar" style="">
 
              <div class="bg-white collapse-inner rounded">
-                 <h6 class="collapse-header mt-n3">Manage Kegiatan:</h6>
+                 <h6 class="collapse-header">Manage Kegiatan:</h6>
                  {{-- <a class="collapse-item {{request()->is("write-brain")? "active":""}}" href="{{ route('create-kegiatan') }}">Create Kegiatan</a> --}}
                  <a class="collapse-item {{request()->route()->getName() ==="mypost-kegiatan" ? "active":""}}" href="{{ route('mypost-kegiatan') }}">My post</a>
                  <a class="collapse-item {{request()->segment(2)== "jenis"? "active":""}}" href="{{ route('show-jenis-kegiatan') }}"> <i class="fab fa-slack-hash"></i> Type Kegiatan</a>
@@ -148,7 +148,7 @@
 
          <div id="posts" class="collapse {{request()->segment(1)== "post"? "show":""}}" aria-labelledby="headingUtilities" data-parent="#accordionSidebar" style="">
              <div class="bg-white collapse-inner rounded">
-                 <h6 class="collapse-header mt-n3">Posts</h6>
+                 <h6 class="collapse-header">Posts</h6>
                  <a class="collapse-item {{request()->route()->getName() ==="my-posts" ? "active":""}}" href="{{ route('my-posts') }}">My post</a>
                  @role(['admin',"super"])
                  <a class="collapse-item {{request()->route()->getName() ==="category-posts" ? "active":""}}" href="{{ route('category-posts') }}">

@@ -1,10 +1,9 @@
 <x-dash-layout>
     <x-slot name="title_page">DashboardKu</x-slot>
-    <div class="bg-white container py-4">
+    <div class="bg-white container">
         <div class="row">
-            <div class="col-7"></div>
-            <div class="col-5">
-                <div class="my-3 p-3 bg-body">
+            <div class="col-md-6">
+                <div class="p-3 bg-body">
                     <h6 class="border-bottom pb-2 mb-0">Users</h6>
                     @foreach ($users as $user)
 

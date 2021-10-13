@@ -454,6 +454,12 @@ input::placeholder {
   }
 }
 
+@media (max-width: 576px) {
+  .table-responsif {
+    display: none;
+  }
+}
+
 footer {
   background-color: #0A4678;
 }

@@ -515,6 +515,12 @@ input::placeholder {
     }
 }
 
+@media (max-width: 576px) {
+    .table-responsif {
+        display: none;
+    }
+}
+
 // footer
 footer {
     background-color: $color-blue;
@@ -523,18 +529,18 @@ footer {
 
 .blog-post.content {
     p:nth-child(2):first-letter {
-     float: left;
-     line-height: 35px;
-     font-size: 55px;
-     font-family: Montserrat;
-     color: black;
-     padding-top: 5px;
-     padding-bottom: 5px;
-     padding-right: 5px;
-     padding-left: 5px;
-     margin-right: 5px;
-     margin-bottom: -5px;
- }
+        float: left;
+        line-height: 35px;
+        font-size: 55px;
+        font-family: Montserrat;
+        color: black;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 5px;
+        padding-left: 5px;
+        margin-right: 5px;
+        margin-bottom: -5px;
+    }
 }
 
 .card-profile {

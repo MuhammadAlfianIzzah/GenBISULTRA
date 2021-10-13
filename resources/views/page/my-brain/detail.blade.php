@@ -27,7 +27,7 @@
     </style>
     <div class="mb-4 bg-light rounded-3">
         <div class="mt-r img-size-responsif" style="background-image: url({{asset("img/header.jpg")}});background-attachment: fixed;">
-            <div class="p-5 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
+            <div class="p-5 px-0 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
                 <div class="container mb-3 py-5 d-flex flex-column align-items-center bg-lapis">
                     <div class="h1 fw-normal text-center text-success shadow-sm">{{$post->title}} <i class="fas fa-feather"></i></div>
 
