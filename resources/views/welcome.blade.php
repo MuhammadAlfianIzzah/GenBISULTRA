@@ -324,7 +324,7 @@
 
                                 </h3>
                                 <?php 
-                        $filter =preg_replace("/<img[^>]+>/", "", $post->body);
+                        $filter =preg_replace("/<img[^>]+>/", "", $post->content);
                             $filterh1= strip_tags($filter);
                          ?>
 
