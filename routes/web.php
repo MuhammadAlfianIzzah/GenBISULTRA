@@ -36,7 +36,7 @@ use Stevebauman\Location\Facades\Location;
 
 Route::get('/', function () {
     $kegiatan = Activity::get();
-    $posts = BrainPost::limit(5)->get();
+    $posts = BrainPost::limit(5)->where("approval", "accept")->get();
     $devisi = Devisi::get();
     return view('welcome', compact("kegiatan", "posts", "devisi"));
 })->name("home");
