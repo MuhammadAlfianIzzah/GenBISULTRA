@@ -324,15 +324,15 @@
 
                                 </h3>
                                 <?php 
-                        $filter =preg_replace("/<img[^>]+>/", "", $post->content);
-                            $filterh1= strip_tags($filter);
-                         ?>
+                                    $filter =preg_replace("/<img[^>]+>/", "", $post->content);
+                                     $filterh1= strip_tags($filter);
+                                  ?>
 
-                                <p class="post-description" {!! Str::limit($filterh1,150,'...')!!}</p>
+                                <p class="post-description">{!! Str::limit($filterh1,180,'...')!!}</p>
 
-                                    <span class="post-date"><i class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</span>
+                                <span class="post-date"><i class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</span>
 
-                                    <a href="{{ route('detail-brain', [$post->slug]) }}" class="read-more">read more</a>
+                                <a href="{{ route('detail-brain', [$post->slug]) }}" class="read-more">read more</a>
 
                             </div>
                         </div>
