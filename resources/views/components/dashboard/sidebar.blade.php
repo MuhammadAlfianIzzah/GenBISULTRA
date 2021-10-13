@@ -21,7 +21,6 @@
          Dashboard
      </div>
 
-     <!-- Nav Item - Dashboard -->
      <li class="nav-item {{request()->is("dashboard")? "active":""}}">
 
          <a class="nav-link" href="{{ route('dashboard') }}">
@@ -30,11 +29,10 @@
 
              <span>Dashboard</span></a>
      </li>
+     {{-- user profile --}}
      <div class="sidebar-heading mt-2">
          Users
      </div>
-
-     <!-- Nav Item - Dashboard -->
      <li class="nav-item {{request()->segment(1)== "user"? "active":""}}">
 
 
@@ -43,6 +41,25 @@
              <i class="fas fa-fw fa-user"></i>
              <span>User Profile</span></a>
      </li>
+     {{-- user profile --}}
+     <div class="sidebar-heading mt-2">
+         Halaman GenBI
+     </div>
+     <li class="nav-item {{request()->segment(1)== "genbi"? "active":""}}">
+
+         <a class="nav-link" href="#" data-toggle="collapse" data-target="#GenBI" aria-expanded="true" aria-controls="my-brain">
+             <i class="fas fa-brain"></i>
+             <span>GenBI</span>
+         </a>
+         <div id="GenBI" class="collapse {{request()->segment(1)== "genbi"? "show":""}}" aria-labelledby="headingUtilities" data-parent="#accordionSidebar" style="">
+             <div class="bg-white collapse-inner rounded">
+                 <h6 class="collapse-header">Manage User GenBI:</h6>
+                 {{-- <a class="collapse-item {{request()->is("write-brain")? "active":""}}" href="{{ route('write-brain') }}">Create my brain</a> --}}
+                 <a class="collapse-item {{request()->route()->getName() ==="daftar-genbi" ? "active":""}}" href="{{ route('daftar-genbi') }}"><i class="fas fa-clipboard-check"></i> Daftar</a>
+             </div>
+         </div>
+     </li>
+
      {{-- devisi --}}
      @role(['admin',"super"])
 
@@ -85,6 +102,7 @@
      {{-- close manage access --}}
 
      @endrole
+     {{-- my brain --}}
      <div class="sidebar-heading mt-2">
          My brain
      </div>
@@ -105,6 +123,7 @@
              </div>
          </div>
      </li>
+     {{-- my brain --}}
      {{-- kegaitan --}}
      @role(['admin',"super"])
 

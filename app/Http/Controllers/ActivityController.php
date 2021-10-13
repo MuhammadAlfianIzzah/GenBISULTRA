@@ -39,31 +39,24 @@ class ActivityController extends Controller
             "hero" => "required|mimes:png,jpg",
         ]);
         $body = $request->body;
-
         $dom = new \DomDocument();
         libxml_use_internal_errors(true);
         $dom->loadHtml(mb_convert_encoding($body, 'HTML-ENTITIES', 'UTF-8'));
-
         $images = $dom->getElementsByTagName('img');
         if ($images->length !== 0) {
             foreach ($images as $k => $img) {
                 $data = $img->getAttribute('src');
                 if (!empty($data)) {
                     list($type, $data) = explode(';', $data);
-
                     list($type, $data) = explode(',', $data);
-
                     $data = base64_decode($data);
-
-                    $image_name = "/storage/my-brain/img-post/" . time() . $k . '.png';
-
-                    $path = public_path() . $image_name;
-
-                    file_put_contents($path, $data);
-
+                    // $image_name = "/storage/my-brain/img-post/" . time() . $k . '.png';
+                    $image_name = "/my-brain/img-post/" . time() . $k . '.png';
+                    $path = $image_name;
+                    Storage::put($path, $data);
+                    // file_put_contents($path, $data);
                     $img->removeAttribute('src');
-
-                    $img->setAttribute('src', $image_name);
+                    $img->setAttribute('src', "/storage" . $image_name);
                 }
             }
         }
@@ -72,6 +65,7 @@ class ActivityController extends Controller
 
             if ((strpos("$data", 'data:image/png;base64') !== false) || (strpos("$data", 'data:image/jpeg;base64') !== false) || strpos("$data", 'data:image/gif;base64') !== false) {
                 // dd("base 64");
+                dd("masuk kesini");
                 list($type, $data) = explode(';', $data);
 
                 list($type, $data) = explode(',', $data);
@@ -81,39 +75,15 @@ class ActivityController extends Controller
                 $image_name = "/storage/posts/img-post/" . time() . $k . '.png';
 
                 $path = public_path() . $image_name;
-
                 file_put_contents(
                     $path,
                     $data
                 );
-
                 $img->removeAttribute('src');
 
-                $img->setAttribute('src', $image_name);
+                $img->setAttribute('src', "/storage" . $image_name);
             }
         }
-        // foreach ($images as $k => $img) {
-        //     $data = $img->getAttribute('src');
-
-        //     if ((strpos("$data", 'data:image/png;base64') !== false) || (strpos("$data", 'data:image/jpeg;base64') !== false) || strpos("$data", 'data:image/gif;base64') !== false) {
-        //         // dd("base 64");
-        //         list($type, $data) = explode(';', $data);
-
-        //         list($type, $data) = explode(',', $data);
-
-        //         $data = base64_decode($data);
-
-        //         $image_name = "/storage/posts/img-post/" . time() . $k . '.png';
-
-        //         $path = public_path() . $image_name;
-
-        //         file_put_contents($path, $data);
-
-        //         $img->removeAttribute('src');
-
-        //         $img->setAttribute('src', $image_name);
-        //     }
-        // }
 
         $slug = Str::slug($request->nama, '-');
 
@@ -133,8 +103,6 @@ class ActivityController extends Controller
                 "devisi_id" => $request->devisi
             ]);
         } catch (QueryException $e) {
-
-            dd($e);
             return back()->with(
                 "error",
                 "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor"
@@ -198,6 +166,7 @@ class ActivityController extends Controller
             foreach ($tags as $tag) {
                 $tg = $tag->getAttribute('src');
                 File::delete(public_path() . $tg);
+                // Storage::delete($tg);
             }
             try {
                 $activities->delete();
@@ -278,15 +247,15 @@ class ActivityController extends Controller
 
                 $data = base64_decode($data);
 
-                $image_name = "/storage/posts/img-post/" . time() . $k . '.png';
+                $image_name = "/posts/img-post/" . time() . $k . '.png';
 
-                $path = public_path() . $image_name;
+                $path = $image_name;
 
-                file_put_contents($path, $data);
-
+                // file_put_contents($path, $data);
+                Storage::put($path, $data);
                 $img->removeAttribute('src');
 
-                $img->setAttribute('src', $image_name);
+                $img->setAttribute('src', "/storage" . $image_name);
             } else {
                 $new[] =  $data;
             }

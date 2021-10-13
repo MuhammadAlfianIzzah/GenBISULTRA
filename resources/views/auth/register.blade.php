@@ -74,7 +74,7 @@
                                 @csrf
 
                                 <div class="form-group">
-                                    <input type="text" name="name" class="form-control form-control-user" id="name" placeholder="Username">
+                                    <input type="text" name="name" value="{{old("name")}}" class="form-control form-control-user" id="name" placeholder="Username">
                                     @error('name')
                                     <div class="text-danger text-small">
                                         {{$message}}
@@ -85,7 +85,8 @@
 
 
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control form-control-user" id="email" placeholder="Email Address">
+                                    <input type="email" name="email" class="form-control form-control-user" id="email" value="{{old("email")}}" placeholder="Email Address">
+
                                     @error('email')
                                     <div class="text-danger text-small">
                                         {{$message}}

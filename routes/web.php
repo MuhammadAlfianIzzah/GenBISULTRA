@@ -129,7 +129,13 @@ Route::get("/kegiatan/berita-kegiatan/{berita}", function ($berita) {
 
     return view("page.kegiatan.berita.detail", compact("post"));
 })->name("detail-berita");
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', "verified"])->group(function () {
+    // genbi
+    Route::get("/genbi/daftar", function () {
+        return view("page.genbi.daftar");
+    })->name("daftar-genbi");
+    // genbi
+
     // brain post
     Route::get("/my-brain/manage/create", [MyBrainController::class, "create"])->name("write-brain");
     Route::post("/my-brain/manage/create", [MyBrainController::class, "store"])->name("write-brain");

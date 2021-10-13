@@ -64,7 +64,8 @@
                     @foreach ($posts as $post)
                     <tr>
                         <th scope="row">{{$i}}</th>
-                        <td><a target="_blank" href="/kegiatan/{{$post->slug}}">{{$post->nama}}</a></td>
+                        <td><a target="_blank" href="{{ route('detail-kegiatan', [$post->slug]) }}">{{$post->nama}}</a></td>
+
                         <td class="table-responsif">{{$post->typeKegiatan->nama}}</td>
 
 
