@@ -41,8 +41,10 @@ return [
             'description' => 'Website genbi sultra', // set false to total remove
             'url'         => "https://genbisultra.com", // Set null for using Url::current(), set false to total remove
             'type'        => false,
+            "locale" => "id",
+            "locale:alternate" => ['id_ID'],
             'site_name'   => "genbisultra",
-            'images'      => [],
+            'images'      => [config("app.url") . "/img/welcome/genbi-sultra.png"],
         ],
     ],
     'twitter' => [
@@ -63,7 +65,7 @@ return [
             'description' => 'For those who helped create the Genki Dama', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => 'WebPage',
-            'images'      => [],
+            'images'      => [config("app.url") . "/img/welcome/genbi-sultra.png"],
         ],
     ],
 ];

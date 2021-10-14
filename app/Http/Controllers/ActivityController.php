@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\Devisi;
 use App\Models\TypeActivity;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Carbon\Carbon;
 use DOMDocument;
 use Illuminate\Database\QueryException;
@@ -18,6 +21,8 @@ class ActivityController extends Controller
 {
     public function show()
     {
+        SEOMeta::setTitle("Kegiatan GenBI");
+        OpenGraph::addProperty('type', 'article');
         $posts = Activity::filter(request(["search", "category", "devisi"]))->latest()->get();
         $kategory = TypeActivity::get();
         $devisi = Devisi::get();
@@ -25,6 +30,25 @@ class ActivityController extends Controller
     }
     public function detail(Activity $activities)
     {
+        SEOMeta::setTitle($activities->title);
+        //filter tag
+        $filter = strip_tags($activities->content);
+        $desc = preg_replace('/\s+/', ' ', trim($filter));
+        SEOMeta::addKeyword(['brainpost', 'brainpost genbi', 'Post genbi']);
+
+        OpenGraph::setDescription($desc);
+        OpenGraph::setTitle($activities->title);
+        OpenGraph::setUrl(route("detail-kegiatan", $activities->slug));
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('locale', 'id');
+        OpenGraph::addProperty('locale:alternate', ['id_ID']);
+        OpenGraph::addImage(asset("/storage/$activities->thumbnail"));
+
+        JsonLd::setTitle($activities->title);
+        JsonLd::setDescription($desc);
+        JsonLd::setType('Article');
+        JsonLd::addImage(asset("/storage/$activities->thumbnail"));
+
         if (Auth::check()) {
             if (request()->user()->hasRole(["admin", "super"]) || $activities->user_id === Auth::user()->id) {
             } else {

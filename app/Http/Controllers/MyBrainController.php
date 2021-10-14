@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\BrainPost;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Carbon\Carbon;
 use DOMDocument;
 use Illuminate\Database\QueryException;
@@ -17,7 +20,7 @@ class MyBrainController extends Controller
 {
     public function show()
     {
-        // dd(request()->all());
+        SEOMeta::setTitle("Brain Post");
         $posts = BrainPost::where(["approval" => "accept"])->filter(request(["search", "category"]))->get();
         if (Auth::check()) {
             if (request()->user()->hasRole(["dpt_head", "super"])) {
@@ -29,6 +32,23 @@ class MyBrainController extends Controller
     }
     public function detail(BrainPost $brainPost)
     {
+        SEOMeta::setTitle($brainPost->title);
+        //filter tag
+        $filter = strip_tags($brainPost->content);
+        $desc = preg_replace('/\s+/', ' ', trim($filter));
+
+        SEOMeta::addKeyword(['brainpost', 'brainpost genbi', 'Post genbi']);
+
+        OpenGraph::setDescription($desc);
+        OpenGraph::setTitle($brainPost->title);
+        OpenGraph::setUrl(route("detail-brain", $brainPost->slug));
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addImage(asset("/storage/$brainPost->thumbnail"));
+        JsonLd::setTitle($brainPost->title);
+        JsonLd::setDescription($desc);
+        JsonLd::setType('Article');
+        JsonLd::addImage(asset("/storage/$brainPost->thumbnail"));
+
         if (Auth::check()) {
             if (request()->user()->hasRole(["admin", "super"]) || $brainPost->user_id === Auth::user()->id) {
             } else {

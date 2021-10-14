@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\BrainPost;
 use App\Models\CategoryPosts;
 use App\Models\Posts;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Carbon\Carbon;
 use DOMDocument;
 use Illuminate\Database\QueryException;
@@ -18,6 +21,8 @@ class PostsController extends Controller
 {
     public function show()
     {
+        SEOMeta::setTitle("Post");
+        OpenGraph::addProperty('type', 'article');
         $posts = Posts::filter(request(["search", "category"]))->where(["is_active" => 1])->latest()->get();
         if (Auth::check()) {
             if (request()->user()->hasRole(["admin", "super"])) {
@@ -29,6 +34,26 @@ class PostsController extends Controller
     }
     public function detail(Posts $posts)
     {
+        SEOMeta::setTitle($posts->title);
+        //filter tag
+        $filter = strip_tags($posts->content);
+        $desc = preg_replace('/\s+/', ' ', trim($filter));
+
+        SEOMeta::addKeyword(['brainpost', 'brainpost genbi', 'Post genbi']);
+
+        OpenGraph::setDescription($desc);
+        OpenGraph::setTitle($posts->title);
+        OpenGraph::setUrl(route("detail-posts", $posts->slug));
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('locale', 'id');
+        OpenGraph::addProperty('locale:alternate', ['id_ID']);
+        OpenGraph::addImage(asset("/storage/$posts->thumbnail"));
+
+        JsonLd::setTitle($posts->title);
+        JsonLd::setDescription($desc);
+        JsonLd::setType('Article');
+        JsonLd::addImage(asset("/storage/$posts->thumbnail"));
+
         $kategory = CategoryPosts::get();
         if (Auth::check()) {
             if (request()->user()->hasRole(["admin", "super"]) || $posts->user_id === Auth::user()->id) {

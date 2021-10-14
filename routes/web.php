@@ -39,7 +39,6 @@ use Stevebauman\Location\Facades\Location;
 
 Route::get('/', [WelcomeController::class, "show"])->name("home");
 
-
 Route::get("/kegiatan", [ActivityController::class, "show"])->name("show-kegiatan");
 Route::get("/kegiatan/detail/{activities:slug}", [ActivityController::class, "detail"])->name("detail-kegiatan");
 Route::get("/galery", [GalleryController::class, "show"])->name("galery-genbi");

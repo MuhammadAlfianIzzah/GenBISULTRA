@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="GenBI SULTRA">
-    <meta name="keywords" content="GenBI SULTRA, genbi sulawesi tenggara, GenBI">
+    {{-- <meta name="description" content="GenBI SULTRA">
+    <meta name="keywords" content="GenBI SULTRA, genbi sulawesi tenggara, GenBI"> --}}
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
+    {!! JsonLd::generate() !!}
 
     <meta name="author" content="alfianizzah, fahrul">
     <link rel="shortcut icon" href="{{ asset('img/genbisultra.ico') }}">
