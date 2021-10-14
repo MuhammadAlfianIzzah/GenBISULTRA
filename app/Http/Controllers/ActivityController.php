@@ -16,6 +16,35 @@ use Illuminate\Support\Facades\File;
 
 class ActivityController extends Controller
 {
+    public function show()
+    {
+        $posts = Activity::filter(request(["search", "category", "devisi"]))->latest()->get();
+        $kategory = TypeActivity::get();
+        $devisi = Devisi::get();
+        return view("page.kegiatan.show", compact("posts", "kategory", "devisi"));
+    }
+    public function detail(Activity $activities)
+    {
+        if (Auth::check()) {
+            if (request()->user()->hasRole(["admin", "super"]) || $activities->user_id === Auth::user()->id) {
+            } else {
+                if ($activities->is_active != true) {
+                    abort(404);
+                }
+            }
+        } else {
+            if ($activities->is_active != true) {
+                abort(404);
+            }
+        }
+        $kategory = TypeActivity::get();
+        $devisi = Devisi::get();
+        return view("page.kegiatan.detail", [
+            "post" => $activities,
+            "kategory" => $kategory,
+            "devisi" => $devisi
+        ]);
+    }
     public function myPost()
     {
         $posts = Activity::where("user_id", Auth::user()->id)->latest()->paginate(5);

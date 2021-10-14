@@ -27,6 +27,26 @@ class PostsController extends Controller
         $kategory = CategoryPosts::get();
         return view("page.posts.show", compact("posts", "kategory"));
     }
+    public function detail(Posts $posts)
+    {
+        $kategory = CategoryPosts::get();
+        if (Auth::check()) {
+            if (request()->user()->hasRole(["admin", "super"]) || $posts->user_id === Auth::user()->id) {
+            } else {
+                if ($posts->is_active != true) {
+                    abort(404);
+                }
+            }
+        } else {
+            if ($posts->is_active != true) {
+                abort(404);
+            }
+        }
+        return view("page.posts.detail", [
+            "post" => $posts,
+            "kategory" => $kategory
+        ]);
+    }
     public function create()
     {
         $category = CategoryPosts::all();

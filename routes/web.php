@@ -3,12 +3,15 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryPostController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DevisiController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MyBrainController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypeActivityController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use App\Models\Activity;
 use App\Models\BrainPost;
 use App\Models\CategoryPosts;
@@ -34,53 +37,14 @@ use Stevebauman\Location\Facades\Location;
 |
 */
 
-Route::get('/', function () {
-    $kegiatan = Activity::get();
-    $posts = BrainPost::limit(5)->where("approval", "accept")->get();
-    $devisi = Devisi::get();
-    return view('welcome', compact("kegiatan", "posts", "devisi"));
-})->name("home");
+Route::get('/', [WelcomeController::class, "show"])->name("home");
 
 
-Route::get("/kegiatan", function () {
-    $posts = Activity::filter(request(["search", "category", "devisi"]))->latest()->get();
-    $kategory = TypeActivity::get();
-    $devisi = Devisi::get();
-    return view("page.kegiatan.show", compact("posts", "kategory", "devisi"));
-})->name("show-kegiatan");
-Route::get("/kegiatan/detail/{activities:slug}", function (Activity $activities) {
-    // if ($posts->is_active == false) {
-    //     abort(404);
-    // }
-    if (Auth::check()) {
-        if (request()->user()->hasRole(["admin", "super"]) || $activities->user_id === Auth::user()->id) {
-        } else {
-            if ($activities->is_active != true) {
-                abort(404);
-            }
-        }
-    } else {
-        if ($activities->is_active != true) {
-            abort(404);
-        }
-    }
-    $kategory = TypeActivity::get();
-    $devisi = Devisi::get();
-    return view("page.kegiatan.detail", [
-        "post" => $activities,
-        "kategory" => $kategory,
-        "devisi" => $devisi
-    ]);
-})->name("detail-kegiatan");
+Route::get("/kegiatan", [ActivityController::class, "show"])->name("show-kegiatan");
+Route::get("/kegiatan/detail/{activities:slug}", [ActivityController::class, "detail"])->name("detail-kegiatan");
 Route::get("/galery", [GalleryController::class, "show"])->name("galery-genbi");
 
-// Route::get("/post/user", [PostsController::class, "show"])->name("post-user");
-Route::get('/foo', function () {
-    Artisan::call('storage:link');
-});
-Route::get("/author", function () {
-    return view("page.author");
-})->name("author");
+Route::get("/author", [WelcomeController::class, "author"])->name("author");
 Route::middleware(["role:super", "auth", "verified"])->group(function () {
     Route::get("/manage/users", [AdminController::class, "users"])->name("manage-user");
     Route::post("/manage/users", [AdminController::class, "updateRoleUsers"])->name("update-manage-users");
@@ -124,11 +88,11 @@ Route::middleware(['role:admin|super|ketua', "auth", 'verified'])->group(functio
     // close approve
 });
 
-Route::get("/kegiatan/berita-kegiatan/{berita}", function ($berita) {
-    $post = BrainPost::find(1);
+// Route::get("/kegiatan/berita-kegiatan/{berita}", function ($berita) {
+//     $post = BrainPost::find(1);
 
-    return view("page.kegiatan.berita.detail", compact("post"));
-})->name("detail-berita");
+//     return view("page.kegiatan.berita.detail", compact("post"));
+// })->name("detail-berita");
 Route::middleware(['auth', "verified"])->group(function () {
     // genbi
     Route::get("/genbi/daftar", function () {
@@ -159,21 +123,11 @@ Route::middleware(['auth', "verified"])->group(function () {
 
 
     //dashboard
-    Route::get('/dashboard', function () {
-        $users = User::all();
-        return view('dashboard', compact("users"));
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, "show"])->name('dashboard');
     // close dashboard
 
     // profile
-    Route::get("/user/profile", function () {
-        // Auth::user()->attachRole('admin');
-        $users = User::all();
-        $user_id = request()->user()->id;
-        $profile = Profile::where("user_id", $user_id)->first();
-        $posts = Posts::where("user_id", Auth::user()->id)->latest()->get();
-        return view("page.user.profile", compact("users", "profile", "posts"));
-    })->name("user-profile");
+    Route::get("/user/profile", [UserController::class, "userProfile"])->name("user-profile");
     Route::patch("/user/profile", [ProfileController::class, "update"])->name("user-update");
     Route::get("/user/profile/lengkapi-data", function () {
         return view("page.user.set-profile");
@@ -194,25 +148,7 @@ Route::get("/beasiswa/info", function () {
 Route::get("/tentangKami/info", function () {
     return view("page.aboutUs");
 })->name("tentang-kami");
-Route::get("/post/{posts:slug}", function (Posts $posts) {
-    $kategory = CategoryPosts::get();
-    if (Auth::check()) {
-        if (request()->user()->hasRole(["admin", "super"]) || $posts->user_id === Auth::user()->id) {
-        } else {
-            if ($posts->is_active != true) {
-                abort(404);
-            }
-        }
-    } else {
-        if ($posts->is_active != true) {
-            abort(404);
-        }
-    }
-    return view("page.posts.detail", [
-        "post" => $posts,
-        "kategory" => $kategory
-    ]);
-})->name("detail-posts");
+Route::get("/post/{posts:slug}", [PostsController::class, "detail"])->name("detail-posts");
 
 
 // my brain
