@@ -7,6 +7,7 @@
     <meta name="keywords" content="GenBI SULTRA, genbi sulawesi tenggara, GenBI">
 
     <meta name="author" content="alfianizzah, fahrul">
+    <link rel="shortcut icon" href="{{ asset('img/genbisultra.ico') }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GenBI Sultra</title>
