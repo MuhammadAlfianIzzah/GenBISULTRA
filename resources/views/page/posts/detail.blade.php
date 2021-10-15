@@ -4,7 +4,7 @@
 
         <div class="p-5 px-0 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
             <div class="container py-5 d-flex flex-column align-items-center bg-lapis">
-                <div class="h2 fw-bold text-white shadow-sm"><i class="fas fa-newspaper"></i> {{ $post->title }}</div>
+                <div class="h1 fw-bold text-white shadow-sm"><i class="fas fa-newspaper"></i> {{ $post->title }}</div>
 
                 @if ($post->is_active === 1)
                     <span class="text-success">[<i class="fas fa-check-square"></i>Disetujui]</span>
