@@ -108,15 +108,17 @@ class PostsController extends Controller
 
                 $data = base64_decode($data);
 
-                $image_name = "/storage/posts/img-post/" . time() . $k . '.png';
+                $image_name = "/posts/img-post/" . time() . $k . '.png';
 
-                $path = public_path() . $image_name;
+                $path = $image_name;
+                Storage::put($path, $data);
+                // $path = public_path() . $image_name;
 
-                file_put_contents($path, $data);
+                // file_put_contents($path, $data);
 
                 $img->removeAttribute('src');
 
-                $img->setAttribute('src', $image_name);
+                $img->setAttribute('src', "/storage" .  $image_name);
             }
         }
         $slug = Str::slug($request->title, '-');
@@ -135,14 +137,11 @@ class PostsController extends Controller
                 "hero" => $hero
             ]);
         } catch (QueryException $e) {
-            dd($e);
+            // dd($e);
             return back()->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
         }
         request()->session()->flash("success", "Berhasil menyimpan posts");
         return redirect("/post/manage/my-post");
-        // return view("page.posts.create", [
-        //     "category" => $category
-        // ]);
     }
     public function myPosts()
     {
@@ -177,7 +176,7 @@ class PostsController extends Controller
                 $posts->delete();
                 request()->session()->flash("success", "berhasil menghapus post");
             } catch (\Throwable $e) {
-                dd($e);
+                // dd($e);
                 request()->session()->flash("error", "Ups sepertinya terjadi sesuatu");
             }
             return back();
@@ -263,15 +262,18 @@ class PostsController extends Controller
 
                 $data = base64_decode($data);
 
-                $image_name = "/storage/posts/img-post/" . time() . $k . '.png';
+                $image_name = "/posts/img-post/" . time() . $k . '.png';
 
-                $path = public_path() . $image_name;
+                $path = $image_name;
+                Storage::put($path, $data);
 
-                file_put_contents($path, $data);
+                // $path = public_path() . $image_name;
+
+                // file_put_contents($path, $data);
 
                 $img->removeAttribute('src');
 
-                $img->setAttribute('src', $image_name);
+                $img->setAttribute('src', "/storage" . $image_name);
             } else {
                 $new[] =  $data;
             }

@@ -225,7 +225,7 @@ class ActivityController extends Controller
                 $activities->delete();
                 request()->session()->flash("success", "berhasil menghapus post");
             } catch (\Throwable $e) {
-                dd($e);
+                // dd($e);
                 request()->session()->flash("error", "Ups sepertinya terjadi sesuatu");
             }
             return back();
@@ -303,9 +303,9 @@ class ActivityController extends Controller
                 $image_name = "/posts/img-post/" . time() . $k . '.png';
 
                 $path = $image_name;
+                Storage::put($path, $data);
 
                 // file_put_contents($path, $data);
-                Storage::put($path, $data);
                 $img->removeAttribute('src');
 
                 $img->setAttribute('src', "/storage" . $image_name);

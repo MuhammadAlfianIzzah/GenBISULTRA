@@ -120,15 +120,18 @@ class MyBrainController extends Controller
 
                 $data = base64_decode($data);
 
-                $image_name = "/storage/my-brain/img-post/" . time() . $k . '.png';
+                // $image_name = "/storage/my-brain/img-post/" . time() . $k . '.png';
+                $image_name = "/my-brain/img-post/" . time() . $k . '.png';
 
-                $path = public_path() . $image_name;
+                $path = $image_name;
+                Storage::put($path, $data);
+                // $path = public_path() . $image_name;
 
-                file_put_contents($path, $data);
+                // file_put_contents($path, $data);
 
                 $img->removeAttribute('src');
 
-                $img->setAttribute('src', $image_name);
+                $img->setAttribute('src', "/storage" . $image_name);
             }
         }
 
@@ -300,15 +303,17 @@ class MyBrainController extends Controller
 
                 $data = base64_decode($data);
 
-                $image_name = "/storage/my-brain/img-post/" . time() . $k . '.png';
+                $image_name = "/my-brain/img-post/" . time() . $k . '.png';
 
-                $path = public_path() . $image_name;
+                $path = $image_name;
+                Storage::put($path, $data);
+                // $path = public_path() . $image_name;
 
-                file_put_contents($path, $data);
+                // file_put_contents($path, $data);
 
                 $img->removeAttribute('src');
 
-                $img->setAttribute('src', $image_name);
+                $img->setAttribute('src', "/storage" . $image_name);
             } else {
                 $new[] =  $data;
             }
