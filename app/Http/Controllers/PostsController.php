@@ -29,6 +29,7 @@ class PostsController extends Controller
                 $posts = Posts::filter(request(["search", "category"]))->latest()->get();
             }
         }
+
         $kategory = CategoryPosts::get();
         return view("page.posts.show", compact("posts", "kategory"));
     }
