@@ -63,7 +63,7 @@
             <div class="col-md-9 col-12 overflow-hidden">
                 <div class="container">
                     <div class="d-flex justify-content-between align-content-center">
-                        <h2 class="blog-post-title">{{ $post->title }}</h2>
+                        <h1 class="blog-post-title">{{ $post->title }}</h1>
 
                     </div>
 
