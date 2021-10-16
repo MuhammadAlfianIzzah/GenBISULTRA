@@ -1,6 +1,6 @@
       @php
           use App\Models\User;
-          $user = User::find(Auth::user()->id)->first();
+          $user = Auth::user();
 
           $img = $user->profile->foto_profile ?? null;
 
@@ -49,10 +49,8 @@
                       aria-haspopup="true" aria-expanded="false">
                       <span
                           class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $user->nama ?? (Auth::user()->name ?? '') }}</span>
-
-
                       <img class="img-profile rounded-circle"
-                          src="{{ $img ? asset('storage/' . $img) : 'https://images.pexels.com/photos/6919779/pexels-photo-6919779.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' }}">
+                          src="{{ asset('/storage' . $img) ? asset('storage/' . $img) : 'https://images.pexels.com/photos/6919779/pexels-photo-6919779.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' }}">
 
 
 
