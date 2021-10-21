@@ -33,12 +33,13 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
 </head>
 
 <body>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-    </script>
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-6167588362026240">
+    </amp-auto-ads>
     @include('components.main.narbar-v2')
     {{ $slot }}
     {{-- <footer>
