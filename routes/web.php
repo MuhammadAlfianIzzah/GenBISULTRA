@@ -6,9 +6,11 @@ use App\Http\Controllers\CategoryPostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DevisiController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\GenbiController;
 use App\Http\Controllers\MyBrainController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RandomPickerController;
 use App\Http\Controllers\TypeActivityController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -94,9 +96,8 @@ Route::middleware(['role:admin|super|ketua', "auth", 'verified'])->group(functio
 // })->name("detail-berita");
 Route::middleware(['auth', "verified"])->group(function () {
     // genbi
-    Route::get("/genbi/daftar", function () {
-        return view("page.genbi.daftar");
-    })->name("daftar-genbi");
+    Route::get("/genbi/daftar", [GenbiController::class, "show"])->name("daftar-genbi");
+    Route::post("/genbi/daftar", [GenbiController::class, "store"])->name("daftar-genbi");
     // genbi
 
     // brain post
@@ -148,6 +149,9 @@ Route::get("/tentangKami/info", function () {
     return view("page.aboutUs");
 })->name("tentang-kami");
 Route::get("/post/{posts:slug}", [PostsController::class, "detail"])->name("detail-posts");
+
+
+Route::get("/random-picker", [RandomPickerController::class, "show"])->name("random-picker");
 
 
 // my brain

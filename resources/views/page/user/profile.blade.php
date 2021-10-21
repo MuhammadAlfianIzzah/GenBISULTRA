@@ -14,7 +14,6 @@
         }
 
     </style>
-
     {{-- {{dd($profile->foto_profile)}} --}}
     <div class="bg-white container py-3 mx-3 row">
         <div class="container">
@@ -33,7 +32,6 @@
                             <div class="card-body text-center">
                                 <img class="avatar" src="{{ asset('storage') . '/' . $profile->foto_profile }}"
                                     alt="Bologna">
-
 
                                 <div class="card-title h4">{{ $profile->nama }}</div>
                                 <div class="h6 card-subtitle mb-2 text-muted">
