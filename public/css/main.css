@@ -639,16 +639,6 @@ footer {
           animation: loading 1s linear infinite;
 }
 
-.loader .svg-loader {
-  width: 400px;
-  height: 400px;
-}
-
-.loader .svg-loader #pesawat {
-  -webkit-transform: translateX(-10px);
-          transform: translateX(-10px);
-}
-
 @-webkit-keyframes loading {
   0% {
     letter-spacing: 0;
