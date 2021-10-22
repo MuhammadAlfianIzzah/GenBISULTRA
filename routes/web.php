@@ -152,7 +152,7 @@ Route::get("/post/{posts:slug}", [PostsController::class, "detail"])->name("deta
 
 
 Route::get("/random-picker", [RandomPickerController::class, "show"])->name("random-picker");
-
+Route::view("/aplikasi", "page.aplikasi")->name("aplikasi");
 
 // my brain
 Route::get("/my-brain", [MyBrainController::class, "show"])->name("my-brain");

@@ -171,9 +171,8 @@
     <script src="{{ asset('js/owlcarousel/owl.carousel.min.js') }}"></script>
 
     <script src="{{ asset('js/animation.js') }}"></script>
-    {{-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7825104123996480"
-        crossorigin="anonymous"></script> --}}
-    {{-- <script src="{{ asset('js/main.js') }}"></script> --}}
+
+    <script src="{{ asset('js/main.js') }}"></script>
     @stack("script")
 
 </body>

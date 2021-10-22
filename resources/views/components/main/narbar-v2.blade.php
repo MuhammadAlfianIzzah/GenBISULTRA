@@ -6,7 +6,8 @@
          </a>
 
          <a class="navbar-brand nav-brand" href="{{ route('home') }}">GenBI Sultra</a>
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
          </button>
          <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
@@ -17,7 +18,8 @@
 
                  </li>
                  <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle top-nav" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     <a class="nav-link dropdown-toggle top-nav" href="#" id="navbarDropdown" role="button"
+                         data-bs-toggle="dropdown" aria-expanded="false">
                          Posts
                      </a>
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -38,35 +40,41 @@
                  </li>
 
                  <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle top-nav" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     <a class="nav-link dropdown-toggle top-nav" href="#" id="navbarDropdown" role="button"
+                         data-bs-toggle="dropdown" aria-expanded="false">
                          About Us
                      </a>
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                          <li><a class="dropdown-item" href="{{ route('tentang-kami') }}">Tentang Kami</a></li>
                          <li><a class="dropdown-item" href="#">Karya Kami</a></li>
+                         <li>
+                             <a class="dropdown-item" href="{{ route('aplikasi') }}">Aplikasi
+                                 <span class="badge rounded-pill bg-primary">New</span>
+                             </a>
+                         </li>
                      </ul>
                  </li>
 
              </ul>
              <ul class="navbar-nav">
-                 @if(Auth::check())
-                 <li class="nav-item">
-                     <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
-                 </li>
+                 @if (Auth::check())
+                     <li class="nav-item">
+                         <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
+                     </li>
 
-                 <form action="{{ route('logout') }}" method="POST">
-                     @csrf
-                     @method("post")
-                     <button type="submit" class="btn btn-danger">Logout</button>
+                     <form action="{{ route('logout') }}" method="POST">
+                         @csrf
+                         @method("post")
+                         <button type="submit" class="btn btn-danger">Logout</button>
 
-                 </form>
+                     </form>
                  @else
-                 <li class="nav-item">
-                     <a href="{{ route('login') }}" class="nav-link">Login</a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="{{ route('register') }}" class="nav-link">Register</a>
-                 </li>
+                     <li class="nav-item">
+                         <a href="{{ route('login') }}" class="nav-link">Login</a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="{{ route('register') }}" class="nav-link">Register</a>
+                     </li>
                  @endif
 
              </ul>
