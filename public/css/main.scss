@@ -624,6 +624,11 @@ footer {
         animation: loading 1s linear infinite;
     }
 }
+@media (max-width: 768px) {
+    .img-lg{
+        display: none;
+    }
+ }
 
 @keyframes loading {
     0% {

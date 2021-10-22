@@ -1,7 +1,7 @@
 <x-m-layout-v2>
     <div class="p-5 mb-4 bg-light rounded-3 mt-r shadow-sm">
         <div class="container py-5">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-md-7 justify-content-center d-flex flex-column align-items-center">
                     <h1 class="display-5 fw-bold">Random Picker</h1>
                     <p class="col-md-8 fs-4">Aplikasi simple untuk memilih random kandidat yang membantu kamu ketika
@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <svg style="width: 60%;" class="img-fluid img-flip" id="accd11e2-29f9-4e91-8363-bcf43fd88ac6"
+                    <svg style="width: 60%;" class="img-fluid img-lg img-flip" id="accd11e2-29f9-4e91-8363-bcf43fd88ac6"
                         data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="722" height="568.2821"
                         viewBox="0 0 722 568.2821">
                         <path
