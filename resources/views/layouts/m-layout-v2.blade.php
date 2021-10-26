@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6167588362026240"
+        crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {{-- <meta name="description" content="GenBI SULTRA">
@@ -33,8 +35,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6167588362026240"
-     crossorigin="anonymous"></script>
+
     <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
 </head>
@@ -42,6 +43,14 @@
 <body>
     <amp-auto-ads type="adsense" data-ad-client="ca-pub-6167588362026240">
     </amp-auto-ads>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6167588362026240"
+        crossorigin="anonymous"></script>
+    <!-- GenBISULTRA -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6167588362026240" data-ad-slot="5578121626"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
     @include('components.main.narbar-v2')
     {{ $slot }}
     {{-- <footer>
