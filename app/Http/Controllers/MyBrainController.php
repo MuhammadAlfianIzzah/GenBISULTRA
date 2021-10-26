@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use PDO;
 use Illuminate\Support\Str;
 
+
 class MyBrainController extends Controller
 {
     public function show()
@@ -32,6 +33,7 @@ class MyBrainController extends Controller
     }
     public function detail(BrainPost $brainPost)
     {
+
         SEOMeta::setTitle($brainPost->title);
         //filter tag
         $filter = strip_tags($brainPost->content);
@@ -252,7 +254,8 @@ class MyBrainController extends Controller
         $request->validate([
             "title" => "required",
             "content" => "required|min:0",
-            "thumbnail" => "mimes:png,jpg,jpeg"
+            "thumbnail" => "mimes:png,jpg,jpeg",
+            "hero" => "mimes:png,jpg,jpeg"
         ]);
         // end validation
         // handle thumbnail
@@ -261,6 +264,12 @@ class MyBrainController extends Controller
             $thumbnail =  $request->file("thumbnail")->store("my-brain/thumbnail");
         } else {
             $thumbnail = $brainPost->thumbnail;
+        }
+        if (request()->file("hero")) {
+            Storage::delete($brainPost->hero);
+            $hero =  $request->file("hero")->store("my-brain/hero");
+        } else {
+            $hero = $brainPost->hero;
         }
         // end handle thumbnail
         $content = $request->content;
@@ -334,6 +343,7 @@ class MyBrainController extends Controller
                 "category" => $request->category,
                 "content" => $content,
                 "slug" => $slug,
+                "hero" => $hero,
                 "user_id" => Auth::user()->id,
                 "thumbnail" => $thumbnail,
                 "updated_at" => Carbon::now()

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class penerimaBeasiswa extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        "nim", "fakultas", "jurusan", "tanggal_masuk", "tanggal_keluar", "no_hp",  "angkatan", "pembina", "foto_pengenal", "is_valid", "user_id"
+    ];
 }

@@ -42,13 +42,13 @@
                             <span class="text-danger">[<i class="fas fa-clock"></i> Menunggu persetujuan]</span>
                         @endif
                     </h6>
-                    <div class="d-flex gap-2 mt-2">
+                    {{-- <div class="d-flex gap-2 mt-2">
                         <a href="{{ route('my-brain', ['category' => 'buku tahunan']) }}"
                             class="btn btn-primary btn-lg fs-6 shadow-sm">
                             <i class="fas fa-book-reader"></i> Buku Tahunan GenBI</a>
                         <a href="{{ route('my-brain', ['category' => 'my teori']) }}"
                             class="btn btn-primary btn-lg fs-6 shadow-sm">My teori</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="s-layer"></div>
@@ -63,21 +63,17 @@
             <div class="col-md-9 col-12 overflow-hidden">
                 <div class="container">
                     <div class="d-flex justify-content-between align-content-center">
-                        <h1 class="blog-post-title">{{ $post->title }}</h1>
+                        <h1 class="blog-post-title py-3">{{ Str::ucfirst($post->title) }}</h1>
 
                     </div>
-
-                    <p class="blog-post-meta">Genbi, <span class="text-danger">{{ $post->created_at }}</span> by <a
-                            href="#">{{ $post->user->name }}</a></p>
+                    {{-- <p class="blog-post-meta">Genbi, <span class="text-danger">{{ $post->created_at }}</span> by <a
+                            href="#">{{ $post->user->name }}</a></p> --}}
 
                 </div>
                 <article class="blog-post content">
                     {!! $post->content !!}
                 </article>
-                <nav class="blog-pagination mt-3" aria-label="Pagination">
-                    <a class="btn btn-outline-primary" href="#">Older</a>
-                    <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-                </nav>
+
 
             </div>
             <div class="col-md-3 col-sm-12 mt-n2">

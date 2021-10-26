@@ -66,7 +66,7 @@ class ProfileController extends Controller
             return back()->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
         }
         request()->session()->flash("success", "Berhasil menyimpan posts");
-        return redirect("/post/manage/my-post");
+        return redirect("/user/profile");
     }
     public function update(Request $request)
     {

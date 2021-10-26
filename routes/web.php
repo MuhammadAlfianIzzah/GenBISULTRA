@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DevisiController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GenbiController;
+use App\Http\Controllers\KomsatController;
 use App\Http\Controllers\MyBrainController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
@@ -96,8 +97,16 @@ Route::middleware(['role:admin|super|ketua', "auth", 'verified'])->group(functio
 // })->name("detail-berita");
 Route::middleware(['auth', "verified"])->group(function () {
     // genbi
-    Route::get("/genbi/daftar", [GenbiController::class, "show"])->name("daftar-genbi");
+    Route::get("/genbi/daftar", [GenbiController::class, "create"])->name("daftar-genbi");
     Route::post("/genbi/daftar", [GenbiController::class, "store"])->name("daftar-genbi");
+    Route::get("/genbi/gabung/departement", [GenbiController::class, "gDepartement"])->name("gabung-departement");
+
+    Route::get("/genbi/komsat", [KomsatController::class, "show"])->name("show-komsat");
+    Route::post("/genbi/komsat", [KomsatController::class, "store"])->name("show-komsat");
+    Route::get("/genbi/komsat/edit/{komisat:nama}", [KomsatController::class, "edit"])->name("edit-komsat");
+    Route::patch("/genbi/komsat/edit/{komisat:nama}", [KomsatController::class, "update"])->name("edit-komsat");
+    Route::delete("/genbi/komsat/{komisat:nama}", [KomsatController::class, "delete"])->name("delete-komsat");
+
     // genbi
 
     // brain post

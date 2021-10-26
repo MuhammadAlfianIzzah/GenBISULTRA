@@ -19,12 +19,14 @@ class CreatePenerimaBeasiswasTable extends Migration
             $table->string("foto_pengenal");
             $table->string("fakultas");
             $table->string("jurusan");
-            $table->date("tanggal_masuk");
-            $table->date("tanggal_keluar");
+            $table->date("tanggal_masuk")->nullable();
+            $table->date("tanggal_keluar")->nullable();
             $table->string("no_hp");
             $table->string("angkatan");
             $table->string("pembina");
-            $table->string("is_valid");
+            $table->boolean("is_valid")->default(false);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
             $table->timestamps();
         });
     }

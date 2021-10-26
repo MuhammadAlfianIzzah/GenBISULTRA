@@ -112,7 +112,7 @@
                         @method("patch")
                         @csrf
                         <div class="mb-3">
-                            <label for="nama" class="form-label">Nama Lengkap</label>
+                            <label for="nama" class="form-label ">Nama Lengkap</label>
                             <input type="text" class="form-control" id="nama" name="nama"
                                 value="{{ old('nama') ?? ($profile->nama ?? '') }}">
 
@@ -129,7 +129,11 @@
 
                         <div class="mb-3">
                             <label for="foto_profile" class="form-label">Foto Profile</label>
-                            <input name="foto_profile" class="form-control input-show" type="file" id="foto_profile">
+                            <img src="{{ asset("storage/$profile->foto_profile") }}"
+                                style="max-height: 200px;object-fit: contain"
+                                class="w-100 img-fluid img-thumbnail foto-profile">
+                            <input name="foto_profile" class="form-control input-show upload-img" type="file"
+                                id="foto_profile" data-target="foto-profile">
                             {{-- <img style="width: 100px" src="{{ asset("storage/$profile->foto_profile")}}" class="rounded d-block mt-2 img-thumbnail" alt="..."> --}}
                             @error('foto_profile')
                                 <div class="text-danger text-small">{{ $message }}</div>
@@ -149,7 +153,11 @@
 
                         <div class="mb-3">
                             <label for="hero" class="form-label">Background Profile</label>
-                            <input name="hero" class="form-control input-show" type="file" id="hero">
+                            <img src="{{ asset("storage/$profile->hero") }}"
+                                style="max-height: 200px;object-fit: contain"
+                                class="w-100 img-fluid img-thumbnail background">
+                            <input name="hero" class="form-control input-show upload-img" data-target="background"
+                                type="file" id="hero">
                             <span class="text-scaledown">(Gunakan gambar yang persegi panjang)</span>
                             @error('hero')
                                 <div class="text-danger text-small">{{ $message }}</div>

@@ -23,7 +23,8 @@
                          Posts
                      </a>
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                         <li><a class="dropdown-item" href="{{ route('my-brain') }}">My Brain</a></li>
+                         <li><a class="dropdown-item" href="{{ route('my-brain') }}">My Brain <span
+                                     class="badge bg-danger"><i class="fab fa-hotjar"></i></span></a></li>
                          <li><a class="dropdown-item" href="{{ route('show-posts') }}">Post</a></li>
 
                      </ul>

@@ -17,6 +17,7 @@ class CreateStatusPenerimasTable extends Migration
             $table->id();
             // status jabatan
             $table->string("status");
+            $table->boolean("is_valid");
             $table->unsignedBigInteger('komsat_id');
             $table->foreign('komsat_id')->references('id')->on('komisats')->onDelete("cascade");
             $table->unsignedBigInteger('devisi_id');
