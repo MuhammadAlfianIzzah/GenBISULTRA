@@ -152,42 +152,81 @@
         }
 
     </style>
-    @push("script")
-    <script>
-        $(document).ready(function() {
-            $('.owl-carousel').owlCarousel({
-                // items: 2,
-                responsive: {
-                    0: {
-                        items: 1
-                        , nav: true
+    @push('script')
+        <script>
+            $(document).ready(function() {
+                $('.owl-carousel').owlCarousel({
+                    // items: 2,
+                    responsive: {
+                        0: {
+                            items: 1,
+                            nav: true
+                        },
+                        600: {
+                            items: 2,
+                            nav: false
+                        },
+                        1000: {
+                            items: 3,
+                            nav: true,
+                            loop: false
+                        }
                     }
-                    , 600: {
-                        items: 2
-                        , nav: false
-                    }
-                    , 1000: {
-                        items: 3
-                        , nav: true
-                        , loop: false
-                    }
-                }
+                });
             });
-        });
-
-    </script>
+        </script>
 
     @endpush
     <!-- heroes -->
-    <div class="container-fluid heroes-parent" style="background-image: url({{asset("img/welcome/sikola-dilao.jpg")}}">
+    <div class="container-fluid heroes-parent"
+        style="background-attachment: fixed;background-image: url({{ asset('img/welcome/sikola-dilao.jpg') }}">
 
 
         <div class="container heroes">
             <div class="row align-items-center">
                 <div class="col-12 col-md-6">
-                    <h1>Selamat Datang <br> di Website <br> GenBI SulTra</h1>
+                    <h1 class="text-white" style="transform: scale(.8)">Selamat Datang <br> di Website <br> GenBI
+                        SulTra</h1>
                 </div>
-                <div class="d-none d-md-block col-md-6">
+                <div class=" d-md-block col-md-6">
+                    <div class="h-100 p-2 text-dark rounded-3" style="background: rgba( 255, 255, 255, 0.65 );
+                    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                    backdrop-filter: blur( 4px );
+                    -webkit-backdrop-filter: blur( 4px );
+                    border-radius: 10px;
+                    border: 1px solid rgba( 255, 255, 255, 0.18 );">
+                        <div class="p-5" style="border: 2px dashed red">
+                            <div class="h2">
+                                <i class="fas fa-virus"></i> Data Covid 19 SULTRA
+                            </div>
+                            <p class="text-muted">Update terakhir (
+                                {{ \Carbon\Carbon::parse($dataCovid->last_date)->diffForHumans() }})
+
+                            </p>
+                            <hr>
+                            @foreach ($dataCovid->list_data as $data)
+
+                                @if ($data->key === 'SULAWESI TENGGARA')
+
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="h6 text-dark">Total Kasus</div>
+                                            {{ $data->jumlah_kasus }} <i class="fas fa-restroom  text-muted"></i>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="h6 text-danger"><i class="far fa-dizzy"></i> Meninggal </div>
+                                            {{ $data->jumlah_meninggal }} <i class="fas fa-restroom  text-muted"></i>
+                                        </div>
+                                        <div class="col-4 ">
+                                            <div class="h6 text-primary"><i class="fas fa-heart"></i> Sembuh</div>
+                                            {{ $data->jumlah_sembuh }} <i class="fas fa-restroom  text-muted"></i>
+                                        </div>
+
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -200,18 +239,20 @@
                 <div class="col-md-12">
                     <div id="devisi-seeder" class="owl-carousel">
                         @foreach ($devisi as $dv)
-                        <div class="post-slide">
-                            <div class="card-header">
-                                <img style="max-height: 200px;object-fit: contain" src="{{ asset('img/welcome/devisi.png') }}" alt="">
+                            <div class="post-slide">
+                                <div class="card-header">
+                                    <img style="max-height: 200px;object-fit: contain"
+                                        src="{{ asset('img/welcome/devisi.png') }}" alt="">
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">
+                                        <div>Departement <br>{{ $dv->nama }}</div>
+                                    </h3>
+                                    <p class="post-description">{{ $dv->deskripsi }}</p>
+                                    <a href="{{ route('show-kegiatan', ['devisi' => $dv->id]) }}"
+                                        class="read-more">See All Activity</a>
+                                </div>
                             </div>
-                            <div class="post-content">
-                                <h3 class="post-title">
-                                    <div>Departement <br>{{$dv->nama}}</div>
-                                </h3>
-                                <p class="post-description">{{$dv->deskripsi}}</p>
-                                <a href="{{ route('show-kegiatan', ['devisi'=>$dv->id]) }}" class="read-more">See All Activity</a>
-                            </div>
-                        </div>
                         @endforeach
 
                     </div>
@@ -258,7 +299,9 @@
 
                                     </div>
                                     <h5 class="card-title text-center mt-3">Lorem</h5>
-                                    <p class="card-text text-center mt-3">"Some quick example text to build on the card title Some quick example text to build on the card title Some quick example text to build on the card title"</p>
+                                    <p class="card-text text-center mt-3">"Some quick example text to build on the card
+                                        title Some quick example text to build on the card title Some quick example text
+                                        to build on the card title"</p>
                                     <div class="row">
                                         <i class="fa fa-quote-right text-center"></i>
                                     </div>
@@ -274,7 +317,9 @@
 
                                     </div>
                                     <h5 class="card-title text-center mt-3">Ipsum</h5>
-                                    <p class="card-text text-center mt-3">"Some quick example text to build on the card title Some quick example text to build on the card title Some quick example text to build on the card title"</p>
+                                    <p class="card-text text-center mt-3">"Some quick example text to build on the card
+                                        title Some quick example text to build on the card title Some quick example text
+                                        to build on the card title"</p>
                                     <div class="row">
                                         <i class="fa fa-quote-right text-center"></i>
                                     </div>
@@ -290,7 +335,9 @@
 
                                     </div>
                                     <h5 class="card-title text-center mt-3">Dolor</h5>
-                                    <p class="card-text text-center mt-3">"Some quick example text to build on the card title Some quick example text to build on the card title Some quick example text to build on the card title"</p>
+                                    <p class="card-text text-center mt-3">"Some quick example text to build on the card
+                                        title Some quick example text to build on the card title Some quick example text
+                                        to build on the card title"</p>
                                     <div class="row">
                                         <i class="fa fa-quote-right text-center"></i>
                                     </div>
@@ -312,30 +359,34 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="news-slider" class="owl-carousel">
-                        @foreach ($posts as $post )
-                        <div class="post-slide">
-                            <div class="post-img">
-                                <img style="max-height: 200px;object-fit: cover" src="{{ asset("storage/$post->thumbnail") }}" alt="">
-                                <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+                        @foreach ($posts as $post)
+                            <div class="post-slide">
+                                <div class="post-img">
+                                    <img style="max-height: 200px;object-fit: cover"
+                                        src="{{ asset("storage/$post->thumbnail") }}" alt="">
+                                    <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">
+                                        <a
+                                            href="{{ route('detail-brain', [$post->slug]) }}">{{ $post->title }}</a>
+
+                                    </h3>
+                                    <?php
+                                    $filter = preg_replace('/<img[^>]+>/', '', $post->content);
+                                    $filterh1 = strip_tags($filter);
+                                    ?>
+
+                                    <p class="post-description">{!! Str::limit($filterh1, 180, '...') !!}</p>
+
+                                    <span class="post-date"><i
+                                            class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</span>
+
+                                    <a href="{{ route('detail-brain', [$post->slug]) }}" class="read-more">read
+                                        more</a>
+
+                                </div>
                             </div>
-                            <div class="post-content">
-                                <h3 class="post-title">
-                                    <a href="{{ route('detail-brain', [$post->slug]) }}">{{$post->title}}</a>
-
-                                </h3>
-                                <?php 
-                                    $filter =preg_replace("/<img[^>]+>/", "", $post->content);
-                                     $filterh1= strip_tags($filter);
-                                  ?>
-
-                                <p class="post-description">{!! Str::limit($filterh1,180,'...')!!}</p>
-
-                                <span class="post-date"><i class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</span>
-
-                                <a href="{{ route('detail-brain', [$post->slug]) }}" class="read-more">read more</a>
-
-                            </div>
-                        </div>
                         @endforeach
 
                     </div>
@@ -346,7 +397,8 @@
 
     </div>
     <!-- tagar -->
-    <div class="container-fluid tagar" style="background-image: url({{asset("img/welcome/sikola-dilao.jpg")}})">
+    <div class="container-fluid tagar"
+        style="background-attachment: fixed;background-image: url({{ asset('img/welcome/sikola-dilao.jpg') }})">
         <div class="container">
             <h2>#ENERGIUNTUKNEGERI <br> #SOSOITO</h2>
         </div>
