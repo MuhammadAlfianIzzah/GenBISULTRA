@@ -42,7 +42,7 @@
                 <div class="mb-3 row">
                     <label for="title" class="col-sm-2 col-form-label">Kategori</label>
                     <div class="col-sm-10">
-                        <select class="form-select" aria-label="Default select example" name="category_id">
+                        <select class="form-select" name="category_id">
                             @foreach ($category as $ct)
                                 <option value="{{ $ct->id }}">{{ $ct->name }}</option>
                             @endforeach

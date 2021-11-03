@@ -59,7 +59,8 @@
                         <h2 class="blog-post-title">{{ $post->title }}</h2>
 
                     </div>
-
+                    <img style="max-height: 300px;object-fit: cover;width: 100%;object-position: center"
+                        src="{{ asset("storage/$post->thumbnail") }}" alt="" class="img-thumbnail">
 
                     <p class="blog-post-meta">Genbi, <span class="text-danger">{{ $post->created_at }}</span> by <a
                             href="{{ route('users-search', [$post->user->name]) }}">{{ $post->user->name }}</a></p>
@@ -68,10 +69,30 @@
                 <article class="blog-post content">
                     {!! $post->content !!}
                 </article>
-                <nav class="blog-pagination mt-3" aria-label="Pagination">
-                    <a class="btn btn-outline-primary" href="#">Older</a>
-                    <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-                </nav>
+                <div class="row mb-2">
+                    <div class="col-12">
+                        Post lainnya dari <span class="text-info">{{ $post->user->name }}</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    @forelse ($post->user->posts as $userPost)
+                        {{-- {{ dd($userPost->thumbnail) }} --}}
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <img src="{{ asset("storage/$userPost->thumbnail") }}" class="card-img-top"
+                                    alt="...">
+                                <div class="card-header">
+                                    {{ $userPost->title }}
+                                </div>
+                                <div class="card-body text-center">
+                                    <a href="{{ route('detail-posts', $userPost->slug) }}"
+                                        class="btn btn-primary">Selengkapnya</a>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                    @endforelse
+                </div>
 
             </div>
 
@@ -79,5 +100,4 @@
 
     </main>
 
-
-    </x-main-layout>
+</x-m-layout-v2>

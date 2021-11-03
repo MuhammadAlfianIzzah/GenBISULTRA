@@ -14,21 +14,22 @@
                 </div>
                 <div class="mb-3">
                     <label for="nim" class="form-label">Nim</label>
-                    <input type="text" class="form-control" id="nim" name="nim">
+                    <input type="text" class="form-control" id="nim" name="nim" value="{{ old('nim') }}">
                     @error('nim')
                         <div class="text-small text-danger form-text">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="no_hp" class="form-label">Nomor Handphone</label>
-                    <input type="text" class="form-control" id="no_hp" name="no_hp">
+                    <input type="text" class="form-control" id="no_hp" name="no_hp" value="{{ old('no_hp') }}">
                     @error('no_hp')
                         <div class="text-small text-danger form-text">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="foto_pengenal" class="form-label">Foto pengenal</label>
-                    <input name="foto_pengenal" class="form-control input-show" type="file" id="foto_pengenal">
+                    <input name="foto_pengenal" class="form-control input-show" type="file" id="foto_pengenal"
+                        value="{{ old('foto_pengenal') }}">
                     @error('foto_pengenal')
                         <div class="text-small text-danger form-text">{{ $message }}</div>
                     @enderror
@@ -37,7 +38,8 @@
                     <div class="col-md">
                         <div class="mb-3">
                             <label for="fakultas" class="form-label">Fakultas</label>
-                            <input type="text" class="form-control" id="fakultas" name="fakultas">
+                            <input type="text" class="form-control" id="fakultas" name="fakultas"
+                                value="{{ old('fakultas') }}">
                             @error('fakultas')
                                 <div class="text-small text-danger form-text">{{ $message }}</div>
                             @enderror
@@ -46,7 +48,8 @@
                     <div class="col-md">
                         <div class="mb-3">
                             <label for="jurusan" class="form-label">Jurusan</label>
-                            <input type="text" class="form-control" id="jurusan" name="jurusan">
+                            <input type="text" class="form-control" id="jurusan" name="jurusan"
+                                value="{{ old('jurusan') }}">
                             @error('jurusan')
                                 <div class="text-small text-danger form-text">{{ $message }}</div>
                             @enderror
@@ -57,14 +60,16 @@
                 <div class="mb-3 row gap-2">
                     <div class="col-md">
                         <label for="tanggal_masuk" class="form-label">tanggal_masuk</label>
-                        <input type="date" class="form-control" id="tanggal_masuk" name="tanggal_masuk">
+                        <input type="date" class="form-control" id="tanggal_masuk" name="tanggal_masuk"
+                            value="{{ old('tanggal_masuk') }}">
                         @error('tanggal_masuk')
                             <div class="text-small text-danger form-text">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-md">
                         <label for="tanggal_keluar" class="form-label">Tanggal selesai</label>
-                        <input type="date" class="form-control" id="tanggal_keluar" name="tanggal_keluar">
+                        <input type="date" class="form-control" id="tanggal_keluar" name="tanggal_keluar"
+                            value="{{ old('tanggal_keluar') }}">
                         @error('tanggal_keluar')
                             <div class="text-small text-danger form-text">{{ $message }}</div>
                         @enderror
@@ -72,17 +77,49 @@
                 </div>
                 <div class="mb-3">
                     <label for="angkatan" class="form-label">Angkatan</label>
-                    <input type="text" class="form-control" id="angkatan" name="angkatan">
+                    <input type="text" class="form-control" id="angkatan" name="angkatan"
+                        value="{{ old('angkatan') }}">
                     @error('angkatan')
                         <div class="text-small text-danger form-text">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="pembina" class="form-label">Pembina saat wawancara penerimaan</label>
-                    <input type="text" class="form-control" id="pembina" name="pembina">
+                    <input type="text" class="form-control" id="pembina" name="pembina"
+                        value="{{ old('pembina') }}">
                     @error('pembina')
                         <div class="text-small text-danger form-text">{{ $message }}</div>
                     @enderror
+                </div>
+                <hr>
+                <div class="mb-3 row gap-2">
+                    <div class="col-md">
+                        <label for="komsat_id" class="form-label">Komisariat</label>
+                        <select id="komsat_id" name="komsat_id" class="form-select komsat form-select-sm">
+                            <option disabled selected>Pilih Asal Komisariat ...</option>
+                            @foreach ($komsats as $komsat)
+                                <option {{ old('komsat_id') == $komsat->id ? 'selected' : '' }}
+                                    value="{{ $komsat->id }}">{{ $komsat->nama }}</option>
+                            @endforeach
+                            @error('komsat_id')
+                                <div class="text-small text-danger form-text">{{ $message }}</div>
+                            @enderror
+                        </select>
+                    </div>
+                    <div class="col-md">
+                        <label for="devisi_id" class="form-label">Devisi</label>
+                        <select id="devisi_id" name="devisi_id" class="form-select devisi form-select-sm">
+                            <option selected disabled>Pilih Devisi ...</option>
+                            @foreach ($devisis as $devisi)
+                                <option value="{{ $devisi->id }}"
+                                    {{ old('devisi_id') == $devisi->id ? 'selected' : '' }}>
+                                    {{ $devisi->nama }}</option>
+                            @endforeach
+                        </select>
+                        @error('devisi_id')
+                            <div class="text-small text-danger form-text">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Daftar </button>
             </form>
@@ -107,4 +144,28 @@
             </div>
         @endif
     </div>
+    @push('script')
+        <script>
+            $(".komsat").select2({
+                placeholder: "Select a programming language",
+                allowClear: true
+            });
+            $(".devisi").select2({
+                placeholder: "Select a programming language",
+                allowClear: true
+            });
+            // $(document).ready(function() {
+            //     // $('.komsat').select2();
+            //     // $('.devisi').select2();
+            //     $(".komsat").select2({
+            //         placeholder: "Select a programming language",
+            //         allowClear: true
+            //     });
+            //     $(".devisi").select2({
+            //         placeholder: "Select a programming language",
+            //         allowClear: true
+            //     });
+            // });
+        </script>
+    @endpush
 </x-dash-layout>

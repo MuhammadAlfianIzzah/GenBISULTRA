@@ -16,8 +16,8 @@ class CreateStatusPenerimasTable extends Migration
         Schema::create('status_penerimas', function (Blueprint $table) {
             $table->id();
             // status jabatan
-            $table->string("status");
-            $table->boolean("is_valid");
+            $table->string("status")->default("anggota");
+            $table->boolean("is_valid")->default(false);
             $table->unsignedBigInteger('komsat_id');
             $table->foreign('komsat_id')->references('id')->on('komisats')->onDelete("cascade");
             $table->unsignedBigInteger('devisi_id');

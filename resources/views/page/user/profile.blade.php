@@ -91,90 +91,94 @@
                         @endforelse
 
                     </div>
-
-
                 </div>
             @endif
 
 
         </div>
 
-    </div><!-- Modal -->
-    <div class="modal fade" id="editProfile" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editProfileLabel">Edit Profile</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body px-3">
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        @method("patch")
-                        @csrf
-                        <div class="mb-3">
-                            <label for="nama" class="form-label ">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="nama" name="nama"
-                                value="{{ old('nama') ?? ($profile->nama ?? '') }}">
+    </div>
+    <!-- Modal -->
+    @if ($profile)
+        <div class="modal fade" id="editProfile" tabindex="-1" aria-labelledby="editProfileLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editProfileLabel">Edit Profile</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body px-3">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            @method("patch")
+                            @csrf
+                            <div class="mb-3">
+                                <label for="nama" class="form-label ">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="nama" name="nama"
+                                    value="{{ old('nama') ?? ($profile->nama ?? '') }}">
 
-                            @error('nama')
-                                <div class="text-danger text-small">{{ $message }}</div>
-                            @enderror
+                                @error('nama')
+                                    <div class="text-danger text-small">{{ $message }}</div>
+                                @enderror
 
-                        </div>
-                        <div class="form-floating mb-2">
-                            <textarea class="form-control" name="headline" style="height: 100px">{{ old('headline') ?? ($profile->headline ?? '') }}
+                            </div>
+                            <div class="form-floating mb-2">
+                                <textarea class="form-control" name="headline" style="height: 100px">{{ old('headline') ?? ($profile->headline ?? '') }}
                             </textarea>
-                            <label for="floatingTextarea2">Headline</label>
-                        </div>
+                                <label for="floatingTextarea2">Headline</label>
+                            </div>
 
-                        <div class="mb-3">
-                            <label for="foto_profile" class="form-label">Foto Profile</label>
-                            <img src="{{ asset("storage/$profile->foto_profile") }}"
-                                style="max-height: 200px;object-fit: contain"
-                                class="w-100 img-fluid img-thumbnail foto-profile">
-                            <input name="foto_profile" class="form-control input-show upload-img" type="file"
-                                id="foto_profile" data-target="foto-profile">
-                            {{-- <img style="width: 100px" src="{{ asset("storage/$profile->foto_profile")}}" class="rounded d-block mt-2 img-thumbnail" alt="..."> --}}
-                            @error('foto_profile')
-                                <div class="text-danger text-small">{{ $message }}</div>
-                            @enderror
+                            <div class="mb-3">
+                                <label for="foto_profile" class="form-label">Foto Profile</label>
+                                <img src="{{ asset("storage/$profile->foto_profile") }}"
+                                    style="max-height: 200px;object-fit: contain"
+                                    class="w-100 img-fluid img-thumbnail foto-profile">
+                                <input name="foto_profile" class="form-control input-show upload-img" type="file"
+                                    id="foto_profile" data-target="foto-profile">
+                                {{-- <img style="width: 100px" src="{{ asset("storage/$profile->foto_profile")}}" class="rounded d-block mt-2 img-thumbnail" alt="..."> --}}
+                                @error('foto_profile')
+                                    <div class="text-danger text-small">{{ $message }}</div>
+                                @enderror
 
-                        </div>
-                        <div class="mb-3">
-                            <label for="biodata" class="form-label">Biodata ~ (Ceritakan tentang diri anda)</label>
-                            <textarea name="biodata" id="biodata" class="form-control summernote">
+                            </div>
+                            <div class="mb-3">
+                                <label for="biodata" class="form-label">Biodata ~ (Ceritakan tentang diri
+                                    anda)</label>
+                                <textarea name="biodata" id="biodata" class="form-control summernote">
                             {{ old('biodata') ?? ($profile->biodata ?? '') }}
 
                             </textarea>
-                            @error('biodata')
-                                <div class="text-danger text-small">{{ $message }}</div>
-                            @enderror
-                        </div>
+                                @error('biodata')
+                                    <div class="text-danger text-small">{{ $message }}</div>
+                                @enderror
+                            </div>
 
-                        <div class="mb-3">
-                            <label for="hero" class="form-label">Background Profile</label>
-                            <img src="{{ asset("storage/$profile->hero") }}"
-                                style="max-height: 200px;object-fit: contain"
-                                class="w-100 img-fluid img-thumbnail background">
-                            <input name="hero" class="form-control input-show upload-img" data-target="background"
-                                type="file" id="hero">
-                            <span class="text-scaledown">(Gunakan gambar yang persegi panjang)</span>
-                            @error('hero')
-                                <div class="text-danger text-small">{{ $message }}</div>
-                            @enderror
+                            <div class="mb-3">
+                                <label for="hero" class="form-label">Background Profile</label>
+                                <img src="{{ asset("storage/$profile->hero") }}"
+                                    style="max-height: 200px;object-fit: contain"
+                                    class="w-100 img-fluid img-thumbnail background">
+                                <input name="hero" class="form-control input-show upload-img" data-target="background"
+                                    type="file" id="hero">
+                                <span class="text-scaledown">(Gunakan gambar yang persegi panjang)</span>
+                                @error('hero')
+                                    <div class="text-danger text-small">{{ $message }}</div>
+                                @enderror
 
-                        </div>
-                        <div class="btn-group text-center w-100">
-                            <button type="submit" class="btn btn-primary">Simpan data</button>
-                        </div>
+                            </div>
+                            <div class="btn-group text-center w-100">
+                                <button type="submit" class="btn btn-primary">Simpan data</button>
+                            </div>
 
-                    </form>
+                        </form>
+
+                    </div>
 
                 </div>
-
             </div>
         </div>
-    </div>
+    @endif
     @push('script')
         <script>
             $('.summernote').summernote({

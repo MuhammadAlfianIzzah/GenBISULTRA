@@ -66,14 +66,36 @@
                         <h1 class="blog-post-title py-3">{{ Str::ucfirst($post->title) }}</h1>
 
                     </div>
-                    {{-- <p class="blog-post-meta">Genbi, <span class="text-danger">{{ $post->created_at }}</span> by <a
-                            href="#">{{ $post->user->name }}</a></p> --}}
-
+                    <img style="max-height: 300px;object-fit: cover;width: 100%;object-position: center"
+                        src="{{ asset("storage/$post->hero") }}" alt="" class="img-thumbnail">
                 </div>
                 <article class="blog-post content">
                     {!! $post->content !!}
                 </article>
-
+                <div class="row mb-2 mt-4 h6">
+                    <div class="col-12">
+                        Post lainnya dari <span class="text-info">{{ $post->user->name }}</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    @forelse ($post->user->brainPosts as $userPost)
+                        {{-- {{ dd($userPost->thumbnail) }} --}}
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <img src="{{ asset("storage/$userPost->thumbnail") }}" class="card-img-top"
+                                    alt="...">
+                                <div class="card-header">
+                                    {{ $userPost->title }}
+                                </div>
+                                <div class="card-body text-center">
+                                    <a href="{{ route('detail-brain', $userPost->slug) }}"
+                                        class="btn btn-primary">Selengkapnya</a>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                    @endforelse
+                </div>
 
             </div>
             <div class="col-md-3 col-sm-12 mt-n2">

@@ -53,7 +53,7 @@
 </x-guest-layout> --}}
 <x-main-layout>
     @push('css')
-    <link rel="stylesheet" href="{{ asset('css/sb-admin2.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/sb-admin2.min.css') }}">
     @endpush
 
     <div class="container mt-5">
@@ -76,19 +76,23 @@
                                     <form class="user" method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="text" name="email" class="form-control form-control-user"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Enter Email Address...">
                                             @error('email')
-                                            <div class="text-danger text-small">
-                                                {{$message}}
-                                            </div>
+                                                <div class="text-danger text-small">
+                                                    {{ $message }}
+                                                </div>
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="password"
+                                                class="form-control form-control-user" id="exampleInputPassword"
+                                                placeholder="Password">
                                             @error('password')
-                                            <div class="text-danger text-small">
-                                                {{$message}}
-                                            </div>
+                                                <div class="text-danger text-small">
+                                                    {{ $message }}
+                                                </div>
 
                                             @enderror
 
@@ -108,11 +112,13 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('password.request') }}">Forgot Password?</a>
+                                        <a class="small" href="{{ route('password.request') }}">Forgot
+                                            Password?</a>
 
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('register') }}">Create an Account!</a>
+                                        <a class="small" href="{{ route('register') }}">Create an
+                                            Account!</a>
 
                                     </div>
                                 </div>
