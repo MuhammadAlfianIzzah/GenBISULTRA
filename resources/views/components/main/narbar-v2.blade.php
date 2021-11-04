@@ -48,11 +48,13 @@
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                          <li><a class="dropdown-item" href="{{ route('tentang-kami') }}">Tentang Kami</a></li>
                          <li><a class="dropdown-item" href="#">Karya Kami</a></li>
+
                          <li>
                              <a class="dropdown-item" href="{{ route('aplikasi') }}">Aplikasi
                                  <span class="badge rounded-pill bg-primary">New</span>
                              </a>
                          </li>
+                         <li><a class="dropdown-item" href="{{ route('users-genbi') }}">Pengguna</a></li>
                      </ul>
                  </li>
 

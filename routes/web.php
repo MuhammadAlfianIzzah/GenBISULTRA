@@ -146,8 +146,11 @@ Route::middleware(['auth', "verified"])->group(function () {
 
 
 });
-
-Route::get("/user/search/{profile:nama}", function (Profile $profile) {
+Route::get("users", function () {
+    $users = Profile::get();
+    return view("page.user.users", compact("users"));
+})->name("users-genbi");
+Route::get("/user/profile/{profile:nama}", function (Profile $profile) {
     return view("page.user.show", compact("profile"));
 })->name("users-search");
 Route::get("/post", [PostsController::class, "show"])->name("show-posts");
