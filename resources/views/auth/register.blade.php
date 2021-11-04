@@ -55,7 +55,7 @@
 
 <x-main-layout>
     @push('css')
-    <link rel="stylesheet" href="{{ asset('css/sb-admin2.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/sb-admin2.min.css') }}">
     @endpush
 
     <div class="container" style="margin-top: 70px">
@@ -74,45 +74,58 @@
                                 @csrf
 
                                 <div class="form-group">
-                                    <input type="text" name="name" value="{{old("name")}}" class="form-control form-control-user" id="name" placeholder="Username">
+                                    <input type="text" name="name" value="{{ old('name') }}"
+                                        class="form-control form-control-user" id="name" placeholder="Username">
                                     @error('name')
-                                    <div class="text-danger text-small">
-                                        {{$message}}
-                                    </div>
+                                        <div class="text-danger text-small">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
 
                                 </div>
 
 
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control form-control-user" id="email" value="{{old("email")}}" placeholder="Email Address">
+                                    <input type="email" name="email" class="form-control form-control-user" id="email"
+                                        value="{{ old('email') }}" placeholder="Email Address">
 
                                     @error('email')
-                                    <div class="text-danger text-small">
-                                        {{$message}}
-                                    </div>
+                                        <div class="text-danger text-small">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
 
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="Password">
+                                        <input type="password" name="password" class="form-control form-control-user"
+                                            id="password" placeholder="Password">
                                         @error('password')
-                                        <div class="text-danger text-small">
-                                            {{$message}}
-                                        </div>
+                                            <div class="text-danger text-small">
+                                                {{ $message }}
+                                            </div>
                                         @enderror
 
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" id="password_confirmation" placeholder="Repeat Password" name="password_confirmation">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="password_confirmation" placeholder="Repeat Password"
+                                            name="password_confirmation">
                                         @error('password_confirmation')
-                                        <div class="text-danger text-small">
-                                            {{$message}}
-                                        </div>
+                                            <div class="text-danger text-small">
+                                                {{ $message }}
+                                            </div>
                                         @enderror
 
                                     </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
+                                    @error('g-recaptcha-response')
+                                        <div class="text-danger text-small">
+                                            Silahkan ceklis recaptcha
+                                        </div>
+                                    @enderror
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Register Account
@@ -122,10 +135,10 @@
                             <hr>
                             <div class="text-center">
                                 <a class="small" href="{{ route('password.request') }}">Forgot Password?</a>
-
                             </div>
                             <div class="text-center">
-                                <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
+                                <a class="small" href="{{ route('login') }}">Already have an account?
+                                    Login!</a>
 
                             </div>
                         </div>

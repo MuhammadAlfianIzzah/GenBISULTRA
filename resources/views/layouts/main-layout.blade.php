@@ -14,6 +14,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     @stack('css')
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
 
     <title>Hello, world!</title>
 </head>
