@@ -28,7 +28,7 @@
                         <use xlink:href="#info-fill" />
                     </svg>
                     <div>
-                        terima kasih telah mengisi response
+                        terima kasih telah mengisi response:<
                     </div>
 
             @endif
