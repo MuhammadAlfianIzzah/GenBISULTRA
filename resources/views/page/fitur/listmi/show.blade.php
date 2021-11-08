@@ -146,9 +146,9 @@
                                     <td>{{ $l->deskripsi }}</td>
                                     <td>
 
-                                        @if (Auth::user()->id == $l->user_id)
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                {{-- <button type="button" class="btn btn-info">Update</button> --}}
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            {{-- <button type="button" class="btn btn-info">Update</button> --}}
+                                            @if (Auth::user()->id == $l->user_id)
                                                 <form action="" method="POST">
                                                     @csrf
                                                     @method("delete")
@@ -156,10 +156,10 @@
                                                     <button onclick="return confirm('anda yakin ingin menghapus?')"
                                                         type=" submit" class="btn btn-danger">Delete</button>
                                                 </form>
-                                                <a href="{{ route('respon-list', [$l->id]) }}" type="button"
-                                                    class="btn btn-primary">List</a>
-                                            </div>
-                                        @endif
+                                            @endif
+                                            <a href="{{ route('respon-list', [$l->id]) }}" type="button"
+                                                class="btn btn-primary">List</a>
+                                        </div>
 
                                     </td>
                                 </tr>
