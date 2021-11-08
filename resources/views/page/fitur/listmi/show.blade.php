@@ -167,7 +167,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4">
                     <div class="h-100 p-5 bg-light border rounded-3">
                         <h2>ListMiCepat</h2>
                         <p>Dukung kami dan berikan masukan kami pada email <span class="text-primary">
