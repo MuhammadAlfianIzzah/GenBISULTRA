@@ -57,14 +57,16 @@
              <div class="bg-white collapse-inner rounded">
                  <h6 class="collapse-header">Manage User GenBI:</h6>
                  {{-- <a class="collapse-item {{request()->is("write-brain")? "active":""}}" href="{{ route('write-brain') }}">Create my brain</a> --}}
-                 <a class="collapse-item {{ request()->route()->getName() === 'show-komsat'
-    ? 'active'
-    : '' }}"
-                     href="{{ route('show-komsat') }}">
-                     Komsat</a>
+                 @role(['admin', 'super'])
+                     <a class="collapse-item {{ request()->route()->getName() === 'show-komsat'
+                         ? 'active'
+                         : '' }}"
+                         href="{{ route('show-komsat') }}">
+                         Komsat</a>
+                 @endrole
                  <a class="collapse-item {{ request()->route()->getName() === 'daftar-genbi'
-    ? 'active'
-    : '' }}"
+                     ? 'active'
+                     : '' }}"
                      href="{{ route('daftar-genbi') }}"><i class="fas fa-clipboard-check"></i> Daftar Keanggotaan</a>
              </div>
 
@@ -136,8 +138,8 @@
                  <h6 class="collapse-header">Manage my brain:</h6>
                  {{-- <a class="collapse-item {{request()->is("write-brain")? "active":""}}" href="{{ route('write-brain') }}">Create my brain</a> --}}
                  <a class="collapse-item {{ request()->route()->getName() === 'my-post'
-    ? 'active'
-    : '' }}"
+                     ? 'active'
+                     : '' }}"
                      href="{{ route('my-post') }}">My post</a>
 
 
@@ -169,8 +171,8 @@
                      <h6 class="collapse-header">Manage Kegiatan:</h6>
                      {{-- <a class="collapse-item {{request()->is("write-brain")? "active":""}}" href="{{ route('create-kegiatan') }}">Create Kegiatan</a> --}}
                      <a class="collapse-item {{ request()->route()->getName() === 'mypost-kegiatan'
-    ? 'active'
-    : '' }}"
+                         ? 'active'
+                         : '' }}"
                          href="{{ route('mypost-kegiatan') }}">My post</a>
                      <a class="collapse-item {{ request()->segment(2) == 'jenis' ? 'active' : '' }}"
                          href="{{ route('show-jenis-kegiatan') }}"> <i class="fab fa-slack-hash"></i> Type Kegiatan</a>
@@ -200,13 +202,13 @@
              <div class="bg-white collapse-inner rounded">
                  <h6 class="collapse-header">Posts</h6>
                  <a class="collapse-item {{ request()->route()->getName() === 'my-posts'
-    ? 'active'
-    : '' }}"
+                     ? 'active'
+                     : '' }}"
                      href="{{ route('my-posts') }}">My post</a>
                  @role(['admin', 'super'])
                      <a class="collapse-item {{ request()->route()->getName() === 'category-posts'
-    ? 'active'
-    : '' }}"
+                         ? 'active'
+                         : '' }}"
                          href="{{ route('category-posts') }}">
                          <i class="fab fa-slack-hash"></i>
                          Category Post

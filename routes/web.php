@@ -8,6 +8,7 @@ use App\Http\Controllers\DevisiController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GenbiController;
 use App\Http\Controllers\KomsatController;
+use App\Http\Controllers\ListMiCepatController;
 use App\Http\Controllers\MyBrainController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
@@ -52,6 +53,15 @@ Route::middleware(["role:super", "auth", "verified"])->group(function () {
     Route::post("/manage/users", [AdminController::class, "updateRoleUsers"])->name("update-manage-users");
 });
 Route::middleware(['role:admin|super|ketua', "auth", 'verified'])->group(function () {
+    // komsat
+
+    Route::get("/genbi/komsat", [KomsatController::class, "show"])->name("show-komsat");
+    Route::post("/genbi/komsat", [KomsatController::class, "store"])->name("show-komsat");
+    Route::get("/genbi/komsat/edit/{komisat:nama}", [KomsatController::class, "edit"])->name("edit-komsat");
+    Route::patch("/genbi/komsat/edit/{komisat:nama}", [KomsatController::class, "update"])->name("edit-komsat");
+    Route::delete("/genbi/komsat/{komisat:nama}", [KomsatController::class, "delete"])->name("delete-komsat");
+
+    // komsat
     // Kegiatan
     Route::get("/kegiatan/manage/myPost", [ActivityController::class, "myPost"])->name("mypost-kegiatan");
     Route::get("/kegiatan/manage/create", [ActivityController::class, "create"])->name("create-kegiatan");
@@ -101,12 +111,6 @@ Route::middleware(['auth', "verified"])->group(function () {
     Route::post("/genbi/daftar", [GenbiController::class, "store"])->name("daftar-genbi");
     Route::get("/genbi/gabung/departement", [GenbiController::class, "gDepartement"])->name("gabung-departement");
 
-    Route::get("/genbi/komsat", [KomsatController::class, "show"])->name("show-komsat");
-    Route::post("/genbi/komsat", [KomsatController::class, "store"])->name("show-komsat");
-    Route::get("/genbi/komsat/edit/{komisat:nama}", [KomsatController::class, "edit"])->name("edit-komsat");
-    Route::patch("/genbi/komsat/edit/{komisat:nama}", [KomsatController::class, "update"])->name("edit-komsat");
-    Route::delete("/genbi/komsat/{komisat:nama}", [KomsatController::class, "delete"])->name("delete-komsat");
-
     // genbi
 
     // brain post
@@ -121,7 +125,7 @@ Route::middleware(['auth', "verified"])->group(function () {
 
 
     // posts
-    Route::get("/post/manage/create", [PostsController::class, "create"])->name("create-posts");
+    Route::get("/pot/manage/create", [PostsController::class, "create"])->name("create-posts");
     Route::post("/post/manage/create", [PostsController::class, "store"])->name("create-posts");
 
     Route::get("/post/manage/my-post", [PostsController::class, "myPosts"])->name("my-posts");
@@ -143,8 +147,12 @@ Route::middleware(['auth', "verified"])->group(function () {
     })->name("set-profile");
     Route::post("/user/profile/lengkapi-data", [ProfileController::class, "store"])->name("set-profile");
     // close profile
-
-
+    Route::get("/List-Mi-Cepat", [ListMiCepatController::class, "show"])->name("listmi");
+    Route::delete("/List-Mi-Cepat", [ListMiCepatController::class, "destroy"])->name("delete-listmi");
+    Route::post("/List-Mi-Cepat", [ListMiCepatController::class, "store"]);
+    Route::get("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "response"])->name("respon-list");
+    Route::post("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "storeresponse"])->name("respon-list");
+    Route::delete("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "destroyresponse"])->name("delete-respon-list");
 });
 Route::get("users", function () {
     $users = Profile::get();
@@ -164,6 +172,7 @@ Route::get("/post/{posts:slug}", [PostsController::class, "detail"])->name("deta
 
 
 Route::get("/random-picker", [RandomPickerController::class, "show"])->name("random-picker");
+
 Route::view("/aplikasi", "page.aplikasi")->name("aplikasi");
 
 // my brain
