@@ -145,18 +145,22 @@
                                     <td>{{ $l->title }}</td>
                                     <td>{{ $l->deskripsi }}</td>
                                     <td>
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            {{-- <button type="button" class="btn btn-info">Update</button> --}}
-                                            <form action="" method="POST">
-                                                @csrf
-                                                @method("delete")
-                                                <input type="hidden" name="id" value="{{ $l->id }}">
-                                                <button onclick="return confirm('anda yakin ingin menghapus?')"
-                                                    type=" submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                            <a href="{{ route('respon-list', [$l->id]) }}" type="button"
-                                                class="btn btn-primary">List</a>
-                                        </div>
+
+                                        @if (Auth::user()->id == $l->user_id)
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                {{-- <button type="button" class="btn btn-info">Update</button> --}}
+                                                <form action="" method="POST">
+                                                    @csrf
+                                                    @method("delete")
+                                                    <input type="hidden" name="id" value="{{ $l->id }}">
+                                                    <button onclick="return confirm('anda yakin ingin menghapus?')"
+                                                        type=" submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                                <a href="{{ route('respon-list', [$l->id]) }}" type="button"
+                                                    class="btn btn-primary">List</a>
+                                            </div>
+                                        @endif
+
                                     </td>
                                 </tr>
                             @endforeach
