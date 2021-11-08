@@ -55,7 +55,8 @@
                                     <tr>
                                         <td>1</td>
                                         <td>{{ $respon->jawaban }}</td>
-                                        <td>{{ $respon->created_att->diffForHumans() }}</td>
+                                        <td>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($respon->created_at))->diffForHumans() }}
+                                        </td>
 
                                         <td>
                                             @if (Auth::user()->id == $respon->user_id)
