@@ -26,6 +26,20 @@
                     </p>
                 </div>
             </div>
+            <p>
+                <a class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Aplikasi ListMiCepat <span class="badge bg-danger">New</span>
+                </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <p>
+                        Aplikasi ini dibuat alfianizzah , cek <a href="{{ route('listmi') }}"
+                            class="link-primary">Detail App</a>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </x-m-layout-v2>

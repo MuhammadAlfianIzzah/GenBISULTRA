@@ -105,6 +105,14 @@ Route::middleware(['role:admin|super|ketua', "auth", 'verified'])->group(functio
 
 //     return view("page.kegiatan.berita.detail", compact("post"));
 // })->name("detail-berita");
+Route::middleware(["auth"])->group(function () {
+    Route::get("/List-Mi-Cepat", [ListMiCepatController::class, "show"])->name("listmi");
+    Route::delete("/List-Mi-Cepat", [ListMiCepatController::class, "destroy"])->name("delete-listmi");
+    Route::post("/List-Mi-Cepat", [ListMiCepatController::class, "store"]);
+    Route::get("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "response"])->name("respon-list");
+    Route::post("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "storeresponse"])->name("respon-list");
+    Route::delete("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "destroyresponse"])->name("delete-respon-list");
+});
 Route::middleware(['auth', "verified"])->group(function () {
     // genbi
     Route::get("/genbi/daftar", [GenbiController::class, "create"])->name("daftar-genbi");
@@ -147,12 +155,6 @@ Route::middleware(['auth', "verified"])->group(function () {
     })->name("set-profile");
     Route::post("/user/profile/lengkapi-data", [ProfileController::class, "store"])->name("set-profile");
     // close profile
-    Route::get("/List-Mi-Cepat", [ListMiCepatController::class, "show"])->name("listmi");
-    Route::delete("/List-Mi-Cepat", [ListMiCepatController::class, "destroy"])->name("delete-listmi");
-    Route::post("/List-Mi-Cepat", [ListMiCepatController::class, "store"]);
-    Route::get("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "response"])->name("respon-list");
-    Route::post("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "storeresponse"])->name("respon-list");
-    Route::delete("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "destroyresponse"])->name("delete-respon-list");
 });
 Route::get("users", function () {
     $users = Profile::get();

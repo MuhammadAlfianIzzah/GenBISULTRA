@@ -28,8 +28,7 @@
                         <use xlink:href="#info-fill" />
                     </svg>
                     <div>
-                        terima kasih telah mengisi response:<
-                    </div>
+                        terima kasih telah mengisi response:< </div>
 
             @endif
 
@@ -47,7 +46,7 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Jawaban</th>
-                                    <th scope="col">User</th>
+                                    <th scope="col">Tanggal dibuat</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -56,7 +55,7 @@
                                     <tr>
                                         <td>1</td>
                                         <td>{{ $respon->jawaban }}</td>
-                                        <td>{{ $respon->user_id }}</td>
+                                        <td>{{ $respon->created_at }}</td>
 
                                         <td>
                                             @if (Auth::user()->id == $respon->user_id)
