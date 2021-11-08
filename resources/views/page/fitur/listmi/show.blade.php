@@ -158,7 +158,8 @@
                                                 </form>
                                             @endif
                                             <a href="{{ route('respon-list', [$l->id]) }}" type="button"
-                                                class="btn btn-primary"><i class="fas fa-plus"></i> List</a>
+                                                class="btn btn-primary d-flex align-items-center gap-1"><i
+                                                    class="fas fa-plus"></i> List</a>
                                         </div>
 
                                     </td>
