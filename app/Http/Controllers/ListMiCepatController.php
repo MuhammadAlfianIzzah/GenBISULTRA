@@ -11,7 +11,7 @@ class ListMiCepatController extends Controller
 {
     public function show()
     {
-        $list = ListNote::get();
+        $list = ListNote::paginate(5)->fragment('list');
         return view("page.fitur.listmi.show", compact("list"));
     }
     public function store(Request $request)
@@ -34,7 +34,7 @@ class ListMiCepatController extends Controller
         }
         $cek = ResponsList::where("user_id", Auth::user()->id)->exists();
 
-        $responsList = ResponsList::where("idlist", request()->id);
+        $responsList = ResponsList::where("idlist", request()->id)->paginate(7);
         return view("page.fitur.listmi.response.show", [
             "responsList" => $responsList,
             "id" => request()->id,

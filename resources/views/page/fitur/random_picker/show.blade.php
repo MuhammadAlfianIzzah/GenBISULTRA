@@ -3,7 +3,7 @@
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-md-7 justify-content-center d-flex flex-column align-items-center">
-                    <h1 class="display-5 fw-bold">Random Picker</h1>
+                    <h1 class="display-5 fw-bold"><i class="fas fa-random"></i> Random Picker</h1>
                     <p class="col-md-8 fs-4">Aplikasi simple untuk memilih random kandidat yang membantu kamu ketika
                         melakukan
                         events atau pemilihan untuk mencari nama secara acak.😎</p>

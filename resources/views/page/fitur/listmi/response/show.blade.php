@@ -39,23 +39,24 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
 
-                    @if ($responsList->exists())
+                    @if ($cek)
 
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Jawaban</th>
-                                    <th scope="col">Tanggal dibuat</th>
+                                    <th scope="col" class="table-responsif">Tanggal dibuat</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($responsList->get() as $respon)
+                                @foreach ($responsList as $respon)
                                     <tr>
                                         <td>1</td>
                                         <td>{{ $respon->jawaban }}</td>
-                                        <td>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($respon->created_at))->diffForHumans() }}
+                                        <td class="table-responsif">
+                                            {{ \Carbon\Carbon::createFromTimeStamp(strtotime($respon->created_at))->diffForHumans() }}
                                         </td>
 
                                         <td>
@@ -77,6 +78,8 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+
                     @else
                         <div class="alert alert-primary d-flex align-items-center w-100 mt-3" role="alert">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -90,6 +93,11 @@
                             </div>
                         </div>
                     @endif
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 justify-content-center d-flex">
+                    {{ $responsList->links() }}
                 </div>
             </div>
         </div>

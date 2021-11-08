@@ -3,7 +3,7 @@
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-md-7 justify-content-center d-flex flex-column align-items-center">
-                    <h1 class="display-5 fw-bold">ListMiCepat</h1>
+                    <h1 class="display-5 fw-bold"><i class="fas fa-clipboard"></i> ListMiCepat</h1>
                     <p class="col-md-8 fs-4">Aplikasi simple untuk menuliskan list, cocok buat pengajar, atau penilai,
                         untuk mendapat response berupa list</p>
                     <div class="text-small text-danger">
@@ -146,7 +146,7 @@
                                     <td>{{ $l->deskripsi }}</td>
                                     <td>
 
-                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                        <div class="btn-group gap-1" role="group" aria-label="Basic example">
                                             {{-- <button type="button" class="btn btn-info">Update</button> --}}
                                             @if (Auth::user()->id == $l->user_id)
                                                 <form action="" method="POST">
@@ -158,7 +158,7 @@
                                                 </form>
                                             @endif
                                             <a href="{{ route('respon-list', [$l->id]) }}" type="button"
-                                                class="btn btn-primary">List</a>
+                                                class="btn btn-primary"><i class="fas fa-plus"></i> List</a>
                                         </div>
 
                                     </td>
@@ -166,6 +166,8 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $list->links() }}
+
                 </div>
                 <div class="col-lg-4">
                     <div class="h-100 p-5 bg-light border rounded-3">

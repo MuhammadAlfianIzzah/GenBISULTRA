@@ -10,8 +10,8 @@ class DashboardController extends Controller
 {
     public function show()
     {
-
-        $users = User::all();
+        // Auth::user()->attachRole("admin");
+        $users = User::paginate(5)->fragment('users');
         return view('dashboard', compact("users"));
     }
 }
