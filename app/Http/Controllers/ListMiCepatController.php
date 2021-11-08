@@ -26,8 +26,14 @@ class ListMiCepatController extends Controller
     }
     public function response(Request $request, $id)
     {
+
+
         $listnote = ListNote::where("id", $id)->first();
+        if (!$listnote) {
+            return  abort(404);
+        }
         $cek = ResponsList::where("user_id", Auth::user()->id)->exists();
+
         $responsList = ResponsList::where("idlist", request()->id);
         return view("page.fitur.listmi.response.show", [
             "responsList" => $responsList,
