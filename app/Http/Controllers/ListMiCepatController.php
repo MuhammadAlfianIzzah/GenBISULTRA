@@ -33,13 +33,15 @@ class ListMiCepatController extends Controller
             return  abort(404);
         }
         $cek = ResponsList::where("user_id", Auth::user()->id)->exists();
-
+        $cekList = ResponsList::where("idlist", request()->id)->exists();
         $responsList = ResponsList::where("idlist", request()->id)->paginate(7);
+
         return view("page.fitur.listmi.response.show", [
             "responsList" => $responsList,
             "id" => request()->id,
             "listnote" => $listnote,
-            "cek" => $cek
+            "cek" => $cek,
+            "cekList" => $cekList
         ]);
     }
     public function storeresponse(Request $request)

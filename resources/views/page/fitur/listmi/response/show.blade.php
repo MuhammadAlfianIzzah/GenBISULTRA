@@ -39,13 +39,14 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
 
-                    @if ($cek)
+                    @if ($cekList)
 
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Jawaban</th>
+                                    <th>User</th>
                                     <th scope="col" class="table-responsif">Tanggal dibuat</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -53,8 +54,17 @@
                             <tbody>
                                 @foreach ($responsList as $respon)
                                     <tr>
-                                        <td>1</td>
+                                        <td><i class="fas fa-clipboard-list"></i></td>
                                         <td>{{ $respon->jawaban }}</td>
+                                        <td>
+                                            @isset($respon->user->profile->nama)
+                                                <a
+                                                    href="{{ route('users-search', $respon->user->profile->nama) }}">{{ $respon->user->profile->nama }}</a>
+                                            @endisset
+                                            @empty($respon->user->profile->nama)
+                                                {{ $respon->user->name }}
+                                            @endempty
+                                        </td>
                                         <td class="table-responsif">
                                             {{ \Carbon\Carbon::createFromTimeStamp(strtotime($respon->created_at))->diffForHumans() }}
                                         </td>

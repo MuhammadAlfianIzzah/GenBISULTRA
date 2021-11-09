@@ -9,4 +9,8 @@ class ResponsList extends Model
 {
     use HasFactory;
     protected $fillable = ["jawaban", "user_id", "idlist"];
+    public function user()
+    {
+        return $this->belongsTo(User::class, "user_id");
+    }
 }
