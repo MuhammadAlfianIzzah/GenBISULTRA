@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ResponsList extends Model
 {
     use HasFactory;
-    protected $fillable = ["jawaban", "user_id", "idlist"];
+    protected $fillable = ["jawaban", "user_id", "idlist", "uploadfile"];
     public function user()
     {
         return $this->belongsTo(User::class, "user_id");

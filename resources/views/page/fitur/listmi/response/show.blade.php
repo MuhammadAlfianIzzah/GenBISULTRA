@@ -29,9 +29,26 @@
                     </svg>
                     <div>
                         terima kasih telah mengisi response:< </div>
-
             @endif
+            <div class="mt-2">
+                @if ($msg = Session::get('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Hello </strong>{{ $msg }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @else
 
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
     <div class="bg-white">
@@ -47,6 +64,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Jawaban</th>
                                     <th>User</th>
+                                    <th>screenshot</th>
                                     <th scope="col" class="table-responsif">Tanggal dibuat</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -65,6 +83,14 @@
                                                 {{ $respon->user->name }}
                                             @endempty
                                         </td>
+                                        <td>
+
+                                            @if ($respon->uploadfile == 'kosong')
+                                                null
+                                            @else
+                                                <a href="{{ url("/storage/$respon->uploadfile") }}">Link</a>
+                                            @endif
+                                        </td>
                                         <td class="table-responsif">
                                             {{ \Carbon\Carbon::createFromTimeStamp(strtotime($respon->created_at))->diffForHumans() }}
                                         </td>
@@ -78,7 +104,8 @@
                                                         @method("delete")
                                                         <input type="hidden" name="id" value="{{ $respon->id }}">
                                                         <button onclick="return confirm('anda yakin ingin menghapus?')"
-                                                            type=" submit" class="btn btn-danger">Delete</button>
+                                                            type=" submit" class="btn btn-danger"><i
+                                                                class="fas fa-trash"></i></button>
                                                     </form>
 
                                                 </div>
@@ -121,7 +148,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method("POST")
                         <input type="hidden" value="{{ $id }}" name="idlist">
@@ -133,6 +160,10 @@
                             <label for="user_id" class="form-label">Author</label>
                             <input disabled type="text" name="user_id" value="{{ Auth::user()->name }}"
                                 class="form-control" id="user_id">
+                        </div>
+                        <div class="mb-3">
+                            <label for="uploadfile" class="form-label">Screenshot Bukti/pendukung</label>
+                            <input class="form-control" name="uploadfile" type="file" id="uploadfile">
                         </div>
                 </div>
                 <div class="modal-footer">

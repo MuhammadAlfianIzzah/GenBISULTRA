@@ -6,6 +6,7 @@ use App\Models\ListNote;
 use App\Models\ResponsList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ListMiCepatController extends Controller
 {
@@ -26,13 +27,12 @@ class ListMiCepatController extends Controller
     }
     public function response(Request $request, $id)
     {
-
-
+        // dd($id);
         $listnote = ListNote::where("id", $id)->first();
         if (!$listnote) {
             return  abort(404);
         }
-        $cek = ResponsList::where("user_id", Auth::user()->id)->exists();
+        $cek = ResponsList::where("user_id", Auth::user()->id)->where("idlist", request()->id)->exists();
         $cekList = ResponsList::where("idlist", request()->id)->exists();
         $responsList = ResponsList::where("idlist", request()->id)->paginate(7);
 
@@ -46,10 +46,17 @@ class ListMiCepatController extends Controller
     }
     public function storeresponse(Request $request)
     {
+
         $attr =   $request->validate([
             "idlist" => "required",
-            "jawaban" => "required|min:5"
+            "jawaban" => "required|min:5",
+            "uploadfile" => "nullable|mimes:png,jpg,jpeg"
         ]);;
+        if ($request->file("uploadfile")) {
+            $uploadfile = $request->file("uploadfile")->store("user/fitur/listmicepat");
+            $attr["uploadfile"] = $uploadfile;
+        }
+
         $attr["user_id"] = Auth::user()->id;
 
         ResponsList::create($attr);
@@ -62,7 +69,6 @@ class ListMiCepatController extends Controller
         $listnote = ListNote::where("id", $request->id);
         // if($listnote->first()->id);
         // $listnote->first()->user_id
-
         if ($listnote->first()->user_id == Auth::user()->id) {
             $listnote->delete();
             return redirect()->route("listmi")->with("success", "Selamat data berhasil dihapus");
@@ -74,10 +80,13 @@ class ListMiCepatController extends Controller
     {
 
         $responsList = ResponsList::where("id", $request->id);
-        // if($responsList->first()->id);
-        // $responsList->first()->user_id
 
+        if ($responsList->first()->uploadfile) {
+
+            $file = Storage::delete($responsList->first()->uploadfile);
+        }
         if ($responsList->first()->user_id == Auth::user()->id) {
+
             $responsList->delete();
             return back()->with("success", "berhasil menyimpan");
         } else {
