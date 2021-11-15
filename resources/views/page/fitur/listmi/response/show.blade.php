@@ -30,6 +30,7 @@
                     <div>
                         terima kasih telah mengisi response:< </div>
             @endif
+
             <div class="mt-2">
                 @if ($msg = Session::get('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -50,6 +51,14 @@
                 @endif
             </div>
         </div>
+        @if ($cekList)
+            <div class="row justify-content-end">
+
+                <a style="max-width: 150px;" href="{{ route('export-reponListmi', $id) }}"
+                    class="btn btn-success">Export
+                    <i class="fas fa-file-excel"></i></a>
+            </div>
+        @endif
     </div>
     <div class="bg-white">
         <div class="container">

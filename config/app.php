@@ -176,6 +176,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // laravel excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -240,6 +242,9 @@ return [
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         // ...
         // seo
+        // exel
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
     ],
 
 ];

@@ -112,7 +112,9 @@ Route::middleware(["auth"])->group(function () {
     Route::get("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "response"])->name("respon-list");
     Route::post("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "storeresponse"])->name("respon-list");
     Route::delete("/List-Mi-Cepat/response/{id}", [ListMiCepatController::class, "destroyresponse"])->name("delete-respon-list");
+    Route::get("/List-Mi-Cepat/response/{id}/export", [ListMiCepatController::class, "export"])->name("export-reponListmi");
 });
+
 Route::middleware(['auth', "verified"])->group(function () {
     // genbi
     Route::get("/genbi/daftar", [GenbiController::class, "create"])->name("daftar-genbi");
@@ -156,6 +158,7 @@ Route::middleware(['auth', "verified"])->group(function () {
     Route::post("/user/profile/lengkapi-data", [ProfileController::class, "store"])->name("set-profile");
     // close profile
 });
+// Route::get('users/export', [UserController::class, "export"])    ;
 Route::get("users", function () {
     $users = Profile::get();
     return view("page.user.users", compact("users"));

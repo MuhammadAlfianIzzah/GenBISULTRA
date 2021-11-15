@@ -13,4 +13,8 @@ class ResponsList extends Model
     {
         return $this->belongsTo(User::class, "user_id");
     }
+    public function listnote()
+    {
+        return $this->belongsTo(ListNote::class, "idlist");
+    }
 }

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\URL;
                 <div class="py-4 col-lg-8" style="padding: 0 20px">
                     <div class="h3">{!! $profile->nama !!}</div>
                     <div>{!! $profile->user->email !!}</div>
-                    <div class="mt-2 px-3 py-3 h5 border">"{!! $profile->headline ?? 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque aliquid ducimus nulla repellendus.' !!}"</div>
+                    <div class="mt-2 px-3 py-3 h5 border">"{!! $profile->headline ?? 'Belum menuliskan apapun (Silahkan update dihalaman dashboard - profile)' !!}"</div>
 
                 </div>
             </div>
@@ -25,9 +25,8 @@ use Illuminate\Support\Facades\URL;
                     <div class="col-4">
                         <img style="max-height: 150px;object-fit: contain" class="w-100"
                             src="data:image/png;base64, {!! base64_encode(
-    QrCode::format('png')->backgroundColor(0, 0, 0)->color(255, 255, 255, 100)->size(1000)->generate(route('users-search', [' alfianizzah'])),
+    QrCode::format('png')->backgroundColor(0, 0, 0)->color(255, 255, 255, 100)->size(1000)->generate(route('users-search', $profile->nama)),
 ) !!}">
-
                     </div>
                     <div class=" py-2 col-8 ">
                         <div class="h4">Silahkan scan menggunakan aplikasi Qr code</div>

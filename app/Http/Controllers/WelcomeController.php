@@ -17,6 +17,8 @@ class WelcomeController extends Controller
 {
     public function show()
     {
+        
+  
         $client = new Client();
         $dataCovid = json_decode($client->request("GET", "https://data.covid19.go.id/public/api/prov.json", [
             'verify'  => false,

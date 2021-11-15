@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\responsListsExport;
+use App\Exports\UsersExport;
 use App\Models\ListNote;
 use App\Models\ResponsList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ListMiCepatController extends Controller
 {
@@ -64,8 +67,6 @@ class ListMiCepatController extends Controller
     }
     public function destroy(Request $request)
     {
-
-
         $listnote = ListNote::where("id", $request->id);
         // if($listnote->first()->id);
         // $listnote->first()->user_id
@@ -78,7 +79,6 @@ class ListMiCepatController extends Controller
     }
     public function destroyresponse(Request $request)
     {
-
         $responsList = ResponsList::where("id", $request->id);
 
         if ($responsList->first()->uploadfile) {
@@ -92,5 +92,10 @@ class ListMiCepatController extends Controller
         } else {
             return back()->with("errors", "anda tidak berhak");
         }
+    }
+    public function export(Request $request, $id)
+    {
+
+        return Excel::download(new responsListsExport($id), 'invoices.xlsx');
     }
 }
