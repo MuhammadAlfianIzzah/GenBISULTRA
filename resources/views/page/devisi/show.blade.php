@@ -45,9 +45,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($devisi as $dv)
+                    @foreach ($devisi as $key => $dv)
                     <tr>
-                        <th scope="row">1</th>
+                        <th scope="row">{{$key+1}}</th>
                         <td>{{$dv->nama}}</td>
                         <td class="table-responsif">{{$dv->deskripsi}}</td>
 
@@ -67,11 +67,11 @@
                                     @csrf
                                     @method("delete")
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{$dv->nama}}">
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{$dv->id}}">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="delete{{$dv->nama}}" tabindex="-1" aria-labelledby="delete{{$dv->nama}}Label" aria-hidden="true">
+                                    <div class="modal fade" id="delete{{$dv->id}}" tabindex="-1" aria-labelledby="delete{{$dv->id}}Label" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-body">

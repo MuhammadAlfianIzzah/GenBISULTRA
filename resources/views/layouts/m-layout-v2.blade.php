@@ -37,6 +37,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     {{-- <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script> --}}
@@ -87,25 +89,28 @@
             <!-- Section: Social media -->
             <section class="mb-4">
                 <!-- Facebook -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                <a target="_blank" class="btn btn-outline-light btn-floating m-1" href="https://web.facebook.com/genbi.sultra" role="button"><i
                         class="fab fa-facebook-f"></i></a>
 
 
                 <!-- Twitter -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                <a target="_blank" class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/genbisultra" role="button"><i
                         class="fab fa-twitter"></i></a>
 
-                <!-- Google -->
+                {{-- <!-- Google -->
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="fab fa-google"></i></a>
+                        class="fab fa-google"></i></a> --}}
 
                 <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="fab fa-instagram"></i></a>
-
+                <a   target="_blank" class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/genbisultra/?hl=id" role="button"><i
+                        class="fab fa-instagram"></i>
+                    </a>
+                    <a target="_blank" class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/channel/UCaRR_wos33dQCJsWhwAuxgg" role="button"><i
+                        class="fab fa-youtube"></i></a>
+                {{--
                 <!-- Linkedin -->
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="fab fa-linkedin-in"></i></a>
+                        class="fab fa-linkedin-in"></i></a> --}}
 
                 <!-- Github -->
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
@@ -180,6 +185,7 @@
     <script src="{{ asset('js/animation.js') }}"></script>
 
     <script src="{{ asset('js/main.js') }}"></script>
+
     @stack("script")
 
 </body>

@@ -12,7 +12,34 @@
             </div>
         </div>
         <div class="row mt-3">
-            <p>
+            <div class="col-lg-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header text-dark text-center" style="background-color: lightblue"><i
+                            class="fas fa-random"></i>
+                        Aplikasi Random Picker <i class="fas fa-random"></i></div>
+                    <div class="card-body">
+                        Aplikasi ini dibuat alfianizzah , cek
+                    </div>
+                    <p class="card-footer text-center">
+                        <a href="{{ route('random-picker') }}" class="btn btn-outline-dark mt-2">Detail App</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header text-dark text-center" style="background-color: lightblue">
+                        Aplikasi ListMiCepat <span class="badge bg-danger">New</span>
+                    </div>
+                    <div class="card-body">
+                        Aplikasi ini dibuat alfianizzah , cek
+                    </div>
+                    <p class="card-footer text-center">
+                        <a href="{{ route('listmi') }}" class="btn btn-outline-dark mt-2">Detail App</a>
+                    </p>
+                </div>
+
+            </div>
+            {{-- <p>
                 <a class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
                     aria-expanded="false" aria-controls="collapseExample">
                     Aplikasi Random Picker
@@ -39,7 +66,7 @@
                             class="link-primary">Detail App</a>
                     </p>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </x-m-layout-v2>

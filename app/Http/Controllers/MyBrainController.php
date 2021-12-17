@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use PDO;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 
 class MyBrainController extends Controller
@@ -74,9 +75,10 @@ class MyBrainController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate([
+        $attr =  $request->validate([
             "title" => "required|unique:brain_posts,title",
             "content" => "required|min:0",
+            "category" => "required",
             "thumbnail" => "mimes:png,jpg,jpeg|required",
             "hero" => "mimes:png,jpg|required"
         ]);
@@ -87,30 +89,7 @@ class MyBrainController extends Controller
         libxml_use_internal_errors(true);
         $dom->loadHtml(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
         $images = $dom->getElementsByTagName('img');
-        // cek
-        // if ($images->length !== 0) {
-        //     foreach ($images as $k => $img) {
-        //         $data = $img->getAttribute('src');
-        //         if (!empty($data)) {
-        //             list($type, $data) = explode(';', $data);
 
-        //             list($type, $data) = explode(',', $data);
-
-        //             $data = base64_decode($data);
-
-        //             $image_name = "/storage/my-brain/img-post/" . time() . $k . '.png';
-
-        //             $path = public_path() . $image_name;
-
-        //             file_put_contents($path, $data);
-
-        //             $img->removeAttribute('src');
-
-        //             $img->setAttribute('src', $image_name);
-        //         }
-        //     }
-        // }
-        // tanda cek
         foreach ($images as $k => $img) {
             $data = $img->getAttribute('src');
 
@@ -137,32 +116,43 @@ class MyBrainController extends Controller
             }
         }
 
-        $slug = Str::slug($request->title, '-');
+        $attr["slug"] = Str::slug($request->title, '-');
 
-        $content = $dom->saveHTML();
+        $attr["content"] = $content = $dom->saveHTML();
+        $attr["user_id"] = Auth::user()->id;
+        //thumbnail
+        $file_name = time() . "_" .   $request->file("thumbnail")->getClientOriginalName();
+        $photo =   Image::make($request->file("thumbnail"))
+            ->resize(1270, null, function (
+                $constraint
+            ) {
+                $constraint->aspectRatio();
+            })
+            ->encode('jpg', 80);
+        Storage::disk('public')->put('my-brain/thumbnail/' . $file_name, $photo);
+        $attr["thumbnail"] = "my-brain/thumbnail/" . $file_name;
+        //thumbnail
+        //hero
+        $file_name = time() . "_" .   $request->file("hero")->getClientOriginalName();
+        $photo = Image::make($request->file("hero"))
+            ->resize(1270, null, function (
+                $constraint
+            ) {
+                $constraint->aspectRatio();
+            })
+            ->encode('jpg', 80);
+        Storage::disk('public')->put('my-brain/hero/' . $file_name, $photo);
+        $attr["hero"] = "my-brain/hero/" . $file_name;
+        //hero
         try {
-            $thumbnail =  $request->file("thumbnail")->store("my-brain/thumbnail");
-            $hero =  $request->file("hero")->store("my-brain/hero");
-            // dd($hero);
-            BrainPost::create([
-                "title" => $request->title,
-                "category" => $request->category,
-                "content" => $content,
-                "slug" => $slug,
-                "user_id" => Auth::user()->id,
-                "thumbnail" => $thumbnail,
-                "hero" => $hero
-            ]);
+            BrainPost::create($attr);
         } catch (QueryException $e) {
-
-            dd($e);
-            return back()->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
+            return redirect()->route("my-post")->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
         }
-        return back()->with("success", "Post berhasil disimpan");
+        return redirect()->route("my-post")->with("success", "Post berhasil disimpan");
     }
     public function showAll()
     {
-
         $posts = BrainPost::where("user_id", Auth::user()->id)->get();
         if (request()->user()->hasRole(["admin", "super"])) {
             $posts = BrainPost::all();
@@ -175,6 +165,9 @@ class MyBrainController extends Controller
         if ($brainPost->user_id === Auth::user()->id | request()->user()->hasRole(["dpt_head", "super"])) {
             if (Storage::exists($brainPost->thumbnail)) {
                 Storage::delete($brainPost->thumbnail);
+            }
+            if (Storage::exists($brainPost->hero)) {
+                Storage::delete($brainPost->hero);
             }
             $doc = new DOMDocument();
             libxml_use_internal_errors(true);
@@ -251,11 +244,11 @@ class MyBrainController extends Controller
         $old = [];
         $new = [];
         // validation
-        $request->validate([
+        $attr =  $request->validate([
             "title" => "required",
             "content" => "required|min:0",
-            "thumbnail" => "mimes:png,jpg,jpeg",
-            "hero" => "mimes:png,jpg,jpeg"
+            "thumbnail" => "mimes:png,jpg,jpeg|max:1040",
+            "hero" => "mimes:png,jpg,jpeg|max:1040"
         ]);
         // end validation
         // handle thumbnail
@@ -334,9 +327,8 @@ class MyBrainController extends Controller
             }
         }
 
-        $slug = Str::slug($request->title, '-');
-
-        $content = $dom->saveHTML();
+        $attr["slug"] = $slug = Str::slug($request->title, '-');
+        $attr["content"] =  $content = $dom->saveHTML();
         try {
             $brainPost->update([
                 "title" => $request->title,
@@ -349,9 +341,8 @@ class MyBrainController extends Controller
                 "updated_at" => Carbon::now()
             ]);
         } catch (QueryException $e) {
-            dd($e);
-            return back()->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
+            return redirect()->route("my-post")->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
         }
-        return redirect("/my-brain/manage/my-post")->with("success", "Berhasil Update");
+        return redirect()->route("my-post")->with("success", "Berhasil Update");
     }
 }

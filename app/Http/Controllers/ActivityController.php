@@ -88,8 +88,8 @@ class ActivityController extends Controller
             "devisi" => "required",
             "type_kegiatan" => "required",
             "body" => "required|min:10",
-            "thumbnail" => "required|mimes:png,jpg",
-            "hero" => "required|mimes:png,jpg",
+            "thumbnail" => "required|mimes:png,jpg|max:1040",
+            "hero" => "required|mimes:png,jpg|max:1040",
         ]);
         $body = $request->body;
         $dom = new \DomDocument();
@@ -242,8 +242,8 @@ class ActivityController extends Controller
             "devisi" => "required",
             "type_kegiatan" => "required",
             "body" => "required|min:10",
-            "thumbnail" => "mimes:png,jpg",
-            "hero" => "mimes:png,jpg",
+            "thumbnail" => "mimes:png,jpg|max:1040",
+            "hero" => "mimes:png,jpg|max:1040",
         ]);
         // end validation
         // handle thumbnail

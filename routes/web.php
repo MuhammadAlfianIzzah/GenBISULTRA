@@ -12,6 +12,7 @@ use App\Http\Controllers\ListMiCepatController;
 use App\Http\Controllers\MyBrainController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QrcodeController;
 use App\Http\Controllers\RandomPickerController;
 use App\Http\Controllers\TypeActivityController;
 use App\Http\Controllers\UserController;
@@ -128,14 +129,14 @@ Route::middleware(['auth', "verified"])->group(function () {
     Route::post("/my-brain/manage/create", [MyBrainController::class, "store"])->name("write-brain");
     Route::get("/my-brain/edit/{brain_post:slug}", [MyBrainController::class, "edit"])->name("edit-brain");
     Route::put("/my-brain/edit/{brain_post:slug}", [MyBrainController::class, "update"])->name("update-brain");
-    Route::get("/my-brain/manage/my-post", [MyBrainController::class, "showAll"])->name("my-post");
+    Route::get("/my-brain/manage/my-post", [MyBrainController::class, "showAll"])->name("my-brainPost");
     Route::delete("/delete-brain/{brain_post:slug}", [MyBrainController::class, "delete"])->name("delete-brain");
 
     // close brain post
 
 
     // posts
-    Route::get("/pot/manage/create", [PostsController::class, "create"])->name("create-posts");
+    Route::get("/post/manage/create", [PostsController::class, "create"])->name("create-posts");
     Route::post("/post/manage/create", [PostsController::class, "store"])->name("create-posts");
 
     Route::get("/post/manage/my-post", [PostsController::class, "myPosts"])->name("my-posts");
@@ -174,7 +175,8 @@ Route::get("/tentangKami/info", function () {
     return view("page.aboutUs");
 })->name("tentang-kami");
 Route::get("/post/{posts:slug}", [PostsController::class, "detail"])->name("detail-posts");
-
+Route::get("/qrcode/generate", [QrcodeController::class, "show"])->name("show-qrcode");
+Route::post("/qrcode/generate", [QrcodeController::class, "generate"])->name("show-qrcode");
 
 Route::get("/random-picker", [RandomPickerController::class, "show"])->name("random-picker");
 

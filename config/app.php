@@ -178,7 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         // laravel excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
-
+        Intervention\Image\ImageServiceProvider::class
     ],
 
     /*
@@ -244,7 +244,7 @@ return [
         // seo
         // exel
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-
+        'Image' => Intervention\Image\Facades\Image::class
     ],
 
 ];

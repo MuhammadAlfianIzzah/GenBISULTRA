@@ -110,8 +110,8 @@
                  aria-labelledby="headingUtilities" data-parent="#accordionSidebar" style="">
                  <div class="bg-white collapse-inner rounded">
                      <h6 class="collapse-header">Manage users:</h6>
-                     <a class="collapse-item {{ request()->is('my-post') ? 'active' : '' }}"
-                         href="{{ route('my-post') }}">Role</a>
+                     <a class="collapse-item {{ request()->is('my-brain') ? 'active' : '' }}"
+                         href="{{ route('my-brain') }}">Role</a>
                      <a class="collapse-item {{ request()->is('manage/users') ? 'active' : '' }}"
                          href="{{ route('manage-user') }}"> <i class="fas fa-user-tag"></i> Set Role users</a>
                  </div>
@@ -131,16 +131,16 @@
              <i class="fas fa-brain"></i>
              <span>My Brain</span>
          </a>
-         <div id="my-brain" class="collapse {{ request()->segment(1) == 'my-brain' ? 'show' : '' }}"
+         <div id="my-brain" class="collapse {{ request()->segment(1) == 'my-brainPost' ? 'show' : '' }}"
              aria-labelledby="headingUtilities" data-parent="#accordionSidebar" style="">
 
              <div class="bg-white collapse-inner rounded">
                  <h6 class="collapse-header">Manage my brain:</h6>
                  {{-- <a class="collapse-item {{request()->is("write-brain")? "active":""}}" href="{{ route('write-brain') }}">Create my brain</a> --}}
-                 <a class="collapse-item {{ request()->route()->getName() === 'my-post'
+                 <a class="collapse-item {{ request()->route()->getName() === 'my-brainPost'
                      ? 'active'
                      : '' }}"
-                     href="{{ route('my-post') }}">My post</a>
+                     href="{{ route('my-brainPost') }}">My post</a>
 
 
              </div>

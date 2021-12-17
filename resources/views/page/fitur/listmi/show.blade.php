@@ -1,4 +1,5 @@
 <x-m-layout-v2>
+
     <div class="p-5 mb-4 bg-light rounded-3 mt-r shadow-sm">
         <div class="container py-5">
             <div class="row align-items-center">
@@ -105,22 +106,38 @@
             <!-- Button trigger modal -->
             <div class="row">
                 @if ($msg = Session::get('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Hello </strong>{{ $msg }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"
                             aria-label="Close"></button>
-                    </div>
+                    </div> --}}
+                    <script>
+                        Swal.fire({
+                            title: 'Success!',
+                            text: @json($msg),
+                            icon: 'success',
+                            confirmButtonText: 'Oke'
+                        })
+                    </script>
                 @else
 
                 @endif
                 @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                    <script>
+                        let errors = @json($errors->all());
+                        let text = '';
+                        errors.forEach((e) => {
+                            text += `${e}<br>`;
+                        })
+
+                        Swal.fire({
+                            title: 'error!',
+                            html: text,
+                            icon: 'error',
+                            confirmButtonText: 'Oke'
+                        })
+                    </script>
+
                 @endif
                 <div class="col-12">
                     <button type="button" class="btn btn-primary mb-4" style="max-width: 200px;" data-bs-toggle="modal"

@@ -1,6 +1,4 @@
 <x-dash-layout>
-
-
     <x-slot name="title_page">Create My brain</x-slot>
     <div class="bg-white container py-5 mx-3 d-flex justify-content-center ">
         <div class="col-lg-11">

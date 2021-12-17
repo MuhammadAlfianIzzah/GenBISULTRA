@@ -86,9 +86,9 @@ class PostsController extends Controller
         $attr =   $request->validate([
             "title" => "required|min:8",
             "category_id" => "required",
-            "hero" => "required|mimes:png,jpg,jpeg",
+            "hero" => "required|mimes:png,jpg,jpeg|max:1040",
             "content" => "required",
-            "thumbnail" => "required|mimes:png,jpg,jpeg",
+            "thumbnail" => "required|mimes:png,jpg,jpeg|max:1040",
         ]);
         $content = $request->content;
 
@@ -121,21 +121,15 @@ class PostsController extends Controller
                 $img->setAttribute('src', "/storage" .  $image_name);
             }
         }
-        $slug = Str::slug($request->title, '-');
+        $attr["slug"] = Str::slug($request->title, '-');
 
-        $content = $dom->saveHTML();
+        $attr["content"] = $dom->saveHTML();
+        $attr["thumbnail"] =  $request->file("thumbnail")->store("posts/thumbnail");
+        $attr["hero"] =  $request->file("hero")->store("posts/hero");
+        $attr["user_id"] = Auth::user()->id;
         try {
-            $thumbnail =  $request->file("thumbnail")->store("posts/thumbnail");
-            $hero =  $request->file("hero")->store("posts/hero");
-            Posts::create([
-                "title" => $request->title,
-                "category_id" => $request->category_id,
-                "content" => $content,
-                "slug" => $slug,
-                "user_id" => Auth::user()->id,
-                "thumbnail" => $thumbnail,
-                "hero" => $hero
-            ]);
+
+            Posts::create($attr);
         } catch (QueryException $e) {
             // dd($e);
             return back()->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
@@ -203,9 +197,9 @@ class PostsController extends Controller
         $request->validate([
             "title" => "required",
             "content" => "required|min:0",
-            "thumbnail" => "mimes:png,jpg,jpeg",
+            "thumbnail" => "mimes:png,jpg,jpeg|max:1040",
             "category" => "required",
-            "hero" => "mimes:png,jpg,jpeg"
+            "hero" => "mimes:png,jpg,jpeg|max:1040"
         ]);
         // end validation
         // handle thumbnail

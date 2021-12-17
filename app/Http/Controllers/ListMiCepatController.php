@@ -72,7 +72,7 @@ class ListMiCepatController extends Controller
         // $listnote->first()->user_id
         if ($listnote->first()->user_id == Auth::user()->id) {
             $listnote->delete();
-            return redirect()->route("listmi")->with("success", "Selamat data berhasil dihapus");
+            return redirect()->route("listmi")->with("success", "Selamat data berhasil dihapus")->with("success", "Selamat berhasil menghapus data");
         } else {
             return redirect()->route("listmi")->with("errors", "anda tidak berhak");
         }

@@ -15,11 +15,11 @@ class ProfileController extends Controller
 {
     public function store(Request $request)
     {
-        $attr =   $request->validate([
+        $attr = $request->validate([
             "nama" => "required|min:8",
             "biodata" => "required|min:8",
-            "hero" => "required|mimes:png,jpg,jpeg",
-            "foto_profile" => "required|mimes:png,jpg,jpeg",
+            "hero" => "required|mimes:png,jpg,jpeg|max:1040",
+            "foto_profile" => "required|max:1040|mimes:png,jpg,jpeg",
         ]);
         $content = $request->biodata;
         $dom = new \DomDocument();
@@ -28,39 +28,27 @@ class ProfileController extends Controller
         $images = $dom->getElementsByTagName('img');
         foreach ($images as $k => $img) {
             $data = $img->getAttribute('src');
-
             if ((strpos("$data", 'data:image/png;base64') !== false) || (strpos("$data", 'data:image/jpeg;base64') !== false) || strpos("$data", 'data:image/gif;base64') !== false) {
                 // dd("base 64");
                 list($type, $data) = explode(';', $data);
-
                 list($type, $data) = explode(',', $data);
                 $data = base64_decode($data);
-
                 $image_name = "/storage/user/biodata/" . time() . $k . '.png';
-
                 $path = public_path() . $image_name;
-
                 file_put_contents($path, $data);
-
                 $img->removeAttribute('src');
 
                 $img->setAttribute('src', $image_name);
             }
         }
-        $slug = Str::slug($request->nama, '-');
+        $attr["slug"] = Str::slug($request->nama, '-');
+        $attr["biodata"] = $dom->saveHTML();
+        $attr["foto_profile"] =  $request->file("foto_profile")->store("user/profile");
+        $attr["hero"] =  $request->file("hero")->store("user/hero");
+        $attr["user_id"] = Auth::user()->id;
 
-        $content = $dom->saveHTML();
         try {
-            $profile =  $request->file("foto_profile")->store("user/profile");
-            $hero =  $request->file("hero")->store("user/hero");
-            Profile::create([
-                "nama" => $request->nama,
-                "biodata" => $content,
-                "slug" => $slug,
-                "hero" => $hero,
-                "foto_profile" => $profile,
-                "user_id" => Auth::user()->id
-            ]);
+            Profile::create($attr);
         } catch (QueryException $e) {
             dd($e);
             return back()->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
@@ -75,9 +63,9 @@ class ProfileController extends Controller
         $profile = Profile::where("user_id", Auth::user()->id)->first();
         $attr = $request->validate([
             "nama" => "min:8",
-            "foto_profile" => "mimes:png,jpg",
+            "foto_profile" => "mimes:png,jpg|max:1040",
             "biodata" => "required|min:8",
-            "hero" => "mimes:png,jpg,jpeg",
+            "hero" => "mimes:png,jpg,jpeg|max:1040",
         ]);
         // end validation
         // handle thumbnail
