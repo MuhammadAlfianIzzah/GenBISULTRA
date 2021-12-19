@@ -341,8 +341,8 @@ class MyBrainController extends Controller
                 "updated_at" => Carbon::now()
             ]);
         } catch (QueryException $e) {
-            return redirect()->route("my-post")->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
+            return redirect()->route("my-brainPost")->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
         }
-        return redirect()->route("my-post")->with("success", "Berhasil Update");
+        return redirect()->route("my-brainPost")->with("success", "Berhasil Update");
     }
 }

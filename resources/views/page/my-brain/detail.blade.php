@@ -30,18 +30,18 @@
             style="background-image: url({{ asset('img/header.jpg') }});background-attachment: fixed;">
             <div class="p-5 px-0 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
                 <div class="container mb-3 py-5 d-flex flex-column align-items-center bg-lapis">
-                    <div class="h1 fw-normal text-center text-white shadow-sm">{{ $post->title }} <i
+                    <div class="h1 fw-normal text-center text-white shadow-sm">{{ Str::ucfirst($post->title) }} <i
                             class="fas fa-feather"></i></div>
 
 
 
-                    <h6 class="text-white">
+                    {{-- <h6 class="text-white">
                         @if ($post->approval === 'accept')
                             <span class="text-success">[<i class="fas fa-check-square"></i>Disetujui]</span>
                         @else
                             <span class="text-danger">[<i class="fas fa-clock"></i> Menunggu persetujuan]</span>
                         @endif
-                    </h6>
+                    </h6> --}}
                     {{-- <div class="d-flex gap-2 mt-2">
                         <a href="{{ route('my-brain', ['category' => 'buku tahunan']) }}"
                             class="btn btn-primary btn-lg fs-6 shadow-sm">
@@ -62,10 +62,10 @@
         <div class="row g-2">
             <div class="col-md-9 col-12 overflow-hidden">
                 <div class="container">
-                    <div class="d-flex justify-content-between align-content-center">
+                    {{-- <div class="d-flex justify-content-between align-content-center">
                         <h1 class="blog-post-title py-3">{{ Str::ucfirst($post->title) }}</h1>
 
-                    </div>
+                    </div> --}}
                     <img style="max-height: 300px;object-fit: cover;width: 100%;object-position: center"
                         src="{{ asset("storage/$post->hero") }}" alt="" class="img-thumbnail">
                 </div>

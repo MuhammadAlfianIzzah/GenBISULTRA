@@ -4,16 +4,16 @@
 
         <div class="p-5 px-0 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
             <div class="container py-5 d-flex flex-column align-items-center bg-lapis">
-                <div class="h1 fw-bold text-white shadow-sm"><i class="fas fa-newspaper"></i> {{ $post->title }}</div>
+                <div class="h1 fw-bold text-white shadow-sm">{{ Str::ucfirst($post->title) }}</div>
 
-                @if ($post->is_active === 1)
+                {{-- @if ($post->is_active === 1)
                     <span class="text-success">[<i class="fas fa-check-square"></i>Disetujui]</span>
                 @else
                     <span class="text-danger">[<i class="fas fa-clock"></i> Menunggu persetujuan]</span>
 
 
-                @endif
-                <div class="d-flex gap-2 mt-2">
+                @endif --}}
+                {{-- <div class="d-flex gap-2 mt-2">
                     @foreach ($kategory as $kt)
                         <a href="{{ route('show-posts', ['category' => $kt->id]) }}"
                             class="btn btn-primary {{ Request::get('category') == $kt->id ? 'active' : '' }}"
@@ -43,7 +43,7 @@
                     @endforeach
 
 
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="s-layer"></div>
@@ -55,18 +55,14 @@
         <div class="row g-5 justify-content-center">
             <div class="col-md-11 col-12 overflow-hidden">
                 <article class="blog-post">
-                    <div class="d-flex justify-content-between align-content-center">
-                        <h2 class="blog-post-title">{{ $post->title }}</h2>
-
-                    </div>
-                    <img style="max-height: 300px;object-fit: cover;width: 100%;object-position: center"
-                        src="{{ asset("storage/$post->thumbnail") }}" alt="" class="img-thumbnail">
-
-                    <p class="blog-post-meta">Genbi, <span class="text-danger">{{ $post->created_at }}</span> by <a
-                            href="{{ route('users-search', [$post->user->name]) }}">{{ $post->user->name }}</a></p>
-
+                        <div class="alert alert-primary" role="alert">
+                         Genbi, <span class="text-danger">{{ $post->created_at }}</span> by <a
+                                href="{{ route('users-search', [$post->user->name]) }}">{{ $post->user->name }}</a>
+                          </div>
+                          <img style="max-height: 300px;object-fit: cover;width: 100%;object-position: center"
+                          src="{{ asset("storage/$post->thumbnail") }}" alt="" class="img-thumbnail">
                 </article>
-                <article class="blog-post content">
+                <article class="blog-post content pb-4">
                     {!! $post->content !!}
                 </article>
                 <div class="row mb-2">

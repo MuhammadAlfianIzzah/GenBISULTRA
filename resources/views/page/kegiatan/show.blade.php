@@ -91,7 +91,7 @@
 
         </div>
 
-        <div class="album py-4 bg-light">
+        <div class="album pb-4 bg-light">
             <div class="container">
                 <form class="input-group" method="GET">
                     <input type="text" class="form-control shadow-sm" placeholder="Search for..." name="search">
@@ -112,7 +112,7 @@
                     </span>
                 </form>
 
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
                     @forelse ($posts as $post)
                     <div class="col">
                         <div class="card shadow-sm">
@@ -126,7 +126,7 @@
                             </figure>
 
                             <div class="card-body">
-                                <?php 
+                                <?php
                         $filter =preg_replace("/<img[^>]+>/", "", $post->body);
                             $filterh1= strip_tags($filter);
                          ?>

@@ -206,6 +206,7 @@ class ActivityController extends Controller
             if (Storage::exists($activities->thumbnail)) {
                 Storage::delete($activities->thumbnail);
             }
+
             if (Storage::exists($activities->hero)) {
                 Storage::delete($activities->hero);
             }
