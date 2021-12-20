@@ -89,32 +89,32 @@
             <!-- Section: Social media -->
             <section class="mb-4">
                 <!-- Facebook -->
-                <a target="_blank" class="btn btn-outline-light btn-floating m-1" href="https://web.facebook.com/genbi.sultra" role="button"><i
-                        class="fab fa-facebook-f"></i></a>
+                <a target="_blank" class="btn btn-outline-light btn-floating m-1"
+                    href="https://web.facebook.com/genbi.sultra" role="button"><i class="fab fa-facebook-f"></i></a>
 
 
                 <!-- Twitter -->
-                <a target="_blank" class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/genbisultra" role="button"><i
-                        class="fab fa-twitter"></i></a>
+                <a target="_blank" class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/genbisultra"
+                    role="button"><i class="fab fa-twitter"></i></a>
 
                 {{-- <!-- Google -->
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
                         class="fab fa-google"></i></a> --}}
 
                 <!-- Instagram -->
-                <a   target="_blank" class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/genbisultra/?hl=id" role="button"><i
-                        class="fab fa-instagram"></i>
-                    </a>
-                    <a target="_blank" class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/channel/UCaRR_wos33dQCJsWhwAuxgg" role="button"><i
+                <a target="_blank" class="btn btn-outline-light btn-floating m-1"
+                    href="https://www.instagram.com/genbisultra/?hl=id" role="button"><i class="fab fa-instagram"></i>
+                </a>
+                <a target="_blank" class="btn btn-outline-light btn-floating m-1"
+                    href="https://www.youtube.com/channel/UCaRR_wos33dQCJsWhwAuxgg" role="button"><i
                         class="fab fa-youtube"></i></a>
-                {{--
-                <!-- Linkedin -->
+                {{-- <!-- Linkedin -->
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
                         class="fab fa-linkedin-in"></i></a> --}}
 
                 <!-- Github -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="fab fa-github"></i></a>
+                <a target="_blank" class="btn btn-outline-light btn-floating m-1"
+                    href="https://github.com/MuhammadAlfianIzzah" role="button"><i class="fab fa-github"></i></a>
             </section>
             <!-- Section: Social media -->
         </div>
