@@ -600,8 +600,8 @@ footer {
 }
 
 #loading {
-  -webkit-animation: berputar  1200ms infinite ease;
-          animation: berputar  1200ms infinite ease;
+  -webkit-animation: berputar 1200ms infinite ease;
+          animation: berputar 1200ms infinite ease;
   -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
 }

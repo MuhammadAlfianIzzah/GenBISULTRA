@@ -188,7 +188,7 @@
                     <h1 class="text-white" style="transform: scale(.8)">Selamat Datang <br> di Website <br> GenBI
                         SulTra</h1>
                 </div>
-                <div class=" d-md-block col-md-6">
+                {{-- <div class=" d-md-block col-md-6">
                     <div class="h-100 p-2 text-dark rounded-3" style="background: rgba( 255, 255, 255, 0.65 );
                     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
                     backdrop-filter: blur( 4px );
@@ -225,6 +225,30 @@
                                     </div>
                                 @endif
                             @endforeach
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="d-md-block col-md-6" style="z-index: 888" style="background: rgba(255, 6, 6, 1);
+                box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                backdrop-filter: blur( 9.5px );
+                -webkit-backdrop-filter: blur( 9.5px );
+                border-radius: 10px;
+                border: 1px solid rgba( 255, 255, 255, 0.18 );">
+                    <div class="card" style="background: rgba( 255, 255, 255, .6 );
+                    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                    backdrop-filter: blur( 4px );
+                    -webkit-backdrop-filter: blur( 4px );
+                    border-radius: 10px;
+                    border: 1px solid rgba( 255, 255, 255, 0.18 );">
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <strong class="text-danger">NEW!</strong> Aplikasi buatan GenBI
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                        <img src="{{ asset('img/APP.png') }}" class="card-img-top" alt="appgenbisultra"
+                            style="transform: scale(.8)">
+                        <div class="card-body text-center">
+                            <a href="{{ route('aplikasi') }}" class="w-100 btn btn-light text-bold">Go to App</a>
                         </div>
                     </div>
                 </div>
