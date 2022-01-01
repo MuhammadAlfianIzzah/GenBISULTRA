@@ -37,6 +37,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    @stack("style")
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
@@ -50,7 +51,9 @@
         <div overflow=""></div>
     </amp-ad>
     @include('components.main.narbar-v2')
-    {{ $slot }}
+    <div class="mt-4">
+        {{ $slot }}
+    </div>
     {{-- <footer>
 
         <div class="row">

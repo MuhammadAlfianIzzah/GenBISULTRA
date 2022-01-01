@@ -32,7 +32,8 @@
                         Aplikasi ListMiCepat <span class="badge bg-danger">New</span>
                     </div>
                     <div class="card-body">
-                        Aplikasi ini dibuat alfianizzah , cek
+                        Sering lupa schedule? pingin buat daftar belanja? coba deh aplikasi ini biar kamu tidak sering
+                        lupa lagi!
                     </div>
                     <p class="card-footer text-center">
                         <a href="{{ route('listmi') }}" class="btn btn-outline-dark mt-2">Detail App</a>
@@ -43,13 +44,26 @@
             <div class="col-lg-4">
                 <div class="card bg-light mb-3">
                     <div class="card-header text-dark text-center" style="background-color: lightblue"><i
-                            class="fas fa-random"></i>
-                        Aplikasi Image compress <i class="fas fa-random"></i></div>
+                            class="fas fa-compress-arrows-alt"></i>
+                        Aplikasi Image compress <i class="fas fa-compress-arrows-alt"></i></div>
                     <div class="card-body">
                         compress img
                     </div>
                     <p class="card-footer text-center">
                         <a href="{{ route('img-compress.show') }}" class="btn btn-outline-dark mt-2">Detail App</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header text-dark text-center" style="background-color: lightblue"><i
+                            class="fas fa-qrcode"></i>
+                        Aplikasi QrCode Generator <i class="fas fa-qrcode"></i></div>
+                    <div class="card-body">
+                        Generate Qrcode
+                    </div>
+                    <p class="card-footer text-center">
+                        <a href="{{ route('show-qrcode') }}" class="btn btn-outline-dark mt-2">Detail App</a>
                     </p>
                 </div>
             </div>

@@ -59,8 +59,8 @@
                     <label for="title" class="col-sm-2 col-form-label">Kategori</label>
                     <div class="col-sm-10">
                         <select class="form-select" aria-label="Default select example" name="category">
-                            <option value="buku tahunan">Buku Tahunan</option>
-                            <option value="informasi">My teori</option>
+                            <option value="karyaku">karyaku</option>
+                            <option value="my teori">My teori</option>
                         </select>
                     </div>
                 </div>

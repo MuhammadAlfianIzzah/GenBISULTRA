@@ -55,9 +55,9 @@
                     <div class="col-sm-10">
                         <select class="form-select" aria-label="Default select example" name="category">
 
-                            <option value="buku tahunan"
-                                {{ old('category', $posts->category) == 'buku tahunan' ? 'selected' : '' }}>Buku
-                                Tahunan</option>
+                            <option value="karyaku"
+                                {{ old('category', $posts->category) == 'karyaku' ? 'selected' : '' }}>Karyaku
+                            </option>
 
                             <option value="my teori"
                                 {{ old('category', $posts->category) == 'my teori' ? 'selected' : '' }}>My teori
