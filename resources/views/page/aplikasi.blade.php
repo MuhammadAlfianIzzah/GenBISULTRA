@@ -18,7 +18,8 @@
                             class="fas fa-random"></i>
                         Aplikasi Random Picker <i class="fas fa-random"></i></div>
                     <div class="card-body">
-                        Aplikasi ini dibuat alfianizzah , cek
+                        Aplikasi simple untuk memilih random kandidat yang membantu kamu ketika melakukan events atau
+                        pemilihan untuk mencari nama secara acak.😎
                     </div>
                     <p class="card-footer text-center">
                         <a href="{{ route('random-picker') }}" class="btn btn-outline-dark mt-2">Detail App</a>
@@ -38,6 +39,19 @@
                     </p>
                 </div>
 
+            </div>
+            <div class="col-lg-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header text-dark text-center" style="background-color: lightblue"><i
+                            class="fas fa-random"></i>
+                        Aplikasi Image compress <i class="fas fa-random"></i></div>
+                    <div class="card-body">
+                        compress img
+                    </div>
+                    <p class="card-footer text-center">
+                        <a href="{{ route('img-compress.show') }}" class="btn btn-outline-dark mt-2">Detail App</a>
+                    </p>
+                </div>
             </div>
             {{-- <p>
                 <a class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"

@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DevisiController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GenbiController;
+use App\Http\Controllers\ImgCompressController;
 use App\Http\Controllers\KomsatController;
 use App\Http\Controllers\ListMiCepatController;
 use App\Http\Controllers\MyBrainController;
@@ -181,6 +182,8 @@ Route::post("/qrcode/generate", [QrcodeController::class, "generate"])->name("sh
 Route::get("/random-picker", [RandomPickerController::class, "show"])->name("random-picker");
 
 Route::view("/aplikasi", "page.aplikasi")->name("aplikasi");
+Route::get("/img-compress", [ImgCompressController::class, "show"])->name("img-compress.show");
+Route::post("/img-compress", [ImgCompressController::class, "compress"])->name("img-compress.compress");
 
 // my brain
 Route::get("/my-brain", [MyBrainController::class, "show"])->name("my-brain");
