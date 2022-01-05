@@ -199,7 +199,7 @@
              </div>
          </div>
      </nav>
-     <nav class="navbar navbar-expand-lg bg-primary">
+     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
          <div class="container">
              <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas"
                  data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
@@ -224,11 +224,12 @@
                  <ul class="navbar-nav">
 
                      <li class="nav-item">
-                         <a class="nav-link top-nav active" aria-current="page" href="{{ route('home') }}">Home</a>
+                         <a class="nav-link top-nav {{ Request::routeIs('home') ? 'active' : '' }}"
+                             aria-current="page" href="{{ route('home') }}">Home</a>
                      </li>
                      <li class="nav-item dropdown">
-                         <a class="nav-link dropdown-toggle top-nav" href="#" id="navbarDropdown" role="button"
-                             data-bs-toggle="dropdown" aria-expanded="false">
+                         <a class="nav-link dropdown-toggle top-nav {{ Request::routeIs('bea-info') ? 'active' : '' }}"
+                             href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                              Posts
                          </a>
                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -244,7 +245,8 @@
 
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link top-nav" href="{{ route('show-kegiatan') }}">Kegiatan</a>
+                         <a class="nav-link top-nav {{ Request::routeIs('show-kegiatan') ? 'active' : '' }}"
+                             href="{{ route('show-kegiatan') }}">Kegiatan</a>
 
 
                      </li>

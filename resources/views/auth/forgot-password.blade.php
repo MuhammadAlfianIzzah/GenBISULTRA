@@ -36,7 +36,7 @@
 </x-guest-layout> --}}
 <x-main-layout>
     @push('css')
-    <link rel="stylesheet" href="{{ asset('css/sb-admin2.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/sb-admin2.min.css') }}">
     @endpush
 
     <div class="container mt-5">
@@ -50,12 +50,16 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block"
+                                style="background-size: cover;background-position: center;background-image: url({{ asset('img/forgot.jpeg') }});">
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
-                                        <p class="mb-4">No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
+                                        <p class="mb-4">No problem. Just let us know your email address and we
+                                            will email you a password reset link that will allow you to choose a new
+                                            one.</p>
 
                                     </div>
                                     <!-- Session Status -->
@@ -67,7 +71,9 @@
                                     <form class="user" method="POST" action="{{ route('password.email') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <input name="email" type="email" class="form-control form-control-user" id="email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input name="email" type="email" class="form-control form-control-user"
+                                                id="email" aria-describedby="emailHelp"
+                                                placeholder="Enter Email Address...">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Reset Password
@@ -75,11 +81,13 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('register') }}">Create an Account!</a>
+                                        <a class="small" href="{{ route('register') }}">Create an
+                                            Account!</a>
 
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
+                                        <a class="small" href="{{ route('login') }}">Already have an account?
+                                            Login!</a>
 
                                     </div>
                                 </div>

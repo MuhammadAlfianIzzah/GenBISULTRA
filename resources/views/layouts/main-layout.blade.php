@@ -16,7 +16,7 @@
     @stack('css')
     {!! ReCaptcha::htmlScriptTagJsApi() !!}
 
-    <title>Hello, world!</title>
+    <title>{{ $title ?? 'Halaman GenBI SULTRA' }}</title>
 </head>
 
 <body>

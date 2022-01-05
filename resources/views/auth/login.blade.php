@@ -55,7 +55,7 @@
     @push('css')
         <link rel="stylesheet" href="{{ asset('css/sb-admin2.min.css') }}">
     @endpush
-
+    <x-slot name="title">Halaman Login</x-slot>
     <div class="container mt-5">
 
         <!-- Outer Row -->
@@ -67,7 +67,9 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block"
+                                style="background-size: cover;background-position: center;background-image: url({{ asset('img/login.jpeg') }});">
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
