@@ -15,7 +15,7 @@
 
     </style>
     {{-- {{dd($profile->foto_profile)}} --}}
-    <div class="bg-white container py-3 mx-3 row">
+    <div class="bg-white container py-3 mx-3 row mt-4">
         <div class="container">
             @if (empty($profile))
                 <div class="text-center">

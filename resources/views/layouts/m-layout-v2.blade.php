@@ -51,7 +51,7 @@
         <div overflow=""></div>
     </amp-ad>
     @include('components.main.narbar-v2')
-    <div class="mt-4">
+    <div class="mt-5">
         {{ $slot }}
     </div>
     {{-- <footer>
