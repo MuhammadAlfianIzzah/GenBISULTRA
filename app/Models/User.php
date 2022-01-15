@@ -36,7 +36,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
-
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $name) {
+            return $query->where(function ($query) use ($name) {
+                $query->where('name', "like", "%$name%");
+            });
+        });
+    }
     /**
      * The attributes that should be cast to native types.
      *
