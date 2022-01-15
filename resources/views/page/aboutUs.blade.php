@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="{{ asset('css/tentangkami.css') }}">
     @endpush
     <div class="bg-white py-4">
-        <div style="margin-top: 70px">
+        <div>
             <div class="h-100 p-5 text-dark bg-light text-center rounded-3">
                 <h2>Tentang Kami</h2>
                 <p>~ GenBI SULAWESI TENGGARA ~</p>

@@ -1,6 +1,6 @@
 <x-m-layout-v2>
     <div class="bg-white py-4">
-        <div style="margin-top: 50px">
+        <div>
             <div class="h-100 p-5 text-dark bg-light text-center rounded-3">
                 <h2>User GenBI SULTRA</h2>
                 <p>~ GenBI SULAWESI TENGGARA ~</p>

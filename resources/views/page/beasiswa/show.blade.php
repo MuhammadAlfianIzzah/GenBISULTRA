@@ -1,6 +1,6 @@
 <x-m-layout-v2>
     <div class="bg-white container py-3 d-flex justify-content-center">
-        <div style="margin-top: 90px">
+        <div class="mt-2">
             <h1 class="text-info">Info Beasiswa Buat kamu</h1>
             <hr>
             <div class="container mt-1 d-flex justify-content-center">
