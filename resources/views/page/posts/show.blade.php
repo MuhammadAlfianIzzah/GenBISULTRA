@@ -67,16 +67,16 @@
 
 
                                 @switch($kt->name)
-                                    @case(" Informasi")
+                                    @case(' Informasi')
                                         <i class="fas fa-info"></i>
                                     @break
-                                    @case(" Teknologi")
+                                    @case(' Teknologi')
                                         <i class="fas fa-robot"></i>
                                     @break
-                                    @case(" Berita harian")
+                                    @case(' Berita harian')
                                         <i class="fas fa-book-open"></i>
                                     @break
-                                    @case(" Ceritaku")
+                                    @case(' Ceritaku')
                                         <i class="fas fa-running"></i>
 
                                     @break
@@ -122,7 +122,8 @@
                                 <div class="hightlight">{{ $post->category_posts->name }}</div>
 
                                 <figure class="figure">
-                                    <img style="max-height: 200px;width: 100%; object-fit: cover"
+                                    <img onerror="this.onerror=null;this.src='img/notfound.png';"
+                                        style="max-height: 200px;width: 100%; object-fit: cover"
                                         src="{{ asset("storage/$post->thumbnail") }}"
                                         class="figure-img img-fluid rounded" alt="...">
 

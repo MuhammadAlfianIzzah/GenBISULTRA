@@ -81,7 +81,8 @@
                 <div class="mb-3 row">
                     <label for="formFile" class="col-sm-2 col-form-label">Thumnail</label>
                     <div class="col-sm-10">
-                        <img style="max-height: 200px;object-fit: contain"
+                        <img onerror="this.onerror=null;this.src='img/notfound.png';"
+                            style="max-height: 200px;object-fit: contain"
                             src="{{ asset("storage/$posts->thumbnail") }}"
                             class="w-100 img-fluid img-thumbnail thumbnail">
                         <input name="thumbnail" data-target="thumbnail" class="form-control input-show upload-img"
@@ -94,7 +95,8 @@
                 <div class="mb-3 row">
                     <label for="formFile" class="col-sm-2 col-form-label">Hero</label>
                     <div class="col-sm-10">
-                        <img style="max-height: 200px;object-fit: contain" src="{{ asset("storage/$posts->hero") }}"
+                        <img onerror="this.onerror=null;this.src='img/notfound.png';"
+                            style="max-height: 200px;object-fit: contain" src="{{ asset("storage/$posts->hero") }}"
                             class="w-100 img-fluid img-hero hero">
                         <input name="hero" data-target="hero" class="form-control input-show upload-img" type="file"
                             id="formFile">

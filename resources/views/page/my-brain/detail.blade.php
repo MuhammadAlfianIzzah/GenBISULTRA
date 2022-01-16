@@ -67,7 +67,8 @@
 
                     </div> --}}
                     <img style="max-height: 300px;object-fit: cover;width: 100%;object-position: center"
-                        src="{{ asset("storage/$post->hero") }}" alt="" class="img-thumbnail">
+                        src="{{ asset("storage/$post->hero") }}"
+                        onerror="this.onerror=null;this.src='img/notfound.png';" alt="" class="img-thumbnail">
                 </div>
                 <article class="blog-post content">
                     {!! $post->content !!}
@@ -106,7 +107,8 @@
                         @endphp
                         <div class="h4 py-2" style="border-bottom: 2px solid black">About penulis</div>
                         <h6 class="text-info">
-                            <img src="{{ asset("storage/$foto") }}" alt="" width="32" height="32"
+                            <img src="{{ asset("storage/$foto") }}"
+                                onerror="this.onerror=null;this.src='img/notfound.png';" alt="" width="32" height="32"
                                 class="rounded-circle me-2">
                             <a style="text-decoration: none" class="h6 text-dark"
                                 href="{{ route('users-search', [$post->user->name]) }}">

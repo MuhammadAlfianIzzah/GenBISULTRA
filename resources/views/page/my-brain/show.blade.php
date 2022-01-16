@@ -83,7 +83,8 @@
                         </div>
                         <div class="col-auto d-none d-lg-block">
                             <img class="bd-placeholder-img" style="height: 250px;object-fit: contain;width: 200px"
-                                src="{{ asset("storage/$post->thumbnail") }}" alt="{{ $post->title }}">
+                                src="{{ asset("storage/$post->thumbnail") }}"
+                                onerror="this.onerror=null;this.src='img/notfound.png';" alt="{{ $post->title }}">
                         </div>
                     </div>
                 </div>

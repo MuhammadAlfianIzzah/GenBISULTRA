@@ -13,7 +13,8 @@
                 @foreach ($users as $user)
                     <div class="col-4">
                         <div class="card">
-                            <img style="max-height: 200px;object-fit: contain"
+                            <img onerror="this.onerror=null;this.src='img/notfound.png';"
+                                style="max-height: 200px;object-fit: contain"
                                 src="{{ asset("storage/$user->foto_profile") }}" class="card-img-top" alt="...">
                             <div class="card-header text-center">
                                 <a href="{{ route('users-search', $user->nama) }}">
