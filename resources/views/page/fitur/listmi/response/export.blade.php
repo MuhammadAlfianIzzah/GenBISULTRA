@@ -16,8 +16,8 @@
         @foreach ($respons as $respon)
             <tr>
                 <td>{{ $respon->user->name }}</td>
-                <td>{{ $respon->penerima->fakultas ?? 'kosong' }}</td>
-                <td>{{ $respon->penerima->jurusan ?? 'kosong' }}</td>
+                <td>{{ $respon->user->penerima->fakultas ?? 'kosong' }}</td>
+                <td>{{ $respon->user->penerima->jurusan ?? 'kosong' }}</td>
                 <td>{{ $respon->jawaban }}</td>
                 <td><a href="{{ asset("storage/$respon->uploadfile") }}">Link</a></td>
                 <td>{{ $respon->created_at }}</td>

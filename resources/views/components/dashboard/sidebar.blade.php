@@ -57,7 +57,7 @@
              <div class="bg-white collapse-inner rounded">
                  <h6 class="collapse-header">Manage User GenBI:</h6>
                  {{-- <a class="collapse-item {{request()->is("write-brain")? "active":""}}" href="{{ route('write-brain') }}">Create my brain</a> --}}
-                 @role(['admin', 'super'])
+                 @role(['super'])
                      <a class="collapse-item {{ request()->route()->getName() === 'show-komsat'
                          ? 'active'
                          : '' }}"
@@ -74,7 +74,7 @@
      </li>
 
      {{-- devisi --}}
-     @role(['admin', 'super'])
+     @role(['super'])
 
          <div class="sidebar-heading mt-2">
              Devisi
@@ -174,12 +174,11 @@
                          ? 'active'
                          : '' }}"
                          href="{{ route('mypost-kegiatan') }}">My post</a>
-                     <a class="collapse-item {{ request()->segment(2) == 'jenis' ? 'active' : '' }}"
-                         href="{{ route('show-jenis-kegiatan') }}"> <i class="fab fa-slack-hash"></i> Type Kegiatan</a>
+                     @role(['super'])
 
-
-
-
+                         <a class="collapse-item {{ request()->segment(2) == 'jenis' ? 'active' : '' }}"
+                             href="{{ route('show-jenis-kegiatan') }}"> <i class="fab fa-slack-hash"></i> Type Kegiatan</a>
+                     @endrole
                  </div>
              </div>
          </li>
@@ -205,7 +204,7 @@
                      ? 'active'
                      : '' }}"
                      href="{{ route('my-posts') }}">My post</a>
-                 @role(['admin', 'super'])
+                 @role(['super'])
                      <a class="collapse-item {{ request()->route()->getName() === 'category-posts'
                          ? 'active'
                          : '' }}"

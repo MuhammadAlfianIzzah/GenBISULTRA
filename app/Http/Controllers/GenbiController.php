@@ -39,6 +39,9 @@ class GenbiController extends Controller
                 "komsat_id" => "required",
             ]
         );
+        if (penerimaBeasiswa::where("user_id", Auth::user()->id)->first()) {
+            return redirect()->route("daftar-genbi")->with("error", "gagal");
+        }
         $attr["foto_pengenal"] =  $request->file("foto_pengenal")->store("/penerimaB");
         $attr["user_id"] = Auth::user()->id;
         $data = collect($attr);
@@ -50,7 +53,7 @@ class GenbiController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
             dd($e);
         }
-        redirect("/genbi/daftar")->with("success", "berhasil mendaftar");
+        return redirect()->route("daftar-genbi")->with("success", "berhasil mendaftar");
     }
     public function gDepartement()
     {

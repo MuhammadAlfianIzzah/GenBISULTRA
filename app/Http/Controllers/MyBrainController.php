@@ -147,9 +147,9 @@ class MyBrainController extends Controller
         try {
             BrainPost::create($attr);
         } catch (QueryException $e) {
-            return redirect()->route("my-post")->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
+            return redirect()->route("my-brainPost")->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
         }
-        return redirect()->route("my-post")->with("success", "Post berhasil disimpan");
+        return redirect()->route("my-brainPost")->with("success", "Post berhasil disimpan");
     }
     public function showAll()
     {

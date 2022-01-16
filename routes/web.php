@@ -51,18 +51,17 @@ Route::get("/galery", [GalleryController::class, "show"])->name("galery-genbi");
 
 Route::get("/author", [WelcomeController::class, "author"])->name("author");
 Route::middleware(["role:super", "auth", "verified"])->group(function () {
-    Route::get("/manage/users", [AdminController::class, "users"])->name("manage-user");
-    Route::post("/manage/users", [AdminController::class, "updateRoleUsers"])->name("update-manage-users");
-});
-Route::middleware(['role:admin|super|ketua', "auth", 'verified'])->group(function () {
-    // komsat
-
     Route::get("/genbi/komsat", [KomsatController::class, "show"])->name("show-komsat");
     Route::post("/genbi/komsat", [KomsatController::class, "store"])->name("show-komsat");
     Route::get("/genbi/komsat/edit/{komisat:nama}", [KomsatController::class, "edit"])->name("edit-komsat");
     Route::patch("/genbi/komsat/edit/{komisat:nama}", [KomsatController::class, "update"])->name("edit-komsat");
     Route::delete("/genbi/komsat/{komisat:nama}", [KomsatController::class, "delete"])->name("delete-komsat");
 
+    Route::get("/manage/users", [AdminController::class, "users"])->name("manage-user");
+    Route::post("/manage/users", [AdminController::class, "updateRoleUsers"])->name("update-manage-users");
+});
+Route::middleware(['role:admin|super|ketua', "auth", 'verified'])->group(function () {
+    // komsat
     // komsat
     // Kegiatan
     Route::get("/kegiatan/manage/myPost", [ActivityController::class, "myPost"])->name("mypost-kegiatan");
