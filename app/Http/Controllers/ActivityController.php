@@ -71,9 +71,10 @@ class ActivityController extends Controller
     }
     public function myPost()
     {
-        $posts = Activity::where("user_id", Auth::user()->id)->latest()->paginate(5);
         if (request()->user()->hasRole(["super"])) {
             $posts = Activity::latest()->paginate(5);
+        } else {
+            $posts = Activity::where("user_id", Auth::user()->id)->latest()->paginate(5);
         }
         return view("page.kegiatan.myPost", compact("posts"));
     }
