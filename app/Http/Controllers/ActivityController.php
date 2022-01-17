@@ -72,6 +72,9 @@ class ActivityController extends Controller
     public function myPost()
     {
         $posts = Activity::where("user_id", Auth::user()->id)->latest()->paginate(5);
+        if (request()->user()->hasRole(["super"])) {
+            $posts = Activity::latest()->paginate(5);
+        }
         return view("page.kegiatan.myPost", compact("posts"));
     }
     public function create()
@@ -190,7 +193,7 @@ class ActivityController extends Controller
         // dd($activities->slug);
         $devisi = Devisi::all();
         $type_act = TypeActivity::all();
-        if ($activities->user_id === Auth::user()->id || request()->user()->hasRole(["admin", "super"])) {
+        if ($activities->user_id === Auth::user()->id || request()->user()->hasRole(["super"])) {
             return view("page.kegiatan.edit", [
                 "activity" => $activities,
                 "devisi" => $devisi,
@@ -202,7 +205,7 @@ class ActivityController extends Controller
     public function delete(Activity $activities)
     {
 
-        if ($activities->user_id === Auth::user()->id) {
+        if ($activities->user_id === Auth::user()->id || request()->user()->hasRole(["super"])) {
             if (Storage::exists($activities->thumbnail)) {
                 Storage::delete($activities->thumbnail);
             }
