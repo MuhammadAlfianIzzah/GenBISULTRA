@@ -33,15 +33,15 @@ class ActivityController extends Controller
 
 
         //filter tag
-        $filter = strip_tags($activities->content);
+        $filter = strip_tags($activities->body);
         $desc = preg_replace('/\s+/', ' ', trim($filter));
-        SEOMeta::addKeyword(['brainpost', 'brainpost genbi', 'Post genbi']);
-        SEOMeta::setTitle($activities->title);
+        SEOMeta::addKeyword(['brainpost', 'brainpost genbi', 'Post genbi', 'website genbisultra', 'genbisultra', 'blog genbi', "blog"]);
+        SEOMeta::setTitle($activities->nama);
         SEOMeta::setDescription($desc);
         SEOMeta::setCanonical(url()->current());
-        SEOMeta::addKeyword(['website genbisultra', 'genbisultra', 'blog genbi', "blog"]);
+
         OpenGraph::setDescription($desc);
-        OpenGraph::setTitle($activities->title);
+        OpenGraph::setTitle($activities->nama);
         OpenGraph::setUrl(route("detail-kegiatan", $activities->slug));
         OpenGraph::addProperty('type', 'article');
         OpenGraph::addProperty('locale', 'id');
@@ -50,7 +50,7 @@ class ActivityController extends Controller
         OpenGraph::setDescription($desc);
         OpenGraph::setUrl(url()->current());
 
-        JsonLd::setTitle($activities->title);
+        JsonLd::setTitle($activities->nama);
         JsonLd::setDescription($desc);
         JsonLd::setType('Article');
         JsonLd::addImage(asset("/storage/$activities->thumbnail"));
