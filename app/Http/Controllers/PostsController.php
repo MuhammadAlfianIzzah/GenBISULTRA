@@ -35,25 +35,29 @@ class PostsController extends Controller
     }
     public function detail(Posts $posts)
     {
-        SEOMeta::setTitle($posts->title);
+
         //filter tag
         $filter = strip_tags($posts->content);
         $desc = preg_replace('/\s+/', ' ', trim($filter));
-
         SEOMeta::addKeyword(['brainpost', 'brainpost genbi', 'Post genbi']);
-
+        SEOMeta::setTitle($$posts->title);
+        SEOMeta::setDescription($desc);
+        SEOMeta::setCanonical(url()->current());
+        SEOMeta::addKeyword(['website genbisultra', 'genbisultra', 'blog genbi', "blog"]);
         OpenGraph::setDescription($desc);
-        OpenGraph::setTitle($posts->title);
-        OpenGraph::setUrl(route("detail-posts", $posts->slug));
+        OpenGraph::setTitle($$posts->title);
+        OpenGraph::setUrl(route("detail-kegiatan", $$posts->slug));
         OpenGraph::addProperty('type', 'article');
         OpenGraph::addProperty('locale', 'id');
         OpenGraph::addProperty('locale:alternate', ['id_ID']);
-        OpenGraph::addImage(asset("/storage/$posts->thumbnail"));
+        OpenGraph::addImage(asset("/storage/$$posts->thumbnail"));
+        OpenGraph::setDescription($desc);
+        OpenGraph::setUrl(url()->current());
 
-        JsonLd::setTitle($posts->title);
+        JsonLd::setTitle($$posts->title);
         JsonLd::setDescription($desc);
         JsonLd::setType('Article');
-        JsonLd::addImage(asset("/storage/$posts->thumbnail"));
+        JsonLd::addImage(asset("/storage/$$posts->thumbnail"));
 
         $kategory = CategoryPosts::get();
         if (Auth::check()) {

@@ -35,23 +35,30 @@ class MyBrainController extends Controller
     public function detail(BrainPost $brainPost)
     {
 
-        SEOMeta::setTitle($brainPost->title);
+
         //filter tag
         $filter = strip_tags($brainPost->content);
         $desc = preg_replace('/\s+/', ' ', trim($filter));
 
         SEOMeta::addKeyword(['brainpost', 'brainpost genbi', 'Post genbi']);
-
+        SEOMeta::setTitle($brainPost->title);
+        SEOMeta::setDescription($desc);
+        SEOMeta::setCanonical(url()->current());
+        SEOMeta::addKeyword(['website genbisultra', 'genbisultra', 'blog genbi', "blog"]);
         OpenGraph::setDescription($desc);
         OpenGraph::setTitle($brainPost->title);
-        OpenGraph::setUrl(route("detail-brain", $brainPost->slug));
+        OpenGraph::setUrl(route("detail-kegiatan", $brainPost->slug));
         OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('locale', 'id');
+        OpenGraph::addProperty('locale:alternate', ['id_ID']);
         OpenGraph::addImage(asset("/storage/$brainPost->thumbnail"));
+        OpenGraph::setDescription($desc);
+        OpenGraph::setUrl(url()->current());
+
         JsonLd::setTitle($brainPost->title);
         JsonLd::setDescription($desc);
         JsonLd::setType('Article');
         JsonLd::addImage(asset("/storage/$brainPost->thumbnail"));
-
         if (Auth::check()) {
             if (request()->user()->hasRole(["admin", "super"]) || $brainPost->user_id === Auth::user()->id) {
             } else {

@@ -30,12 +30,16 @@ class ActivityController extends Controller
     }
     public function detail(Activity $activities)
     {
-        SEOMeta::setTitle($activities->title);
+
+
         //filter tag
         $filter = strip_tags($activities->content);
         $desc = preg_replace('/\s+/', ' ', trim($filter));
         SEOMeta::addKeyword(['brainpost', 'brainpost genbi', 'Post genbi']);
-
+        SEOMeta::setTitle($activities->title);
+        SEOMeta::setDescription($desc);
+        SEOMeta::setCanonical(url()->current());
+        SEOMeta::addKeyword(['website genbisultra', 'genbisultra', 'blog genbi', "blog"]);
         OpenGraph::setDescription($desc);
         OpenGraph::setTitle($activities->title);
         OpenGraph::setUrl(route("detail-kegiatan", $activities->slug));
@@ -43,6 +47,8 @@ class ActivityController extends Controller
         OpenGraph::addProperty('locale', 'id');
         OpenGraph::addProperty('locale:alternate', ['id_ID']);
         OpenGraph::addImage(asset("/storage/$activities->thumbnail"));
+        OpenGraph::setDescription($desc);
+        OpenGraph::setUrl(url()->current());
 
         JsonLd::setTitle($activities->title);
         JsonLd::setDescription($desc);
