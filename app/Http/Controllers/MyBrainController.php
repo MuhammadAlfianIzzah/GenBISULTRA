@@ -336,7 +336,6 @@ class MyBrainController extends Controller
                 "content" => $content,
                 "slug" => $slug,
                 "hero" => $hero,
-                "user_id" => Auth::user()->id,
                 "thumbnail" => $thumbnail,
                 "updated_at" => Carbon::now()
             ]);

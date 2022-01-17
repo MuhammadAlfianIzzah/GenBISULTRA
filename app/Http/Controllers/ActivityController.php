@@ -335,7 +335,6 @@ class ActivityController extends Controller
                 "hero" => $hero,
                 "thumbnail" => $thumbnail,
                 "body" => $content,
-                "user_id" => Auth::user()->id,
                 "TA_id" => $request->type_kegiatan,
                 "devisi_id" => $request->devisi
             ]);

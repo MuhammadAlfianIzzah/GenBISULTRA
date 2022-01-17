@@ -288,7 +288,6 @@ class PostsController extends Controller
                 "category_id" => $request->category,
                 "content" => $content,
                 "slug" => $slug,
-                "user_id" => Auth::user()->id,
                 "thumbnail" => $thumbnail,
                 "hero" => $hero,
                 "updated_at" => Carbon::now()
