@@ -23,7 +23,7 @@ class ActivityController extends Controller
     {
         SEOMeta::setTitle("Kegiatan GenBI");
         OpenGraph::addProperty('type', 'article');
-        $posts = Activity::filter(request(["search", "category", "devisi"]))->latest()->get();
+        $posts = Activity::filter(request(["search", "category", "devisi"]))->where("is_active", true)->latest()->get();
         $kategory = TypeActivity::get();
         $devisi = Devisi::get();
         return view("page.kegiatan.show", compact("posts", "kategory", "devisi"));
@@ -71,7 +71,7 @@ class ActivityController extends Controller
     }
     public function myPost()
     {
-        if (request()->user()->hasRole(["super"])) {
+        if (request()->user()->hasRole("super")) {
             $posts = Activity::latest()->paginate(5);
         } else {
             $posts = Activity::where("user_id", Auth::user()->id)->latest()->paginate(5);
@@ -165,7 +165,7 @@ class ActivityController extends Controller
                 "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor"
             );
         }
-        return back()->with("success", "Post berhasil disimpan");
+        return redirect()->route("mypost-kegiatan")->with("success", "Post berhasil disimpan");
     }
     public function permitKegiatan(Activity $activities, $permit)
     {

@@ -20,7 +20,7 @@ class TypeActivityController extends Controller
             "nama" => "required|unique:type_activities,nama|min:5"
         ]);
         TypeActivity::create($attr);
-        return redirect("/kegiatan/jenis")->with("success", "Data berhasil disimpan");
+        return redirect()->route("show-jenis-kegiatan")->with("success", "Data berhasil disimpan");
     }
     public function delete(Request $request, TypeActivity $TypeActivity)
     {
