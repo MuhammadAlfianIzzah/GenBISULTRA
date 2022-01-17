@@ -341,8 +341,8 @@ class ActivityController extends Controller
             ]);
         } catch (QueryException $e) {
 
-            return back()->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
+            return redirect()->route("mypost-kegiatan")->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
         }
-        return back()->with("success", "Berhasil Update");
+        return redirect()->route("mypost-kegiatan")->with("success", "Berhasil Update");
     }
 }

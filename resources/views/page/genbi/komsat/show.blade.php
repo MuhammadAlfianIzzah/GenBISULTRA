@@ -1,23 +1,5 @@
 <x-dash-layout>
-    @if ($message = Session::get('error'))
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
-                <use xlink:href="#exclamation-triangle-fill" />
-            </svg>
 
-            {{ $message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @elseif($message = Session::get('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
-                <use xlink:href="#info-fill" />
-            </svg>
-            {{ $message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-
-    @endif
     <x-slot name="title_page">
         Create Komsat
     </x-slot>
@@ -155,7 +137,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan Data</button>
                     </div>
-                    @if ($errors->any())
+                    {{-- @if ($errors->any())
                         @push('script')
                             <script>
                                 var myModal = new bootstrap.Modal(document.getElementById('create_komsat'), {
@@ -164,7 +146,7 @@
                                 myModal.show();
                             </script>
                         @endpush
-                    @endif
+                    @endif --}}
 
                 </form>
 

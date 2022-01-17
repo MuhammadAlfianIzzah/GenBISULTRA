@@ -154,7 +154,7 @@ class MyBrainController extends Controller
     public function showAll()
     {
         $posts = BrainPost::where("user_id", Auth::user()->id)->get();
-        if (request()->user()->hasRole(["admin", "super"])) {
+        if (request()->user()->hasRole(["super", "dpt_head"])) {
             $posts = BrainPost::all();
         }
         return view("page.my-brain.showAll", compact("posts"));
@@ -192,7 +192,7 @@ class MyBrainController extends Controller
     }
     public function edit(BrainPost $brainPost)
     {
-        // dd(request()->user()->hasRole(["admin", "super"]));
+
 
         if ($brainPost->user_id === Auth::user()->id || request()->user()->hasRole(["dpt_head", "super"])) {
             return view("page.my-brain.update", [

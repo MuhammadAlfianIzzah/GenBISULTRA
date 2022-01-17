@@ -33,7 +33,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
-
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@4/bulma.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -83,6 +84,46 @@
         }
 
     </style>
+    @if ($errors->any())
+
+        {{-- @foreach ($errors->all() as $error)
+         {{ $error }}
+     @endforeach --}}
+        <script>
+            let error = @json($errors->all());
+            let text = "";
+            error.forEach((e) => {
+                text += `<li>${e}</li>`;
+            })
+            Swal.fire({
+                html: `<ul>${text}</ul>`,
+                icon: 'error',
+                confirmButtonText: 'Close'
+            })
+        </script>
+        {{-- @foreach ($errors->all() as $error)
+         {{ $error }}
+     @endforeach --}}
+    @endif
+    @if ($message = Session::get('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: @json($message),
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    @elseif ($message = Session::get('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: @json($message),
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    @endif
     <!-- Page Wrapper -->
     <div id="wrapper">
         {{-- sidebar --}}

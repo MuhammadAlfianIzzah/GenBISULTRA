@@ -1,6 +1,17 @@
 <x-dash-layout>
     <x-slot name="title_page">DashboardKu</x-slot>
+    <div class="row">
+        <div class="col-lg-6">
+            <form class="input-group mb-2" method="GET">
+                <input type="text" class="form-control shadow-sm" placeholder="Search for..." name="search">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-search fa-fw"></i> Search</button>
+                </span>
+            </form>
+        </div>
+    </div>
     <div class="bg-white container">
+
         <div class="row">
             <div class="col-md-6">
                 <div class="p-3 bg-body">

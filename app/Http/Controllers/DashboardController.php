@@ -11,7 +11,7 @@ class DashboardController extends Controller
     public function show()
     {
         // Auth::user()->attachRole("admin");
-        $users = User::paginate(5)->fragment('users');
+        $users = User::filter(request(["search"]))->paginate(5)->fragment('users');
         return view('dashboard', compact("users"));
     }
 }
