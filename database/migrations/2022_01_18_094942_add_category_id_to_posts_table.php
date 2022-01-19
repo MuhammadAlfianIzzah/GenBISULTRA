@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUploadfileToResponsListsTable extends Migration
+class AddCategoryIdToPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUploadfileToResponsListsTable extends Migration
      */
     public function up()
     {
-        Schema::table('respons_lists', function (Blueprint $table) {
-            $table->string("uploadfile")->default("kosong");
+        Schema::table('posts', function (Blueprint $table) {
+            //
         });
     }
 
@@ -25,8 +25,8 @@ class AddUploadfileToResponsListsTable extends Migration
      */
     public function down()
     {
-        Schema::table('respons_lists', function (Blueprint $table) {
-            $table->dropColumn("uploadfile");
+        Schema::table('posts', function (Blueprint $table) {
+            //
         });
     }
 }
