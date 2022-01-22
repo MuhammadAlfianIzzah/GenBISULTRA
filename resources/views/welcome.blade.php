@@ -345,7 +345,7 @@
     <div class="container testimoni">
         <div class="row row-testimoni align-items-center">
             <div class="col">
-                <h2 class="text-left">Testimoni <br>Setelah Gabung di GenBI?</h2>
+                <h2 class="text-left">Apa kata mereka <br>tentang GenBI?</h2>
             </div>
             <div class="col-12 col-md-7">
                 <div class="testimoni-anggota">
@@ -354,14 +354,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="img-profile-container">
-                                        <img src="{{ asset('img/welcome/img-profile.png') }}" alt="">
+                                        <img src="{{ asset('img/alfianizzah.png') }}" alt="alfianizzah">
 
 
                                     </div>
-                                    <h5 class="card-title text-center mt-3">Lorem</h5>
-                                    <p class="card-text text-center mt-3">"Some quick example text to build on the card
-                                        title Some quick example text to build on the card title Some quick example text
-                                        to build on the card title"</p>
+                                    <h5 class="card-title text-center mt-3">Alfianizzah</h5>
+                                    <p class="card-text text-center mt-3">"GenBI? A place to start something amazing
+                                        "
+                                    </p>
                                     <div class="row">
                                         <i class="fa fa-quote-right text-center"></i>
                                     </div>
@@ -376,7 +376,7 @@
 
 
                                     </div>
-                                    <h5 class="card-title text-center mt-3">Ipsum</h5>
+                                    <h5 class="card-title text-center mt-3">Yessy Yuniarti</h5>
                                     <p class="card-text text-center mt-3">"Some quick example text to build on the card
                                         title Some quick example text to build on the card title Some quick example text
                                         to build on the card title"</p>
