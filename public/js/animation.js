@@ -40,7 +40,7 @@ $('.testimoni-carousel').owlCarousel({
 	}
 })
 
-$(document).ready(function() {
+
                 $('.post-carousel').owlCarousel({
                     // items: 2,
                     responsive: {
@@ -60,7 +60,7 @@ $(document).ready(function() {
                         }
                     }
                 });
-            });
+
 
 $('.blog-carousel').owlCarousel({
 	margin: 10,
