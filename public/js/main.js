@@ -22,7 +22,6 @@ let pwinner = document.querySelector(".p-winner");
         let interfal = setInterval(() => {
             textLoading.innerHTML = "loading " + `(${durasi.value--})`;
             // console.log(nilai[Math.floor(Math.random() * nilai.length)], Math.floor(Math.random() * nilai.length));
-
         }, 1000);
         setInterval(() => {
             if (resultWinner.length <= nWinner.value - 1) {
