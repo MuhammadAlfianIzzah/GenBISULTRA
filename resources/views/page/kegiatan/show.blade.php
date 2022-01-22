@@ -119,7 +119,8 @@
                     @forelse ($posts as $post)
                         <div class="col">
                             <div class="card shadow-sm">
-                                <div class="hightlight">{{ $post->devisi->nama }} ~ {{ $post->typeActivity->nama }}
+                                <div class="hightlight">{{ $post->devisi->nama }} ~
+                                    {{ $post->typeActivity->nama }}
                                 </div>
 
 
@@ -143,7 +144,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a href="{{ route('detail-kegiatan', ["$post->slug"]) }}" type="button"
-                                                class="btn btn-sm btn-outline-secondary">Continue reading</a>
+                                                class="btn btn-sm btn-outline-secondary">Baca selengkapnya</a>
                                         </div>
                                         <small
                                             class="text-muted">{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</small>

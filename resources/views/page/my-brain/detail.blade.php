@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="card-body text-center">
                                     <a href="{{ route('detail-brain', $userPost->slug) }}"
-                                        class="btn btn-primary">Selengkapnya</a>
+                                        class="btn btn-primary">Baca selengkapnya</a>
                                 </div>
                             </div>
                         </div>

@@ -141,7 +141,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a href="{{ route('detail-posts', ["$post->slug"]) }}" type="button"
-                                                class="btn btn-sm btn-outline-secondary">Continue reading</a>
+                                                class="btn btn-sm btn-outline-secondary">Baca selengkapnya</a>
                                         </div>
                                         <small
                                             class="text-muted">{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</small>

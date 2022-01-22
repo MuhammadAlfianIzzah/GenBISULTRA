@@ -152,31 +152,7 @@
         }
 
     </style>
-    @push('script')
-        <script>
-            $(document).ready(function() {
-                $('.owl-carousel').owlCarousel({
-                    // items: 2,
-                    responsive: {
-                        0: {
-                            items: 1,
-                            nav: true
-                        },
-                        600: {
-                            items: 2,
-                            nav: false
-                        },
-                        1000: {
-                            items: 3,
-                            nav: true,
-                            loop: false
-                        }
-                    }
-                });
-            });
-        </script>
 
-    @endpush
     <!-- heroes -->
     <div class="container-fluid heroes-parent"
         style="background-attachment: fixed;background-image: url({{ asset('img/welcome/sikola-dilao.jpg') }}">
@@ -255,8 +231,8 @@
             </div>
         </div>
     </div>
-    <!-- devisi -->
-    <div class="container-fluid devisi">
+    <!-- departement -->
+    {{-- <div class="container-fluid devisi">
         <h2 class="text-center">Departement <br> GenBI SulTra</h2>
         <div class="container-fluid">
             <div class="row">
@@ -283,28 +259,88 @@
                 </div>
             </div>
         </div>
-
-        {{-- <div class="container">
-            <div class="owl-carousel devisi-carousel owl-theme">
-                @foreach ($devisi as $dv)
-                <div class="item">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="logo-devisi">
-                                <img src="{{ asset('img/welcome/devisi.png') }}" alt="">
-    </div>
-    <h5 class="card-title">Devisi <br>{{$dv->nama}}</h5>
-    <p class="card-text">{{$dv->deskripsi}}</p>
-    <a class="btn btn-primary" href="{{ route('show-kegiatan', ['devisi'=>$dv->id]) }}">See All activity</a>
-
-    </div>
-    </div>
-    </div>
-    @endforeach
-
-    </div>
     </div> --}}
+    <div class="container-fluid devisi">
+        <h2 class="text-center">
+            <a class="nav-link link-light" href="{{ route('show-kegiatan') }}">Kegiatan Kami</a>
+        </h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="devisi-seeder" class="post-carousel owl-carousel">
+                        @foreach ($kegiatan as $kg)
+                            <div class="card">
+                                <?php
+                                $filter = preg_replace('/<img[^>]+>/', '', $kg->body);
+                                $filterh1 = strip_tags($filter);
+                                ?>
+                                <img style="max-height: 300px;object-fit: cover"
+                                    src="{{ asset("storage/$kg->thumbnail") }}" class="card-img-top"
+                                    alt="{{ $kg->slug }}">
+                                <div class="card-body">
+                                    <h3 class="text-muted">{{ $kg->nama }}</h3>
+                                    <p class="card-text">{!! Str::limit($filterh1, 70, '...') !!}</p>
+                                    <a href="{{ route('detail-kegiatan', $kg->slug) }}"
+                                        class="btn btn-outline-dark">Baca
+                                        selengkapnya</a>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    {{-- /departement --}}
+
+    <!-- blog -->
+    <div class="container-fluid blog">
+        <div class="title">
+            <h2 class="text-center">Blog <br> GenBI SulTra</h2>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="news-slider" class="owl-carousel post-carousel">
+                        @foreach ($posts as $post)
+                            <div class="post-slide">
+                                <div class="post-img">
+                                    <img style="max-height: 200px;object-fit: cover"
+                                        src="{{ asset("storage/$post->thumbnail") }}" alt="">
+                                    <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">
+                                        <a href="{{ route('detail-brain', [$post->slug]) }}">{{ $post->title }}</a>
+
+                                    </h3>
+                                    <?php
+                                    $filter = preg_replace('/<img[^>]+>/', '', $post->content);
+                                    $filterh1 = strip_tags($filter);
+                                    ?>
+
+                                    <p class="post-description">{!! Str::limit($filterh1, 180, '...') !!}</p>
+
+                                    <span class="post-date"><i
+                                            class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</span>
+
+                                    <a href="{{ route('detail-posts', [$post->slug]) }}" class="read-more">Baca
+                                        selengkapnya</a>
+
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    {{-- /blog --}}
     <!-- testimoni -->
     <div class="container testimoni">
         <div class="row row-testimoni align-items-center">
@@ -373,53 +409,7 @@
             </div>
         </div>
     </div>
-    <!-- blog -->
-    <div class="container-fluid blog">
-        <div class="title">
-            <h2 class="text-center">Blog <br> GenBI SulTra</h2>
-        </div>
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="news-slider" class="owl-carousel">
-                        @foreach ($posts as $post)
-                            <div class="post-slide">
-                                <div class="post-img">
-                                    <img style="max-height: 200px;object-fit: cover"
-                                        src="{{ asset("storage/$post->thumbnail") }}" alt="">
-                                    <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-                                </div>
-                                <div class="post-content">
-                                    <h3 class="post-title">
-                                        <a
-                                            href="{{ route('detail-brain', [$post->slug]) }}">{{ $post->title }}</a>
-
-                                    </h3>
-                                    <?php
-                                    $filter = preg_replace('/<img[^>]+>/', '', $post->content);
-                                    $filterh1 = strip_tags($filter);
-                                    ?>
-
-                                    <p class="post-description">{!! Str::limit($filterh1, 180, '...') !!}</p>
-
-                                    <span class="post-date"><i
-                                            class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</span>
-
-                                    <a href="{{ route('detail-brain', [$post->slug]) }}" class="read-more">read
-                                        more</a>
-
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
+    {{-- /testimoni --}}
     <!-- tagar -->
     <div class="container-fluid tagar"
         style="background-attachment: fixed;background-image: url({{ asset('img/welcome/sikola-dilao.jpg') }})">

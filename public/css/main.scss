@@ -290,37 +290,37 @@ input::placeholder {
         color: $color-white;
     }
 
-    .card {
-        border-radius: 25px;
-        padding: 32px;
-        background-color: $color-blue-secondary;
-        box-shadow: 2 2px 4px rgba(0, 0, 0, .5);
+    // .card {
+    //     border-radius: 25px;
+    //     padding: 32px;
+    //     background-color: $color-blue-secondary;
+    //     box-shadow: 2 2px 4px rgba(0, 0, 0, .5);
 
 
-        .card-body {
-            min-height: 310px;
+    //     .card-body {
+    //         min-height: 310px;
 
-            .logo-devisi {
-                position: relative;
-                width: 100px;
-                height: 100px;
-                background-color: $color-white;
-                border-radius: 25px;
-                margin-bottom: 16px;
-            }
+    //         .logo-devisi {
+    //             position: relative;
+    //             width: 100px;
+    //             height: 100px;
+    //             background-color: $color-white;
+    //             border-radius: 25px;
+    //             margin-bottom: 16px;
+    //         }
 
-            .card-title {
-                font-size: 16pt;
-                font-weight: 600;
-                color: $color-white;
-            }
+    //         .card-title {
+    //             font-size: 16pt;
+    //             font-weight: 600;
+    //             color: $color-white;
+    //         }
 
-            p {
-                color: $color-white;
-            }
-        }
+    //         p {
+    //             color: $color-white;
+    //         }
+    //     }
 
-    }
+    // }
 }
 
 @media screen and (max-width: 750px) {
@@ -429,7 +429,7 @@ input::placeholder {
 
 // blog
 .blog {
-    background-color: $color-blue;
+    background-color: white;
     padding-top: 50px;
     padding-bottom: 60px;
 
@@ -438,7 +438,7 @@ input::placeholder {
         font-weight: 800;
         padding: 5%;
         padding-top: 0;
-        color: $color-white;
+        color: rgba($color: $color-black, $alpha:0.6);
     }
 
     .card {
@@ -762,4 +762,17 @@ footer {
 
 .lh-tight {
     line-height: 1.25;
+}
+
+
+//img responsif
+
+.blog-post {
+    img {
+        max-width: 100%;
+        height: 300px;
+        object-fit: cover;
+        margin: 5px 0;
+        border: 2px dashed #482ff7;
+    }
 }

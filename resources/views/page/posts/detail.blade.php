@@ -55,12 +55,12 @@
         <div class="row g-5 justify-content-center">
             <div class="col-md-11 col-12 overflow-hidden">
                 <article class="blog-post">
-                        <div class="alert alert-primary" role="alert">
-                         Genbi, <span class="text-danger">{{ $post->created_at }}</span> by <a
-                                href="{{ route('users-search', [$post->user->name]) }}">{{ $post->user->name }}</a>
-                          </div>
-                          <img style="max-height: 300px;object-fit: cover;width: 100%;object-position: center"
-                          src="{{ asset("storage/$post->thumbnail") }}" alt="" class="img-thumbnail">
+                    <div class="alert alert-primary" role="alert">
+                        Genbi, <span class="text-danger">{{ $post->created_at }}</span> by <a
+                            href="{{ route('users-search', [$post->user->name]) }}">{{ $post->user->name }}</a>
+                    </div>
+                    <img style="max-height: 300px;object-fit: cover;width: 100%;object-position: center"
+                        src="{{ asset("storage/$post->thumbnail") }}" alt="" class="img-thumbnail">
                 </article>
                 <article class="blog-post content pb-4">
                     {!! $post->content !!}
@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="card-body text-center">
                                     <a href="{{ route('detail-posts', $userPost->slug) }}"
-                                        class="btn btn-primary">Selengkapnya</a>
+                                        class="btn btn-primary">Baca selengkapnya</a>
                                 </div>
                             </div>
                         </div>

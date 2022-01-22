@@ -78,7 +78,7 @@
 
                             <p class="card-text mb-auto">{!! Str::limit($filterh1, 200, '...') !!}</p>
 
-                            <a href="/my-brain/{{ $post->slug }}" class="stretched-link">Continue reading</a>
+                            <a href="/my-brain/{{ $post->slug }}" class="stretched-link">Baca selengkapnya</a>
 
                         </div>
                         <div class="col-auto d-none d-lg-block">

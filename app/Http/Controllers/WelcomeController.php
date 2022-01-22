@@ -17,18 +17,16 @@ class WelcomeController extends Controller
 {
     public function show()
     {
-        
-  
         $client = new Client();
         $dataCovid = json_decode($client->request("GET", "https://data.covid19.go.id/public/api/prov.json", [
             'verify'  => false,
         ])->getBody());
 
-        $kegiatan = Activity::get();
-        $posts = BrainPost::limit(5)->where("approval", "accept")->get();
-        $devisi = Devisi::get();
-        // dd(Carbon::parse($dataCovid->last_date)->diffForHumans());
-        return view('welcome', compact("kegiatan", "posts", "devisi", "dataCovid"));
+        $kegiatan = Activity::limit(5)->get();
+        $posts = Posts::limit(5)->where("is_active", true)->get();
+
+
+        return view('welcome', compact("kegiatan", "posts", "dataCovid"));
     }
     public function author()
     {
