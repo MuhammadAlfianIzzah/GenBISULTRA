@@ -152,7 +152,29 @@
         }
 
     </style>
-
+    @push('script')
+        <script>
+            $('.post-carousel').owlCarousel({
+                // items: 2,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 2,
+                        nav: false
+                    },
+                    1000: {
+                        items: 3,
+                        nav: true,
+                        margin: 20,
+                        loop: false
+                    }
+                }
+            });
+        </script>
+    @endpush
     <!-- heroes -->
     <div class="container-fluid heroes-parent"
         style="background-attachment: fixed;background-image: url({{ asset('img/welcome/sikola-dilao.jpg') }}">
