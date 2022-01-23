@@ -33,7 +33,7 @@
 }
 
 .blockquote {
-    border-left: 4px solid red;
+    border-left: 4px solid #2d6cdf;
     padding-left: 1rem;
 }
 
@@ -547,11 +547,20 @@ footer {
 }
 
 .blog-post.content {
+    font-family: 'Roboto', sans-serif !important;
+
+    div {
+        font-family: 'Roboto', sans-serif !important;
+        font-size: 19px;
+        color: #292929;
+        font-weight: 300;
+    }
+
     p:nth-child(2):first-letter {
         float: left;
         line-height: 35px;
         font-size: 55px;
-        font-family: Montserrat;
+        font-family: 'Roboto', sans-serif !important;
         color: black;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -766,8 +775,11 @@ footer {
 
 
 //img responsif
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .blog-post {
+    font-family: 'Roboto', sans-serif !important;
+
     img {
         max-width: 100%;
         height: 300px;
