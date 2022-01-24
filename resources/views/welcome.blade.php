@@ -381,6 +381,7 @@
 
                                     </div>
                                     <h5 class="card-title text-center mt-3">Alfianizzah</h5>
+                                    <h6 class="text-center">The Consultant</h6>
                                     <p class="card-text text-center mt-3">"GenBI? A place to start something amazing
                                         "
                                     </p>
@@ -399,6 +400,7 @@
 
                                     </div>
                                     <h5 class="card-title text-center mt-3">Yessy Yuniarti</h5>
+                                    <h6 class="text-center">The Initiator</h6>
                                     <p class="card-text text-center mt-3">"Some quick example text to build on the card
                                         title Some quick example text to build on the card title Some quick example text
                                         to build on the card title"</p>
@@ -412,14 +414,16 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="img-profile-container">
-                                        <img src="{{ asset('img/welcome/img-profile.png') }}" alt="">
+                                        <img src="{{ asset('img/mirad.png') }}" alt="mirad">
 
 
                                     </div>
-                                    <h5 class="card-title text-center mt-3">Dolor</h5>
-                                    <p class="card-text text-center mt-3">"Some quick example text to build on the card
-                                        title Some quick example text to build on the card title Some quick example text
-                                        to build on the card title"</p>
+                                    <h5 class="card-title text-center mt-3">Muh. Risky MR </h5>
+                                    <h6 class="text-center">Wise Leader</h6>
+                                    <p class="card-text text-center mt-3">"GenBI merupakan wadah bagi saya dalam
+                                        mengembangkan potensi diri, Saya sangat bersyukur dapat menjadi bagian di
+                                        dalamnya. Banyak hal baik dan hebat dalam dalam diri saya berawal dan ditemukan
+                                        di sini."</p>
                                     <div class="row">
                                         <i class="fa fa-quote-right text-center"></i>
                                     </div>
