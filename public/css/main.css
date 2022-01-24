@@ -18,10 +18,6 @@
   background-color: #775ada;
 }
 
-* {
-  font-family: 'Inter', sans-serif;
-}
-
 :root {
   font-size: 14px;
 }
@@ -36,6 +32,10 @@
 .blockquote {
   border-left: 4px solid #2d6cdf;
   padding-left: 1rem;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -450,11 +450,10 @@ footer {
 }
 
 .blog-post.content {
-  font-family: 'Roboto', sans-serif !important;
+  padding: 20px 0;
 }
 
 .blog-post.content div {
-  font-family: 'Roboto', sans-serif !important;
   font-size: 19px;
   color: #292929;
   font-weight: 300;
@@ -464,7 +463,6 @@ footer {
   float: left;
   line-height: 35px;
   font-size: 55px;
-  font-family: 'Roboto', sans-serif !important;
   color: black;
   padding-top: 5px;
   padding-bottom: 5px;

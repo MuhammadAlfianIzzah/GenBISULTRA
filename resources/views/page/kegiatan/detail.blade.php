@@ -1,10 +1,10 @@
 <x-m-layout-v2>
 
-    <div class="mt-r img-size-responsif" style="background-image: url({{asset("storage/$post->hero")}})">
+    <div class="mt-r img-size-responsif" style="background-image: url({{ asset("storage/$post->hero") }})">
 
         <div class="p-5 px-0 mb-4 rounded-3 z-99 text-white" style="z-index: 88;position: relative;">
             <div class="container py-5 d-flex flex-column align-items-center bg-lapis">
-                <h1 class="display-5 fw-bold">{{$post->nama}}</h1>
+                <h1 class="display-5 fw-bold">{{ $post->nama }}</h1>
 
                 {{-- <h4 class="text-dark">Lihat post kegiatan lainnya</h4> --}}
                 {{-- <div class="d-flex gap-2 mt-2">
@@ -49,24 +49,22 @@
                 <article class="blog-post">
                     {{-- <div class="d-flex justify-content-between align-content-center">
                         <h2 class="blog-post-title">{{$post->nama}}</h2>
-                        @if($post->is_active === 1)
+                        @if ($post->is_active === 1)
                         <span class="text-success">[<i class="fas fa-check-square"></i>Disetujui]</span>
                         @else
                         <span class="text-danger">[<i class="fas fa-clock"></i> Menunggu persetujuan]</span>
                         @endif
                     </div> --}}
                     <div class="alert alert-primary" role="alert">
-                        GenBI SULTRA, <span class="text-danger">{{$post->created_at}}</span> by <a href="#">{{$post->user->name}}</a>
-                      </div>
+                        GenBI SULTRA, <span class="text-danger">{{ $post->created_at }}</span> by <a
+                            href="{{ route('users-search', $post->user->name) }}">{{ $post->user->name }}</a>
+                    </div>
 
                 </article>
                 <article class="blog-post content">
-                    {!!$post->body!!}
+                    {!! $post->body !!}
                 </article>
-                {{-- <nav class="blog-pagination mt-3" aria-label="Pagination">
-                    <a class="btn btn-outline-primary" href="#">Older</a>
-                    <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-                </nav> --}}
+
 
             </div>
 

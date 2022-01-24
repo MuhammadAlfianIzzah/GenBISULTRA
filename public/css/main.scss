@@ -18,9 +18,7 @@
     background-color: #775ada;
 }
 
-* {
-    font-family: 'Inter', sans-serif;
-}
+
 
 :root {
     font-size: 14px;
@@ -37,6 +35,12 @@
     padding-left: 1rem;
 }
 
+
+// new
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
 
 $color-blue: #0A4678;
 $color-black: #323846;
@@ -506,10 +510,11 @@ footer {
 }
 
 .blog-post.content {
-    font-family: 'Roboto', sans-serif !important;
+
+    padding: 20px 0;
 
     div {
-        font-family: 'Roboto', sans-serif !important;
+
         font-size: 19px;
         color: #292929;
         font-weight: 300;
@@ -519,7 +524,7 @@ footer {
         float: left;
         line-height: 35px;
         font-size: 55px;
-        font-family: 'Roboto', sans-serif !important;
+
         color: black;
         padding-top: 5px;
         padding-bottom: 5px;

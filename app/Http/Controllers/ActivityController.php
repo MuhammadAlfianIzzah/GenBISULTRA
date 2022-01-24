@@ -88,6 +88,7 @@ class ActivityController extends Controller
     {
         $devisi = Devisi::all();
         $type_act = TypeActivity::all();
+
         return view("page.kegiatan.create", compact("devisi", "type_act"));
     }
     public function store(Request $request)
@@ -148,8 +149,6 @@ class ActivityController extends Controller
             }
         }
 
-        $slug = Str::slug($request->nama, '-');
-
         $body = $dom->saveHTML();
         try {
             $thumbnail =  $request->file("thumbnail")->store("kegiatan/thumbnail");
@@ -157,7 +156,6 @@ class ActivityController extends Controller
             // dd($hero);
             Activity::create([
                 "nama" => $request->nama,
-                "slug" => $slug,
                 "hero" => $hero,
                 "thumbnail" => $thumbnail,
                 "body" => $body,
@@ -166,6 +164,7 @@ class ActivityController extends Controller
                 "devisi_id" => $request->devisi
             ]);
         } catch (QueryException $e) {
+            dd($e);
             return back()->with(
                 "error",
                 "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor"
@@ -331,14 +330,14 @@ class ActivityController extends Controller
             }
         }
 
-        $slug = Str::slug($request->nama, '-');
+        // $slug = Str::slug($request->nama, '-');
 
         $content = $dom->saveHTML();
         try {
             $activities->update([
                 "nama" => $request->nama,
-                "slug" => $slug,
                 "hero" => $hero,
+                "slug" => null,
                 "thumbnail" => $thumbnail,
                 "body" => $content,
                 "TA_id" => $request->type_kegiatan,

@@ -2,13 +2,24 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
+
     protected $fillable = ["nama", "slug", "hero", "thumbnail", "body", "user_id", "type_kegiatan", "TA_id", "devisi_id", "is_active"];
     use HasFactory;
+    use Sluggable;
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'nama'
+            ]
+        ];
+    }
     protected $table = "activities";
     public function typeKegiatan()
     {
