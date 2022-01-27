@@ -23,7 +23,7 @@ class WelcomeController extends Controller
         ])->getBody());
 
         $kegiatan = Activity::limit(5)->get();
-        $posts = Posts::limit(5)->where("is_active", true)->get();
+        $posts = Posts::limit(5)->where("is_active", true)->latest()->get();
 
 
         return view('welcome', compact("kegiatan", "posts", "dataCovid"));
