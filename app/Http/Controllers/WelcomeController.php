@@ -22,9 +22,8 @@ class WelcomeController extends Controller
             'verify'  => false,
         ])->getBody());
 
-        $kegiatan = Activity::limit(5)->get();
+        $kegiatan = Activity::limit(5)->latest()->get();
         $posts = Posts::limit(5)->where("is_active", true)->latest()->get();
-
 
         return view('welcome', compact("kegiatan", "posts", "dataCovid"));
     }
