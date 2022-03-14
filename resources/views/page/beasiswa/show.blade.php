@@ -13,17 +13,10 @@
         <div class="s-layer"></div>
 
     </div>
-    <div class="bg-white container">
-
-        <article class="blog-post full content">
-            {!! $posts[0]->content !!}
-        </article>
-
-    </div>
     <div class="container">
         <div class="row mb-2 mt-4 h6">
             <div class="col-12">
-                Post lainnya dari
+                Informasi Beasiswa Bank indonesia
             </div>
         </div>
         <div class="row mb-3">
