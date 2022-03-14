@@ -776,4 +776,19 @@ footer {
   margin: 5px 0;
   border: 2px dashed #482ff7;
 }
+
+.blog-post.full {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.blog-post.full img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: auto;
+  max-width: 100%;
+  -webkit-transform: scaleX(90%);
+          transform: scaleX(90%);
+  height: auto;
+  border: 2px dashed #482ff7;
+}
 /*# sourceMappingURL=main.css.map */

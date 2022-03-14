@@ -169,7 +169,8 @@ Route::get("/user/profile/{profile:nama}", function (Profile $profile) {
 })->name("users-search");
 Route::get("/post", [PostsController::class, "show"])->name("show-posts");
 Route::get("/beasiswa/info", function () {
-    return view("page.beasiswa.show");
+    $posts = Posts::where("category_id", 1)->get();
+    return view("page.beasiswa.show", compact("posts"));
 })->name("bea-info");
 Route::get("/tentangKami/info", function () {
     return view("page.aboutUs");

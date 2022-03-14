@@ -753,3 +753,22 @@ footer {
         border: 2px dashed #482ff7;
     }
 }
+
+// .blog-post.full>img {
+//     text-align: center;
+// }
+
+.blog-post.full {
+    font-family: 'Roboto', sans-serif !important;
+
+
+
+    img {
+        object-fit: cover;
+        margin: auto;
+        max-width: 100%;
+        transform: scaleX(90%);
+        height: auto;
+        border: 2px dashed #482ff7;
+    }
+}

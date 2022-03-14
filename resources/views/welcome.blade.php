@@ -186,46 +186,7 @@
                     <h1 class="text-white" style="transform: scale(.8)">Selamat Datang <br> di Website <br> GenBI
                         SulTra</h1>
                 </div>
-                {{-- <div class=" d-md-block col-md-6">
-                    <div class="h-100 p-2 text-dark rounded-3" style="background: rgba( 255, 255, 255, 0.65 );
-                    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-                    backdrop-filter: blur( 4px );
-                    -webkit-backdrop-filter: blur( 4px );
-                    border-radius: 10px;
-                    border: 1px solid rgba( 255, 255, 255, 0.18 );">
-                        <div class="p-5" style="border: 2px dashed red">
-                            <div class="h2">
-                                <i class="fas fa-virus"></i> Data Covid 19 SULTRA
-                            </div>
-                            <p class="text-muted">Update terakhir (
-                                {{ \Carbon\Carbon::parse($dataCovid->last_date)->diffForHumans() }})
 
-                            </p>
-                            <hr>
-                            @foreach ($dataCovid->list_data as $data)
-
-                                @if ($data->key === 'SULAWESI TENGGARA')
-
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="h6 text-dark">Total Kasus</div>
-                                            {{ $data->jumlah_kasus }} <i class="fas fa-restroom  text-muted"></i>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="h6 text-danger"><i class="far fa-dizzy"></i> Meninggal </div>
-                                            {{ $data->jumlah_meninggal }} <i class="fas fa-restroom  text-muted"></i>
-                                        </div>
-                                        <div class="col-4 ">
-                                            <div class="h6 text-primary"><i class="fas fa-heart"></i> Sembuh</div>
-                                            {{ $data->jumlah_sembuh }} <i class="fas fa-restroom  text-muted"></i>
-                                        </div>
-
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="d-md-block col-md-6" style="z-index: 888" style="background: rgba(255, 6, 6, 1);
                 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
                 backdrop-filter: blur( 9.5px );
@@ -253,35 +214,7 @@
             </div>
         </div>
     </div>
-    <!-- departement -->
-    {{-- <div class="container-fluid devisi">
-        <h2 class="text-center">Departement <br> GenBI SulTra</h2>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="devisi-seeder" class="owl-carousel">
-                        @foreach ($devisi as $dv)
-                            <div class="post-slide">
-                                <div class="card-header">
-                                    <img style="max-height: 200px;object-fit: contain"
-                                        src="{{ asset('img/welcome/devisi.png') }}" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <h3 class="post-title">
-                                        <div>Departement <br>{{ $dv->nama }}</div>
-                                    </h3>
-                                    <p class="post-description">{{ $dv->deskripsi }}</p>
-                                    <a href="{{ route('show-kegiatan', ['devisi' => $dv->id]) }}"
-                                        class="read-more">See All Activity</a>
-                                </div>
-                            </div>
-                        @endforeach
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
     <div class="container-fluid devisi">
         <h2 class="text-center">
             <a class="nav-link link-light" href="{{ route('show-kegiatan') }}">Kegiatan Kami</a>

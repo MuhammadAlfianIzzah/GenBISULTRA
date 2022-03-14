@@ -33,22 +33,6 @@
                     <div class="h1 fw-normal text-center text-white shadow-sm">{{ Str::ucfirst($post->title) }} <i
                             class="fas fa-feather"></i></div>
 
-
-
-                    {{-- <h6 class="text-white">
-                        @if ($post->approval === 'accept')
-                            <span class="text-success">[<i class="fas fa-check-square"></i>Disetujui]</span>
-                        @else
-                            <span class="text-danger">[<i class="fas fa-clock"></i> Menunggu persetujuan]</span>
-                        @endif
-                    </h6> --}}
-                    {{-- <div class="d-flex gap-2 mt-2">
-                        <a href="{{ route('my-brain', ['category' => 'buku tahunan']) }}"
-                            class="btn btn-primary btn-lg fs-6 shadow-sm">
-                            <i class="fas fa-book-reader"></i> Buku Tahunan GenBI</a>
-                        <a href="{{ route('my-brain', ['category' => 'my teori']) }}"
-                            class="btn btn-primary btn-lg fs-6 shadow-sm">My teori</a>
-                    </div> --}}
                 </div>
             </div>
             <div class="s-layer"></div>
@@ -62,10 +46,7 @@
         <div class="row g-2">
             <div class="col-md-9 col-12 overflow-hidden">
                 <div class="container">
-                    {{-- <div class="d-flex justify-content-between align-content-center">
-                        <h1 class="blog-post-title py-3">{{ Str::ucfirst($post->title) }}</h1>
 
-                    </div> --}}
                     <img style="max-height: 300px;object-fit: cover;width: 100%;object-position: center"
                         src="{{ asset("storage/$post->hero") }}"
                         onerror="this.onerror=null;this.src='img/notfound.png';" alt="" class="img-thumbnail">
