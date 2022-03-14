@@ -190,4 +190,6 @@ Route::get("/my-brain", [MyBrainController::class, "show"])->name("my-brain");
 Route::get("/my-brain/{brain_post:slug}", [MyBrainController::class, "detail"])->name("detail-brain");
 // close brain
 
+Route::get("tes", function () {
+})->middleware("issuper");
 require __DIR__ . '/auth.php';
