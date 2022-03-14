@@ -1,5 +1,5 @@
 <x-dash-layout>
-    <x-slot name="title_page">Create My brain</x-slot>
+    <x-slot name="title_page">Create Post</x-slot>
     <div class="bg-white container py-5 mx-3 d-flex justify-content-center ">
         <div class="col-lg-11">
             @if ($message = Session::get('error'))
@@ -19,7 +19,6 @@
                     {{ $message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-
             @endif
 
             <!-- Page Heading -->
@@ -57,7 +56,9 @@
                     <label for="formFile" class="col-sm-2 col-form-label">Hero image</label>
 
                     <div class="col-sm-10">
-                        <img style="max-height: 200px;object-fit: contain" class="w-100 img-fluid img-thumbnail hero">
+
+                        <img src="" style="max-height: 200px;object-fit: contain"
+                            class="w-100 img-fluid img-thumbnail hero">
                         <input name="hero" data-target="hero" class="form-control input-show upload-img" type="file"
                             id="formFile" required>
                         <span class="text-scaledown">(Gunakan gambar yang persegi panjang)</span>
@@ -84,7 +85,7 @@
                     <label for="formFile" class="col-sm-2 col-form-label">Thumnail</label>
                     <div class="col-sm-10">
                         <img style="max-height: 200px;object-fit: contain"
-                            class="w-100 img-fluid img-thumbnail thumbnail">
+                            class="w-100 img-fluid img-thumbnail thumbnail" src="">
                         <input name="thumbnail" data-target="thumbnail" class="form-control input-show upload-img"
                             type="file" id="formFile" required>
                         @error('thumbnail')

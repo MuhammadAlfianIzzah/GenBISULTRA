@@ -23,10 +23,10 @@ class PostsController extends Controller
     {
         SEOMeta::setTitle("Post");
         OpenGraph::addProperty('type', 'article');
-        $posts = Posts::filter(request(["search", "category"]))->where(["is_active" => 1])->latest()->get();
+        $posts = Posts::filter(request(["search", "category"]))->where(["is_active" => 1, ["category_id", "!=", 1]])->latest()->get();
         if (Auth::check()) {
             if (request()->user()->hasRole(["admin", "super"])) {
-                $posts = Posts::filter(request(["search", "category"]))->latest()->get();
+                $posts = Posts::filter(request(["search", "category"]))->where("category_id", "!=", 1)->latest()->get();
             }
         }
 
