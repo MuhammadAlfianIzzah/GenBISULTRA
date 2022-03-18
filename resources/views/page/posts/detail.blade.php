@@ -65,7 +65,7 @@
                 <article class="blog-post full content pb-4">
                     {!! $post->content !!}
                 </article>
-                <div class="row mb-2">
+                <div class="row mb-2 mt-4">
                     <div class="col-12">
                         Post lainnya dari <span class="text-info">{{ $post->user->name }}</span>
                     </div>
