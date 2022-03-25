@@ -103,19 +103,42 @@ body {
                 font-size: 12pt;
                 font-weight: 500;
                 color: $color-white !important;
-
-                &:hover {
-                    color: $color-blue !important;
-                }
+                -webkit-transition: all 250ms;
+                transition: all 250ms;
             }
 
             .top-nav.active {
-                color: $color-blue-secondary !important;
-
-                &:hover {
-                    color: $color-blue !important;
+                &::after {
+                    background-color: rgba($color: white, $alpha: .7);
+                    width: 50%;
                 }
             }
+
+            .top-nav:hover {
+                color: rgb(37, 35, 35) !important;
+            }
+
+            .top-nav.active {
+
+                color: white !important;
+                position: relative;
+
+
+                &::after {
+
+                    content: "";
+                    position: absolute;
+
+                    bottom: 0;
+                    transform: translateX(-50%);
+                    left: 50%;
+
+                    height: 3PX;
+                }
+
+
+            }
+
         }
     }
 }

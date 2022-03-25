@@ -92,18 +92,32 @@ body {
   font-size: 12pt;
   font-weight: 500;
   color: #F6F8FD !important;
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
+}
+
+.navbar ul li .top-nav.active::after {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 50%;
 }
 
 .navbar ul li .top-nav:hover {
-  color: #0A4678 !important;
+  color: #252323 !important;
 }
 
 .navbar ul li .top-nav.active {
-  color: #4a84b4 !important;
+  color: white !important;
+  position: relative;
 }
 
-.navbar ul li .top-nav.active:hover {
-  color: #0A4678 !important;
+.navbar ul li .top-nav.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  left: 50%;
+  height: 3PX;
 }
 
 .mt-r {

@@ -57,8 +57,8 @@
                         anda juga dapat menfilter kegiatan berdasarkan departemen GenBI</p>
                     {{-- <h4 class="text-dark">Filter Post</h4> --}}
                     <div class="d-flex gap-2 mt-2">
-
-                        @foreach ($devisi as $dv)
+                        {{-- {{ dd($devisi) }} --}}
+                        @foreach ($devisi as $key => $dv)
                             <a href="{{ route('show-kegiatan', ['devisi' => $dv->id]) }}"
                                 class="btn btn-primary {{ Request::get('category') == $dv->id ? 'active' : '' }}"
                                 data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $dv->nama }}">
@@ -66,23 +66,27 @@
                                     @case('Kesehatan')
                                         <i class="fas fa-heartbeat"></i>
                                     @break
+
                                     @case('Kominfo')
                                         <i class="fas fa-user-secret"></i>
                                     @break
+
                                     @case('Lingkungan Hidup')
                                         <i class="fas fa-tree"></i>
                                     @break
+
                                     @case('Pendidikan')
                                         <i class="fas fa-book-reader"></i>
                                     @break
+
                                     @case('Kewirausahaan')
                                         <i class="fas fa-hand-holding-usd"></i>
                                     @break
+
                                     @default
                                         <i class="fas fa-smile-wink"></i>
                                 @endswitch
                             </a>
-
                         @endforeach
 
                     </div>
@@ -166,7 +170,6 @@
                                 Posts kosong
                             </div>
                         </div>
-
                     @endforelse
 
 
@@ -176,7 +179,6 @@
 
     </main>
     @push('script')
-
         <script>
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
             var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {

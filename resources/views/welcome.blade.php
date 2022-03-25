@@ -224,7 +224,7 @@
                 <div class="col-md-12">
                     <div id="devisi-seeder" class="post-carousel owl-carousel">
                         @foreach ($kegiatan as $kg)
-                            <div class="card">
+                            {{-- <div class="card">
                                 <?php
                                 $filter = preg_replace('/<img[^>]+>/', '', $kg->body);
                                 $filterh1 = strip_tags($filter);
@@ -238,6 +238,33 @@
                                     <a href="{{ route('detail-kegiatan', $kg->slug) }}"
                                         class="btn btn-outline-dark">Baca
                                         selengkapnya</a>
+                                </div>
+                            </div> --}}
+                            <div class="post-slide">
+                                <div class="post-img">
+                                    <img style="max-height: 200px;object-fit: cover"
+                                        src="{{ asset("storage/$kg->thumbnail") }}" alt="">
+                                    <a href="{{ route('detail-kegiatan', [$kg->slug]) }}" class="over-layer"><i
+                                            class="fa fa-link"></i></a>
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">
+                                        <a href="{{ route('detail-kegiatan', [$kg->slug]) }}">{{ $kg->title }}</a>
+
+                                    </h3>
+                                    <?php
+                                    $filter = preg_replace('/<img[^>]+>/', '', $kg->body);
+                                    $filterh1 = strip_tags($filter);
+                                    ?>
+
+                                    <p class="post-description">{!! Str::limit($filterh1, 180, '...') !!}</p>
+
+                                    <span class="post-date"><i
+                                            class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($kg->updated_at)->diffForHumans() }}</span>
+
+                                    <a href="{{ route('detail-kegiatan', [$kg->slug]) }}" class="read-more">Baca
+                                        selengkapnya</a>
+
                                 </div>
                             </div>
                         @endforeach
@@ -264,11 +291,13 @@
                                 <div class="post-img">
                                     <img style="max-height: 200px;object-fit: cover"
                                         src="{{ asset("storage/$post->thumbnail") }}" alt="">
-                                    <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+                                    <a href="{{ route('detail-posts', [$post->slug]) }}" class="over-layer"><i
+                                            class="fa fa-link"></i></a>
                                 </div>
                                 <div class="post-content">
                                     <h3 class="post-title">
-                                        <a href="{{ route('detail-brain', [$post->slug]) }}">{{ $post->title }}</a>
+                                        <a
+                                            href="{{ route('detail-brain', [$post->slug]) }}">{{ $post->title }}</a>
 
                                     </h3>
                                     <?php
