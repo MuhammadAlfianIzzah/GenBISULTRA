@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 ::-webkit-scrollbar {
     width: 14px;
 }
@@ -534,9 +535,9 @@ footer {
 }
 
 .blog-post.content {
-
+    font-family: 'Raleway', sans-serif;
     padding: 20px 0;
-
+    font-size: 18px;
     div {
 
         font-size: 19px;
