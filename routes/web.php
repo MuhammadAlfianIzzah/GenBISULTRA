@@ -52,7 +52,7 @@ Route::get("/galery", [GalleryController::class, "show"])->name("galery-genbi");
 Route::get("/author", [WelcomeController::class, "author"])->name("author");
 Route::middleware(["role:super", "auth", "verified"])->group(function () {
     Route::get("/genbi/komsat", [KomsatController::class, "show"])->name("show-komsat");
-    Route::post("/genbi/komsat", [KomsatController::class, "store"])->name("show-komsat");
+    Route::post("/genbi/komsat", [KomsatController::class, "store"])->name("post-komsat");
     Route::get("/genbi/komsat/edit/{komisat:nama}", [KomsatController::class, "edit"])->name("edit-komsat");
     Route::patch("/genbi/komsat/edit/{komisat:nama}", [KomsatController::class, "update"])->name("edit-komsat");
     Route::delete("/genbi/komsat/{komisat:nama}", [KomsatController::class, "delete"])->name("delete-komsat");
