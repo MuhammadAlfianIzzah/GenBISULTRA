@@ -26,7 +26,8 @@
                 <div class="row">
                     <div class="col-12 col-sm-7 col-md-12 col-lg-8">
                         <div class="card card-profile">
-                            <img class="card-img-top" style="max-height: 200px;object-fit: cover"
+                            <img data-bs-toggle="modal" data-bs-target="#editProfile" class="card-img-top"
+                                style="max-height: 200px;object-fit: cover;cursor: pointer"
                                 src="{{ asset('storage') . '/' . $profile->hero }}" alt="Bologna">
 
                             <div class="card-body text-center">
@@ -48,19 +49,47 @@
                                 {{-- <a href="#" class="btn btn-info">Follow</a>
                             <a href="#" class="btn btn-outline-info">Message</a> --}}
                             </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#editProfile">
-                                    Edit
-                                </button>
-                                <button class="btn btn-primary">Share</button>
+                            <div class="h-100 p-5 bg-light border rounded-3">
+                                <h2 class="text-center">User Info</h2>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Post</h5>
+                                                <p class="card-text">Total: {{ Auth::user()->posts->count() }}
+                                                </p>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Post Kegiatan</h5>
+                                                <p class="card-text">Total: {{ Auth::user()->activity->count() }}
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Info Beasiswa</h5>
+                                                <p class="card-text">Total:
+                                                    {{ Auth::user()->brainPosts->count() }}
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-5 col-lg-4 col-md-12">
-                        <h4 style="border-left: 4px solid salmon;padding-left: .4rem">User posts</h4>
+                        <h4>User posts</h4>
                         <hr>
                         @forelse ($posts as $post)
                             <div class="card mb-2 border-0" style="border-top: 4px solid rgb(145, 145, 250) !important">
@@ -85,11 +114,12 @@
                                     </div>
 
                                 </div>
+
                             </div>
                         @empty
                             no posts
                         @endforelse
-
+                        {{ $posts->links() }}
                     </div>
                 </div>
             @endif

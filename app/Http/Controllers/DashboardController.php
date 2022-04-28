@@ -12,7 +12,7 @@ class DashboardController extends Controller
     {
         // Auth::user()->attachRole("super");
 
-        $users = User::filter(request(["search"]))->paginate(5)->fragment('users');
+        $users = User::filter(request(["search"]))->orderBy("last_seen", "DESC")->paginate(5)->fragment('users');
         return view('dashboard', compact("users"));
     }
 }

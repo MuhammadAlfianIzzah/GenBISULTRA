@@ -171,8 +171,11 @@
                             </div>
                         </div>
                     @endforelse
-
-
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12  justify-content-center d-flex">
+                        {{ $posts->links() }}
+                    </div>
                 </div>
             </div>
         </div>
