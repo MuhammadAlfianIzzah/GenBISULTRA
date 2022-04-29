@@ -250,7 +250,7 @@
                                 <div class="post-content">
                                     <h3 class="post-title">
                                         <a href="{{ route('detail-kegiatan', [$kg->slug]) }}">{{ $kg->title }}</a>
-
+                                        {{ $kg->nama }}
                                     </h3>
                                     <?php
                                     $filter = preg_replace('/<img[^>]+>/', '', $kg->body);
