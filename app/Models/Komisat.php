@@ -9,5 +9,5 @@ class Komisat extends Model
 {
     protected $table = "komisats";
     use HasFactory;
-    protected $fillable = ["nama", "keterangan"];
+    protected $fillable = ["nama", "keterangan", "logo"];
 }

@@ -21,6 +21,27 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
+
+                    <label for="activity_date" class="col-sm-2 col-form-label">Tanggal Kegiatan</label>
+                    <div class="col-sm-10">
+                        <input type="date" value="{{ old('activity_date') }}" name="activity_date"
+                            class="form-control" id="activity_date" required>
+                        @error('activity_date')
+                            <div class="text-danger text-small">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="created_at" class="col-sm-2 col-form-label">Tanggal Kegiatan</label>
+                    <div class="col-sm-10">
+                        <input type="date" value="{{ old('date2', date('Y-m-d')) }}" name="created_at"
+                            class="form-control" id="created_at" required>
+                        @error('created_at')
+                            <div class="text-danger text-small">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="mb-3 row">
                     <label for="devisi" class="col-sm-2 col-form-label">Devisi/Departemen</label>
                     <div class="col-sm-10">
                         <select class="form-select" aria-label="Default select example" name="devisi" id="devisi">

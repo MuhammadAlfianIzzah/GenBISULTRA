@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Komisat;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class KomsatController extends Controller
 {
@@ -17,14 +18,19 @@ class KomsatController extends Controller
     {
         $attr = $request->validate([
             "nama" => "required",
-            "keterangan" => "required"
+            "keterangan" => "required",
+            "logo" => "mimes:png,jpg,jpeg|max:4098",
         ]);
+        $attr["logo"] =  $request->file("logo")->store("komsat/logo");
         Komisat::create($attr);
         return redirect("/genbi/komsat")->with("success", "berhasil membuat komsat");
     }
     public function delete(Komisat $komisat)
     {
         try {
+            if (Storage::exists($komisat->logo)) {
+                Storage::delete($komisat->logo);
+            }
             $komisat->delete();
         } catch (QueryException $e) {
             return redirect("/genbi/komsat")->with("error", "Gagal menghapus komsat");
@@ -39,8 +45,16 @@ class KomsatController extends Controller
     {
         $attr = $request->validate([
             "nama" => "required|unique:type_activities,nama",
-            "keterangan" => "required|min:10"
+            "keterangan" => "required",
+            "logo" => "mimes:png,jpg,jpeg,webp|max:4098",
         ]);
+
+        if (request()->file("logo")) {
+            Storage::delete($komisat->logo);
+            $attr["logo"] =  $request->file("logo")->store("komsat/logo");
+        } else {
+            $attr["logo"] = $komisat->logo;
+        }
         try {
             $komisat->update($attr);
             $request->session()->flash("success", "Berhasil Mengupdate Komsat");

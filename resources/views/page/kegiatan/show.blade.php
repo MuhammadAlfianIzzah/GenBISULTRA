@@ -123,37 +123,52 @@
                     @forelse ($posts as $post)
                         <div class="col">
                             <div class="card shadow-sm">
-                                <div class="hightlight">{{ $post->devisi->nama }} ~
+                                @php
+                                    $logo = $post->user->penerima->status->komsat->logo;
+                                @endphp
+
+                                <div class="hightlight d-flex align-items-center">
+
+                                    <img width="40px" class="me-2"
+                                        src="{{ asset("storage/$logo") ?? 'https://genbisultra.com/img/welcome/genbi-sultra.png' }}"
+                                        alt="">
+
+                                    {{ $post->devisi->nama }} ~
                                     {{ $post->typeActivity->nama }}
                                 </div>
 
 
                                 <figure class="figure">
-                                    <img onerror="this.onerror=null;this.src='img/notfound.png';"
-                                        style="max-height: 200px;width: 100%; object-fit: cover"
-                                        src="{{ asset("storage/$post->thumbnail") }}"
-                                        class="figure-img img-fluid rounded" alt="...">
+                                    <a style="width: 100%" href="{{ route('detail-kegiatan', ["$post->slug"]) }}">
+                                        <img onerror="this.onerror=null;this.src='img/notfound.png';"
+                                            style="max-height: 200px;width: 100%; object-fit: cover"
+                                            src="{{ asset("storage/$post->thumbnail") }}"
+                                            class="figure-img img-fluid rounded" alt="...">
+                                    </a>
 
-                                    <figcaption class="figure-caption text-end">{{ $post->slug }}</figcaption>
+                                    {{-- <figcaption class="figure-caption text-end">{{ $post->slug }}</figcaption> --}}
                                 </figure>
-
                                 <div class="card-body">
                                     <?php
                                     $filter = preg_replace('/<img[^>]+>/', '', $post->body);
                                     $filterh1 = strip_tags($filter);
                                     ?>
-                                    <h4>{{ $post->nama }}</h4>
-                                    <p class="card-text">{!! Str::limit($filterh1, 200, '...') !!}</p>
 
-                                    <div class="d-flex justify-content-between align-items-center">
+                                    <h4>{{ $post->nama }}</h4>
+
+                                    <p class="card-text">{!! Str::limit($filterh1, 150, '...') !!}</p>
+                                    <small class="text-muted">Tanggal kegiatan :
+                                        <span class="text-info"> {{ $post->activity_date }}</span>
+                                    </small>
+                                    {{-- <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a href="{{ route('detail-kegiatan', ["$post->slug"]) }}" type="button"
                                                 class="btn btn-sm btn-outline-secondary">Baca selengkapnya</a>
                                         </div>
-                                        <small
-                                            class="text-muted">{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</small>
+                                        <small class="text-muted">Update:
+                                            {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</small>
 
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

@@ -23,7 +23,7 @@ class ActivityController extends Controller
     {
         SEOMeta::setTitle("Kegiatan GenBI");
         OpenGraph::addProperty('type', 'article');
-        $posts = Activity::filter(request(["search", "category", "devisi"]))->where("is_active", true)->with(["devisi", "typeActivity"])->latest()->paginate(9);
+        $posts = Activity::filter(request(["search", "category", "devisi"]))->where("is_active", true)->with(["devisi", "typeActivity"])->orderBy("activity_date", "DESC")->paginate(9);
         $kategory = TypeActivity::get();
         $devisi = Devisi::get();
         return view("page.kegiatan.show", compact("posts", "kategory", "devisi"));
@@ -98,6 +98,7 @@ class ActivityController extends Controller
             "nama" => "required|min:10",
             "devisi" => "required",
             "type_kegiatan" => "required",
+            "created_at" => "required|date",
             "body" => "required|min:10",
             "thumbnail" => "required|mimes:png,jpg|max:2048",
             "hero" => "required|mimes:png,jpg|max:2048",
@@ -250,24 +251,25 @@ class ActivityController extends Controller
         $attr = $request->validate([
             "nama" => "required|min:10",
             "devisi" => "required",
-            "type_kegiatan" => "required",
+            "TA_id" => "required",
             "body" => "required|min:10",
             "thumbnail" => "mimes:png,jpg|max:2048",
             "hero" => "mimes:png,jpg|max:2048",
+            "activity_date" => "required|date"
         ]);
         // end validation
         // handle thumbnail
         if (request()->file("thumbnail")) {
             Storage::delete($activities->thumbnail);
-            $thumbnail =  $request->file("thumbnail")->store("kegiatan/thumbnail");
+            $attr["thumbnail"] =  $request->file("thumbnail")->store("kegiatan/thumbnail");
         } else {
-            $thumbnail = $activities->thumbnail;
+            $attr["thumbnail"] = $activities->thumbnail;
         }
         if (request()->file("hero")) {
             Storage::delete($activities->hero);
-            $hero =  $request->file("hero")->store("kegiatan/hero");
+            $attr["hero"] =  $request->file("hero")->store("kegiatan/hero");
         } else {
-            $hero = $activities->hero;
+            $attr["hero"] = $activities->hero;
         }
         // end handle thumbnail
         $content = $request->body;
@@ -332,19 +334,11 @@ class ActivityController extends Controller
 
         // $slug = Str::slug($request->nama, '-');
 
-        $content = $dom->saveHTML();
+        $attr["body"] = $dom->saveHTML();
         try {
-            $activities->update([
-                "nama" => $request->nama,
-                "hero" => $hero,
-                "slug" => null,
-                "thumbnail" => $thumbnail,
-                "body" => $content,
-                "TA_id" => $request->type_kegiatan,
-                "devisi_id" => $request->devisi
-            ]);
+            $activities->update($attr);
         } catch (QueryException $e) {
-
+            dd($e);
             return redirect()->route("mypost-kegiatan")->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
         }
         return redirect()->route("mypost-kegiatan")->with("success", "Berhasil Update");

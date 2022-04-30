@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
+    public $timestamps = true;
 
-    protected $fillable = ["nama", "slug", "hero", "thumbnail", "body", "user_id", "type_kegiatan", "TA_id", "devisi_id", "is_active"];
+    protected $fillable = ["nama", "slug", "hero", "thumbnail", "body", "user_id", "type_kegiatan", "TA_id", "devisi_id", "is_active", "activity_date"];
     use HasFactory;
     use Sluggable;
     public function sluggable(): array

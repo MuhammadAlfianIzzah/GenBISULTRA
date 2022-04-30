@@ -244,8 +244,15 @@
                                 <div class="post-img">
                                     <img style="max-height: 200px;object-fit: cover"
                                         src="{{ asset("storage/$kg->thumbnail") }}" alt="">
-                                    <a href="{{ route('detail-kegiatan', [$kg->slug]) }}" class="over-layer"><i
-                                            class="fa fa-link"></i></a>
+                                    <a href="{{ route('detail-kegiatan', [$kg->slug]) }}" class="over-layer">
+                                        {{-- <i class="fa fa-link"></i> --}}
+                                        @php
+                                            $logo = $kg->user->penerima->status->komsat->logo;
+                                        @endphp
+                                        <img style="max-width: 30%;" class="me-2"
+                                            src="{{ asset("storage/$logo") ?? 'https://genbisultra.com/img/welcome/genbi-sultra.png' }}"
+                                            alt="">
+                                    </a>
                                 </div>
                                 <div class="post-content">
                                     <h3 class="post-title">

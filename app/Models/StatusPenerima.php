@@ -9,4 +9,8 @@ class StatusPenerima extends Model
 {
     use HasFactory;
     protected $fillable = ["komsat_id", "devisi_id", "penerimaBeasiswa_id"];
+    public function komsat()
+    {
+        return $this->belongsTo(Komisat::class, "komsat_id");
+    }
 }

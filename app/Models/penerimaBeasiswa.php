@@ -11,4 +11,8 @@ class penerimaBeasiswa extends Model
     protected $fillable = [
         "nim", "fakultas", "jurusan", "tanggal_masuk", "tanggal_keluar", "no_hp",  "angkatan", "pembina", "foto_pengenal", "is_valid", "user_id"
     ];
+    public function status()
+    {
+        return $this->hasOne(StatusPenerima::class, "penerimaBeasiswa_id");
+    }
 }

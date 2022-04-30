@@ -20,7 +20,7 @@
                         <th scope="col">Nama Kegiatan</th>
                         <th scope="col" class="table-responsif">Keterangan</th>
 
-                        <th scope="col" class="table-responsif">Created At</th>
+                        <th scope="col" class="table-responsif">Logo</th>
 
                         <th scope="col" class="table-responsif">Update At</th>
 
@@ -29,14 +29,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($komsat as $ks)
+                    @foreach ($komsat as $key => $ks)
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">{{ $key + 1 }}</th>
                             <td>{{ $ks->nama }}</td>
                             <td class="table-responsif">{{ $ks->keterangan }}</td>
 
 
-                            <td class="table-responsif">{{ $ks->created_at }}</td>
+                            <td class="table-responsif">
+
+                                <img style="width: 100px" onerror="this.onerror=null;this.src='img/notfound.png';"
+                                    src="{{ asset("storage/$ks->logo") }}" alt="tesssssssssss" class="img-thumbnail">
+                            </td>
 
                             <td class="table-responsif">{{ $ks->updated_at }}</td>
 
@@ -53,12 +57,12 @@
                                         @method("delete")
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#delete{{ $ks->nama }}">
+                                            data-bs-target="#delete{{ $ks->id }}">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="delete{{ $ks->nama }}" tabindex="-1"
-                                            aria-labelledby="delete{{ $ks->nama }}Label" aria-hidden="true">
+                                        <div class="modal fade" id="delete{{ $ks->id }}" tabindex="-1"
+                                            aria-labelledby="delete{{ $ks->id }}Label" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-body">
@@ -90,7 +94,6 @@
                     </svg>
                     No Posts
                 </div>
-
             @endif
 
         </div>
@@ -101,7 +104,7 @@
 
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method("POST")
                     <div class="modal-header">
@@ -113,6 +116,7 @@
                     </div>
                     <div class="modal-body">
 
+
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama Komsat</label>
                             <input type="text" class="form-control" id="nama" name="nama"
@@ -123,6 +127,7 @@
                             @enderror
 
                         </div>
+
                         <div class="mb-3">
                             <label for="nama" class="form-label">Keterangan</label>
                             <input type="text" class="form-control" id="keterangan" name="keterangan"
@@ -131,6 +136,10 @@
                                 <div class="form-text text-danger">{{ $message }}
                                 </div>
                             @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="logo" class="form-label">Logo</label>
+                            <input class="form-control" name="logo" type="file" id="logo">
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -3,7 +3,7 @@
         komsat GenBI
     </x-slot>
     <div class="bg-white container py-3 mx-3 d-flex justify-content-center row">
-        <form action="" method="POST">
+        <form enctype="multipart/form-data" action="" method="POST">
             @csrf
             @method("PATCH")
             <div class="modal-header">
@@ -19,7 +19,21 @@
                     @error('nama')
                         <div class="form-text text-danger">{{ $message }}
                         </div>
+                    @enderror
 
+                </div>
+                <div class="mb-3 row">
+                    <label for="formFile" class="form-label">logo image</label>
+
+
+                    <img style="max-height: 200px;object-fit: contain" class="w-100 img-fluid img-thumbnail logo"
+                        src="{{ asset("storage/$komisat->logo") }}">
+                    <input name="logo" class="form-control input-show upload-img" data-target="logo" type="file"
+                        id="formFile">
+                    <small class="text-small text-warning">(Gunakan gambar yang persegi panjang)</small>
+
+                    @error('logo')
+                        <div class="text-danger text-small">{{ $message }}</div>
                     @enderror
 
                 </div>
@@ -31,7 +45,6 @@
                     @error('keterangan')
                         <div class="form-text text-danger">{{ $message }}
                         </div>
-
                     @enderror
 
                 </div>
