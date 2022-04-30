@@ -247,7 +247,7 @@
                                     <a href="{{ route('detail-kegiatan', [$kg->slug]) }}" class="over-layer">
                                         {{-- <i class="fa fa-link"></i> --}}
                                         @php
-                                            $logo = $kg->user->penerima->status->komsat->logo;
+                                            $logo = $kg->user->penerima->status->komsat->logo ?? 'https://genbisultra.com/img/welcome/genbi-sultra.png';
                                         @endphp
                                         <img style="max-width: 30%;" class="me-2"
                                             src="{{ asset("storage/$logo") ?? 'https://genbisultra.com/img/welcome/genbi-sultra.png' }}"
