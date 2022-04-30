@@ -251,7 +251,7 @@
                                         @endphp
                                         <img style="max-width: 30%;" class="me-2"
                                             src="{{ asset("storage/$logo") ?? 'https://genbisultra.com/img/welcome/genbi-sultra.png' }}"
-                                            alt="">
+                                            onerror="this.onerror=null;this.src='img/welcome/genbi-sultra.png';" alt="">
                                     </a>
                                 </div>
                                 <div class="post-content">
