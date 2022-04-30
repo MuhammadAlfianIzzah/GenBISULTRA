@@ -124,8 +124,7 @@
                         <div class="col">
                             <div class="card shadow-sm">
                                 @php
-                                    $logo = $post->user->penerima->status->komsat->logo;
-
+                                    $logo = $post->user->penerima->status->komsat->logo ?? null;
                                 @endphp
                                 <div class="hightlight d-flex align-items-center">
 
