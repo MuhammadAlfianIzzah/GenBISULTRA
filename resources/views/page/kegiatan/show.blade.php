@@ -124,12 +124,11 @@
                         <div class="col">
                             <div class="card shadow-sm">
                                 @php
-                                    $logo = $kg->user->penerima->status->komsat->logo ?? 'https://genbisultra.com/img/welcome/genbi-sultra.png';
+                                    $logo = $kg->user->penerima->status->komsat->logo ?? null;
                                 @endphp
                                 <div class="hightlight d-flex align-items-center">
 
-                                    <img width="40px" class="me-2"
-                                        src="{{ asset("storage/$logo") ?? 'https://genbisultra.com/img/welcome/genbi-sultra.png' }}"
+                                    <img width="40px" class="me-2" src="{{ asset("storage/$logo") }}"
                                         onerror="this.onerror=null;this.src='img/welcome/genbi-sultra.png';" alt="">
 
                                     {{ $post->devisi->nama }} ~
