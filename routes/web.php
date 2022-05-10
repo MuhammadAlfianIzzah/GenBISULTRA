@@ -118,8 +118,13 @@ Route::middleware(["auth"])->group(function () {
 
 Route::middleware(['auth', "verified"])->group(function () {
     // genbi
-    Route::get("/genbi/daftar", [GenbiController::class, "create"])->name("daftar-genbi");
-    Route::post("/genbi/daftar", [GenbiController::class, "store"])->name("post-genbi");
+    Route::get("/genbi/anggota", [GenbiController::class, "create"])->name("daftar-genbi");
+    Route::post("/genbi/anggota", [GenbiController::class, "store"])->name("post-genbi");
+    Route::get("/genbi/anggota/list", [GenbiController::class, "list"])->name("list-anggota-genbi");
+
+    Route::get("/genbi/anggota/{penerimaBeasiswa:id}", [GenbiController::class, "edit"])->name("edit-daftar-genbi");
+    Route::put("/genbi/anggota/{penerimaBeasiswa:id}", [GenbiController::class, "update"])->name("update-daftar-genbi");
+
     Route::get("/genbi/gabung/departement", [GenbiController::class, "gDepartement"])->name("gabung-departement");
 
     // genbi

@@ -9,10 +9,14 @@ class penerimaBeasiswa extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "nim", "fakultas", "jurusan", "tanggal_masuk", "tanggal_keluar", "no_hp",  "angkatan", "pembina", "foto_pengenal", "is_valid", "user_id"
+        "nim", "fakultas", "jurusan", "tanggal_masuk", "tanggal_keluar", "no_hp",  "angkatan", "pembina", "foto_pengenal", "is_valid", "user_id", "BAgreement"
     ];
     public function status()
     {
         return $this->hasOne(StatusPenerima::class, "penerimaBeasiswa_id");
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, "user_id");
     }
 }

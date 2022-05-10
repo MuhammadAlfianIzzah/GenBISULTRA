@@ -59,7 +59,7 @@
 
                 <div class="mb-3 row gap-2">
                     <div class="col-md">
-                        <label for="tanggal_masuk" class="form-label">tanggal_masuk</label>
+                        <label for="tanggal_masuk" class="form-label">Tanggal masuk kuliah</label>
                         <input type="date" class="form-control" id="tanggal_masuk" name="tanggal_masuk"
                             value="{{ old('tanggal_masuk') }}">
                         @error('tanggal_masuk')
@@ -67,7 +67,7 @@
                         @enderror
                     </div>
                     <div class="col-md">
-                        <label for="tanggal_keluar" class="form-label">Tanggal selesai</label>
+                        <label for="tanggal_keluar" class="form-label">Tanggal perkiraan wisuda</label>
                         <input type="date" class="form-control" id="tanggal_keluar" name="tanggal_keluar"
                             value="{{ old('tanggal_keluar') }}">
                         @error('tanggal_keluar')
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="angkatan" class="form-label">Angkatan</label>
+                    <label for="angkatan" class="form-label">Angkatan kuliah</label>
                     <input type="text" class="form-control" id="angkatan" name="angkatan"
                         value="{{ old('angkatan') }}">
                     @error('angkatan')
@@ -88,6 +88,14 @@
                     <input type="text" class="form-control" id="pembina" name="pembina"
                         value="{{ old('pembina') }}">
                     @error('pembina')
+                        <div class="text-small text-danger form-text">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="BAgreement" class="form-label">Berkas Agrement</label>
+                    <input name="BAgreement" class="form-control input-show" type="file" id="BAgreement"
+                        value="{{ old('BAgreement') }}">
+                    @error('BAgreement')
                         <div class="text-small text-danger form-text">{{ $message }}</div>
                     @enderror
                 </div>
@@ -107,7 +115,7 @@
                         </select>
                     </div>
                     <div class="col-md">
-                        <label for="devisi_id" class="form-label">Devisi</label>
+                        <label for="devisi_id" class="form-label">Departement</label>
                         <select id="devisi_id" name="devisi_id" class="form-select devisi form-select-sm">
                             <option selected disabled>Pilih Devisi ...</option>
                             @foreach ($devisis as $devisi)
@@ -129,16 +137,23 @@
                     <img style="max-height: 200px;object-fit: contain"
                         src='{{ asset("storage/$pB->foto_pengenal") }}' class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $pB->nim }} | {{ $pB->jurusan }}</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in
-                            to
-                            additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title text-center">{{ $pB->nim }} | {{ $pB->jurusan }}</h5>
+                        {{-- <p class="card-text">["belum tervalidasi"]</p> --}}
                     </div>
                     <div class="card-footer text-center">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-warning">Edit</button>
+                            <a href="{{ route('edit-daftar-genbi', $pB->id) }}" class="btn btn-warning">Edit</a>
                             <button type="button" class="btn btn-primary">Gabung Departemen</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Hallo, Iya kamu</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Mau liat siapa aja anggota GenBI SULTRA?</h6>
+                        <a href="{{ route('list-anggota-genbi') }}" class="card-link">Klik disini</a>
                     </div>
                 </div>
             </div>

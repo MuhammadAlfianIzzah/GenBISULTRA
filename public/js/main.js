@@ -1,16 +1,15 @@
-
-if(document.querySelector(".random-picker")){
+if (document.querySelector(".random-picker")) {
     let rPicker = document.querySelector("#start_spiner");
-let clear = document.querySelector("#clear_spinner");
-let nilai = '';
-let eRPicker = document.querySelector(".random-picker");
-let loader = document.querySelector(".loader");
-let textLoading = document.querySelector(".loader span");
-let winner = document.querySelector(".winner");
-let nWinner = document.querySelector("#count");
-let resultWinner = [];
-let durasi = document.querySelector("#durasi");
-let pwinner = document.querySelector(".p-winner");
+    let clear = document.querySelector("#clear_spinner");
+    let nilai = '';
+    let eRPicker = document.querySelector(".random-picker");
+    let loader = document.querySelector(".loader");
+    let textLoading = document.querySelector(".loader span");
+    let winner = document.querySelector(".winner");
+    let nWinner = document.querySelector("#count");
+    let resultWinner = [];
+    let durasi = document.querySelector("#durasi");
+    let pwinner = document.querySelector(".p-winner");
     rPicker.addEventListener("click", function (e) {
         e.target.classList.add("d-none");
         let search = document.querySelector("[name=search]").value;
@@ -59,21 +58,19 @@ let pwinner = document.querySelector(".p-winner");
 
 
 
-if(document.querySelector(".upload-img")){
+if (document.querySelector(".upload-img")) {
     let upImg = document.querySelectorAll(".upload-img");
-upImg.forEach((e)=>{
+    upImg.forEach((e) => {
 
-    let imgPrev = document.querySelector(`.${e.dataset.target}`);
-    e.addEventListener("change",function(){
-        const oFReader = new FileReader();
-        imgPrev.classList.remove("d-none");
-        oFReader.readAsDataURL(e.files[0]);
+        let imgPrev = document.querySelector(`.${e.dataset.target}`);
+        e.addEventListener("change", function () {
+            const oFReader = new FileReader();
+            imgPrev.classList.remove("d-none");
+            oFReader.readAsDataURL(e.files[0]);
 
-         oFReader.onload = function(oFREvent){
-             imgPrev.src = oFREvent.target.result;
-         }
-     })
-})
+            oFReader.onload = function (oFREvent) {
+                imgPrev.src = oFREvent.target.result;
+            }
+        })
+    })
 }
-
-
