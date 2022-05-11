@@ -179,7 +179,7 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         // laravel excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*

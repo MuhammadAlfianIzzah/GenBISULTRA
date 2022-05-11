@@ -25,8 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
 
     <link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.carousel.min.css') }}">
@@ -55,38 +54,7 @@
     <div style="margin-top: 100px">
         {{ $slot }}
     </div>
-    {{-- <footer>
 
-        <div class="row">
-            <h3 class="text-center py-4 px-2">Tentang Kami</h3>
-
-            <div class="col-12 col-md-4 border">
-                <p class="py-2">
-                    <i class="fa fa-map-marker"></i>
-                    Alamat: Jl. Haluoleo, Mokoau, Kec. Kambu, Kota Kendari, Sulawesi Tenggara 93231
-                </p>
-                <p>
-                    <i class="fa fa-envelope"></i>
-                    genbi.sultra@gmail.com
-                </p>
-            </div>
-            <div class="col-md-4">
-                <div class="sosmed">
-                    <a href="#" style="width: 200px !important;height: 200px !important;background-color: red;border-radius: 50%">a</a>
-                    <a href="#"><i class="fab fa-spotify"></i></a>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4">
-                <h3 class="py-2">Kontak</h3>
-                <a class="text-light btn btn-dark mb-2" href="{{ route('author'  ) }}" style="text-decoration: none">Author/Pembuat Website</a>
-    <a class="text-light btn btn-dark" href="{{ route('author'  ) }}" style="text-decoration: none">Open Donasi/saweria</a>
-    </div>
-    </div>
-
-    <p class="copyrigth">© 2021 GenBI SulTra. All rights reserved.</p>
-
-    </footer> --}}
     <footer class="text-center text-white">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
@@ -177,9 +145,7 @@
         <!-- Copyright -->
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <script src="{{ asset('js/jquery.js') }}"></script>
 
