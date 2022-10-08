@@ -23,7 +23,7 @@ class ActivityController extends Controller
     {
         SEOMeta::setTitle("Kegiatan GenBI");
         OpenGraph::addProperty('type', 'article');
-        $posts = Activity::filter(request(["search", "category", "devisi"]))->where("is_active", true)->with(["devisi", "typeActivity"])->orderBy("activity_date", "DESC")->paginate(9);
+        $posts = Activity::filter(request(["search", "category", "devisi"]))->where("is_active", true)->with(["devisi", "typeActivity"])->latest()->paginate(9);
         $kategory = TypeActivity::get();
         $devisi = Devisi::get();
         return view("page.kegiatan.show", compact("posts", "kategory", "devisi"));

@@ -15,8 +15,8 @@ class KomisatSeeder extends Seeder
     public function run()
     {
         $data = [
-            ["nama" => "UHO", "keterangan" => "Komsat UHO"],
-            ["nama" => "IAIN", "keterangan" => "Komsat IAIN"],
+            ["nama" => "UHO", "keterangan" => "Komsat UHO", 'logo' => "kosong"],
+            ["nama" => "IAIN", "keterangan" => "Komsat IAIN", 'logo' => "kosong"],
         ];
         Komisat::insert($data);
     }

@@ -3,7 +3,6 @@
      .nav-item.active {
          border-left: 4px solid #3d5af1;
      }
-
  </style>
 
  <ul class="navbar-nav sidebar sidebar-light accordion shadow-sm" style="background-color: white" id="accordionSidebar">
@@ -75,7 +74,6 @@
 
      {{-- devisi --}}
      @role(['super'])
-
          <div class="sidebar-heading mt-2">
              Devisi
          </div>
@@ -110,15 +108,14 @@
                  aria-labelledby="headingUtilities" data-parent="#accordionSidebar" style="">
                  <div class="bg-white collapse-inner rounded">
                      <h6 class="collapse-header">Manage users:</h6>
-                     <a class="collapse-item {{ request()->is('my-brain') ? 'active' : '' }}"
-                         href="{{ route('my-brain') }}">Role</a>
+                     {{-- <a class="collapse-item {{ request()->is('my-brain') ? 'active' : '' }}"
+                         href="{{ route('my-brain') }}">Role</a> --}}
                      <a class="collapse-item {{ request()->is('manage/users') ? 'active' : '' }}"
                          href="{{ route('manage-user') }}"> <i class="fas fa-user-tag"></i> Set Role users</a>
                  </div>
              </div>
          </li>
          {{-- close manage access --}}
-
      @endrole
      {{-- my brain --}}
      <div class="sidebar-heading mt-2">
@@ -175,7 +172,6 @@
                          : '' }}"
                          href="{{ route('mypost-kegiatan') }}">My post</a>
                      @role(['super'])
-
                          <a class="collapse-item {{ request()->segment(2) == 'jenis' ? 'active' : '' }}"
                              href="{{ route('show-jenis-kegiatan') }}"> <i class="fab fa-slack-hash"></i> Type Kegiatan</a>
                      @endrole

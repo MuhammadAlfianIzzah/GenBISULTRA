@@ -8,19 +8,19 @@
             <!-- Page Heading -->
 
             <form action="" method="POST" enctype="multipart/form-data">
-                @method("post")
+                @method('post')
                 @csrf
                 <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Judul Kegiatan</label>
                     <div class="col-sm-10">
-                        <input type="text" name="nama" class="form-control" id="nama" value="{{ old('nama') }}"
-                            required>
+                        <input type="text" name="nama" class="form-control" id="nama"
+                            value="{{ old('nama') }}" required>
                         @error('nama')
                             <div class="text-danger text-small">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
-                <div class="mb-3 row">
+                {{-- <div class="mb-3 row">
 
                     <label for="activity_date" class="col-sm-2 col-form-label">Tanggal Kegiatan</label>
                     <div class="col-sm-10">
@@ -30,7 +30,7 @@
                             <div class="text-danger text-small">{{ $message }}</div>
                         @enderror
                     </div>
-                </div>
+                </div> --}}
                 <div class="mb-3 row">
                     <label for="created_at" class="col-sm-2 col-form-label">Tanggal Kegiatan</label>
                     <div class="col-sm-10">
