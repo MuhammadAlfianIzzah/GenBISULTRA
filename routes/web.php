@@ -166,7 +166,7 @@ Route::middleware(['auth', "verified"])->group(function () {
 });
 // Route::get('users/export', [UserController::class, "export"])    ;
 Route::get("users", function () {
-    $users = Profile::paginate(10);
+    $users = Profile::paginate(12);
     return view("page.user.users", compact("users"));
 })->name("users-genbi");
 Route::get("/user/profile/{profile:nama}", function (Profile $profile) {
