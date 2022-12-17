@@ -30,8 +30,6 @@ class ActivityController extends Controller
     }
     public function detail(Activity $activities)
     {
-
-
         //filter tag
         $filter = strip_tags($activities->body);
         $desc = preg_replace('/\s+/', ' ', trim($filter));
@@ -289,9 +287,6 @@ class ActivityController extends Controller
                 File::delete(public_path() . $tg);
             }
         }
-        // if empty img
-
-        // dd($images);
         $doc = new DOMDocument();
         $doc->loadHTML($activities->body);
 
@@ -335,10 +330,10 @@ class ActivityController extends Controller
         // $slug = Str::slug($request->nama, '-');
 
         $attr["body"] = $dom->saveHTML();
+        dd($attr);
         try {
             $activities->update($attr);
         } catch (QueryException $e) {
-            dd($e);
             return redirect()->route("mypost-kegiatan")->with("error", "Ups, maaf terjadi kesalahan, silahkan coba lagi, atau silahkan laporkan bug ini di halaman lapor");
         }
         return redirect()->route("mypost-kegiatan")->with("success", "Berhasil Update");

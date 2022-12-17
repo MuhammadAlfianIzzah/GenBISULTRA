@@ -14,8 +14,8 @@ class GenbiController extends Controller
 {
     public function list()
     {
-        $data = penerimaBeasiswa::get();
-        return view("page.genbi.anggota.list", compact("data"));
+        $datas = penerimaBeasiswa::paginate(10);
+        return view("page.genbi.anggota.list", compact("datas"));
     }
     public function create()
     {

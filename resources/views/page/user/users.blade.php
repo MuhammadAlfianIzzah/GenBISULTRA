@@ -27,6 +27,12 @@
                         </div>
                     </div>
                 @endforeach
+
+            </div>
+            <div class="row mt-4 text-center">
+                <div class="col-12">
+                    {{ $users->links() }}
+                </div>
             </div>
         </div>
     </div>

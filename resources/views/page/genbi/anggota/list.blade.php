@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $key => $dt)
+                    @foreach ($datas as $key => $dt)
                         {{-- {{ dd($dt->status) }} --}}
 
                         <tr>
@@ -34,6 +34,13 @@
                             <td><a href="{{ asset("storage/$dt->BAgreement") }}">Show</a></td>
                         </tr>
                     @endforeach
+                    <tr>
+                        <td>
+                            {{ $datas->links() }}
+                        </td>
+                    </tr>
+
+
                 </tbody>
             </table>
         </div>
