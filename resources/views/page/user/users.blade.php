@@ -30,7 +30,7 @@
 
             </div>
             <div class="row mt-4 text-center">
-                <div class="col-12">
+                <div class="col-12 d-flex justify-content-center">
                     {{ $users->links() }}
                 </div>
             </div>
