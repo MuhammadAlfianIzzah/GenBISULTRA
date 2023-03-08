@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1ff39c7e7c3d1f375c4d129f6845299",
+    "content-hash": "fe2ae2db1b7373976f4e423ad22c1852",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -4369,28 +4369,29 @@
         },
         {
             "name": "stevebauman/location",
-            "version": "v6.2.0",
+            "version": "v6.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stevebauman/location.git",
-                "reference": "cc2e63fc2b64f17d4404fe206612bc67dca16b10"
+                "reference": "49f28e58daa0382bdc571b20f27b3c57c8691f1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stevebauman/location/zipball/cc2e63fc2b64f17d4404fe206612bc67dca16b10",
-                "reference": "cc2e63fc2b64f17d4404fe206612bc67dca16b10",
+                "url": "https://api.github.com/repos/stevebauman/location/zipball/49f28e58daa0382bdc571b20f27b3c57c8691f1c",
+                "reference": "49f28e58daa0382bdc571b20f27b3c57c8691f1c",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "ext-json": "*",
                 "geoip2/geoip2": "^2.0",
-                "illuminate/support": "~5.0|~6.0|~7.0|~8.0",
-                "php": ">=7.0"
+                "illuminate/support": "^5.0|^6.0|^7.0|^8.0|^9.0|^10.0",
+                "php": ">=7.3"
             },
             "require-dev": {
                 "mockery/mockery": "~0.9|^1.0",
-                "orchestra/testbench": "~3.2|~4.0|^6.0"
+                "orchestra/testbench": "~3.2|~4.0|^6.0|^7.0|^8.0",
+                "pestphp/pest": "^1.21"
             },
             "type": "library",
             "extra": {
@@ -4418,7 +4419,7 @@
                     "email": "steven_bauman@outlook.com"
                 }
             ],
-            "description": "Retrieve a users location by their IP Address",
+            "description": "Retrieve a user's location by their IP Address",
             "keywords": [
                 "IP",
                 "geo",
@@ -4430,9 +4431,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stevebauman/location/issues",
-                "source": "https://github.com/stevebauman/location/tree/v6.2.0"
+                "source": "https://github.com/stevebauman/location/tree/v6.6.2"
             },
-            "time": "2021-08-13T19:19:10+00:00"
+            "time": "2023-02-27T14:26:23+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -9597,5 +9598,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
