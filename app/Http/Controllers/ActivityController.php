@@ -330,7 +330,7 @@ class ActivityController extends Controller
         // $slug = Str::slug($request->nama, '-');
 
         $attr["body"] = $dom->saveHTML();
-        dd($attr);
+        // dd($attr);
         try {
             $activities->update($attr);
         } catch (QueryException $e) {
