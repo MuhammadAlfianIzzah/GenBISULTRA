@@ -133,7 +133,7 @@
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
                     ['table', ['table']],
-                    ['insert', ['link', 'picture', 'hr']],
+                    ['insert', ['link', 'hr']], // Removed 'picture' button
                     ['view', ['fullscreen', 'codeview']],
                     ['help', ['help']]
                 ],

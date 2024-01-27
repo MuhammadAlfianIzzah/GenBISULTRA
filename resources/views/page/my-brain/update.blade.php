@@ -4,7 +4,6 @@
             border-left: 4px solid red;
             padding-left: 1rem;
         }
-
     </style>
 
     <x-slot name="title_page">Update <span class="badge badge-info">~{{ $posts->title }}~</span></x-slot>
@@ -81,8 +80,7 @@
                     <label for="formFile" class="col-sm-2 col-form-label">Thumnail</label>
                     <div class="col-sm-10">
                         <img onerror="this.onerror=null;this.src='img/notfound.png';"
-                            style="max-height: 200px;object-fit: contain"
-                            src="{{ asset("storage/$posts->thumbnail") }}"
+                            style="max-height: 200px;object-fit: contain" src="{{ asset("storage/$posts->thumbnail") }}"
                             class="w-100 img-fluid img-thumbnail thumbnail">
                         <input name="thumbnail" data-target="thumbnail" class="form-control input-show upload-img"
                             type="file" id="formFile">
@@ -97,8 +95,8 @@
                         <img onerror="this.onerror=null;this.src='img/notfound.png';"
                             style="max-height: 200px;object-fit: contain" src="{{ asset("storage/$posts->hero") }}"
                             class="w-100 img-fluid img-hero hero">
-                        <input name="hero" data-target="hero" class="form-control input-show upload-img" type="file"
-                            id="formFile">
+                        <input name="hero" data-target="hero" class="form-control input-show upload-img"
+                            type="file" id="formFile">
                         @error('hero')
                             <div class="text-danger text-small">{{ $message }}</div>
                         @enderror
@@ -125,7 +123,7 @@
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
                     ['table', ['table']],
-                    ['insert', ['link', 'picture', 'hr']],
+                    ['insert', ['link', 'hr']], // Removed 'picture' button
                     ['view', ['fullscreen', 'codeview']],
                     ['help', ['help']]
                 ],

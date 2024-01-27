@@ -4,7 +4,6 @@
             border-left: 4px solid red;
             padding-left: 1rem;
         }
-
     </style>
 
     <x-slot name="title_page">Update <span class="badge badge-info">~{{ $posts->title }}~</span></x-slot>
@@ -28,7 +27,6 @@
                     {{ $message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-
             @endif
 
             <!-- Page Heading -->
@@ -69,8 +67,8 @@
                     <div class="col-sm-10">
                         <img style="max-height: 200px;object-fit: contain" class="w-100 img-fluid img-thumbnail hero"
                             src="{{ asset("storage/$posts->hero") }}">
-                        <input name="hero" class="form-control input-show upload-img" data-target="hero" type="file"
-                            id="formFile">
+                        <input name="hero" class="form-control input-show upload-img" data-target="hero"
+                            type="file" id="formFile">
                         <small class="text-small text-warning">(Gunakan gambar yang persegi panjang)</small>
 
                         @error('hero')
@@ -126,7 +124,7 @@
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
                     ['table', ['table']],
-                    ['insert', ['link', 'picture', 'hr']],
+                    ['insert', ['link', 'hr']], // Removed 'picture' button
                     ['view', ['fullscreen', 'codeview']],
                     ['help', ['help']]
                 ],

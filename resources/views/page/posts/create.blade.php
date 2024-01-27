@@ -24,13 +24,13 @@
             <!-- Page Heading -->
 
             <form action="" method="POST" enctype="multipart/form-data" novalidate>
-                @method("post")
+                @method('post')
                 @csrf
                 <div class="mb-3 row">
                     <label for="title" class="col-sm-2 col-form-label">Title Post</label>
                     <div class="col-sm-10">
-                        <input type="text" name="title" class="form-control" id="title" value="{{ old('title') }}"
-                            required placeholder="minimal judul 8 karakter ...">
+                        <input type="text" name="title" class="form-control" id="title"
+                            value="{{ old('title') }}" required placeholder="minimal judul 8 karakter ...">
                         @error('title')
                             <div class="text-danger text-small">{{ $message }}</div>
                         @enderror
@@ -59,8 +59,8 @@
 
                         <img src="" style="max-height: 200px;object-fit: contain"
                             class="w-100 img-fluid img-thumbnail hero">
-                        <input name="hero" data-target="hero" class="form-control input-show upload-img" type="file"
-                            id="formFile" required>
+                        <input name="hero" data-target="hero" class="form-control input-show upload-img"
+                            type="file" id="formFile" required>
                         <span class="text-scaledown">(Gunakan gambar yang persegi panjang)</span>
                         @error('hero')
                             <div class="text-danger text-small">{{ $message }}</div>
@@ -114,7 +114,7 @@
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
                     ['table', ['table']],
-                    ['insert', ['link', 'picture', 'hr']],
+                    ['insert', ['link', 'hr']], // Removed 'picture' button
                     ['view', ['fullscreen', 'codeview']],
                     ['help', ['help']]
                 ],

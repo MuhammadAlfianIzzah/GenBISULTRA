@@ -26,7 +26,7 @@
             <!-- Page Heading -->
 
             <form action="" method="POST" enctype="multipart/form-data">
-                @method("PUT")
+                @method('PUT')
                 @csrf
                 <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Judul Kegiatan</label>
@@ -134,7 +134,7 @@
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
                     ['table', ['table']],
-                    ['insert', ['link', 'picture', 'hr']],
+                    ['insert', ['link', 'hr']], // Removed 'picture' button
                     ['view', ['fullscreen', 'codeview']],
                     ['help', ['help']]
                 ],

@@ -21,19 +21,18 @@
                     {{ $message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-
             @endif
 
             <!-- Page Heading -->
 
             <form action="" method="POST" enctype="multipart/form-data">
-                @method("post")
+                @method('post')
                 @csrf
                 <div class="mb-3 row">
                     <label for="title" class="col-sm-2 col-form-label">Title Post</label>
                     <div class="col-sm-10">
-                        <input type="text" name="title" class="form-control" id="title" value="{{ old('title') }}"
-                            required>
+                        <input type="text" name="title" class="form-control" id="title"
+                            value="{{ old('title') }}" required>
                         @error('title')
                             <div class="text-danger text-small">{{ $message }}</div>
                         @enderror
@@ -45,8 +44,8 @@
                     <div class="col-sm-10">
                         <img style="max-height: 200px;object-fit: contain"
                             class="w-100 img-fluid img-thumbnail hero d-none">
-                        <input name="hero" class="form-control input-show upload-img" type="file" id="formFile" required
-                            data-target="hero">
+                        <input name="hero" class="form-control input-show upload-img" type="file" id="formFile"
+                            required data-target="hero">
                         <span class="text-small text-info">(Gunakan gambar yang persegi panjang)</span>
 
                         @error('hero')
@@ -110,7 +109,7 @@
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
                     ['table', ['table']],
-                    ['insert', ['link', 'picture', 'hr']],
+                    ['insert', ['link', 'hr']], // Removed 'picture' button
                     ['view', ['fullscreen', 'codeview']],
                     ['help', ['help']]
                 ],
