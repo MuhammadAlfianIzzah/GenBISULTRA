@@ -22,7 +22,6 @@
                             <th scope="col" class="table-responsif">Thumbnail</th>
 
                             @if (!Auth::check() || Auth::user()->hasRole('user'))
-
                                 <th>
                                     status
                                 </th>
@@ -56,7 +55,6 @@
                                         class="img-thumbnail">
                                 </td>
                                 @if (!Auth::check() || Auth::user()->hasRole('user'))
-
                                     <td>
                                         @if ($post->approval === 'accept')
                                             <div class="btn btn-success disabled"> <i class="fas fa-check-square"></i>
@@ -88,7 +86,7 @@
                                             style="display: inline;" method="POST">
 
                                             @csrf
-                                            @method("delete")
+                                            @method('delete')
                                             <!-- Button trigger modal -->
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                 data-bs-target="#delete{{ $post->slug }}">
@@ -106,7 +104,8 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                            <button type="submit"
+                                                                class="btn btn-danger">Delete</button>
 
                                                         </div>
                                                     </div>

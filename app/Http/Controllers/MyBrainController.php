@@ -23,10 +23,10 @@ class MyBrainController extends Controller
     public function show()
     {
         SEOMeta::setTitle("Brain Post");
-        $posts = BrainPost::where(["approval" => "accept"])->filter(request(["search", "category"]))->get();
+        $posts = BrainPost::where(["approval" => "accept"])->filter(request(["search", "category"]))->orderBy("created_at", "desc")->paginate(10);
         if (Auth::check()) {
             if (request()->user()->hasRole(["dpt_head", "super"])) {
-                $posts = BrainPost::filter(request(["search", "category"]))->get();
+                $posts = BrainPost::filter(request(["search", "category"]))->orderBy("created_at", "desc")->paginate(10);
             }
         }
 
@@ -34,8 +34,6 @@ class MyBrainController extends Controller
     }
     public function detail(BrainPost $brainPost)
     {
-
-
         //filter tag
         $filter = strip_tags($brainPost->content);
         $desc = preg_replace('/\s+/', ' ', trim($filter));

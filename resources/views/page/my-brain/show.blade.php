@@ -11,7 +11,6 @@
 
             transform: translateX(5px);
         }
-
     </style>
 
     <div class="mb-4 bg-light rounded-3">
@@ -60,7 +59,6 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
 
             @forelse ($posts as $post)
-
                 <div class="col-md-6">
                     <div
                         class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative card-brain">
@@ -91,19 +89,22 @@
 
             @empty
                 <div class="w-100  justify-content-center alert alert-warning d-flex align-items-center" role="alert">
-                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                        aria-label="Warning:">
                         <use xlink:href="#exclamation-triangle-fill" />
                     </svg>
                     <div>
                         Post Kosong
                     </div>
                 </div>
-
-
             @endforelse
 
         </div>
-
+        <div class="row mt-3">
+            <div class="col-12  justify-content-center d-flex">
+                {{ $posts->links() }}
+            </div>
+        </div>
     </div>
 
     </x-main-layout>
